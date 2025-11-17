@@ -64,7 +64,7 @@ export default function ManageDestinations() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-500 via-purple-500 to-fuchsia-500 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-teal-500 via-teal-600 to-cyan-600 relative overflow-hidden">
       {/* Animated background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>

@@ -30,14 +30,14 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-teal-500 via-teal-600 to-cyan-600 flex items-center justify-center">
         <div className="text-3xl text-white font-bold animate-pulse">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-teal-500 via-teal-600 to-cyan-600 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
@@ -72,7 +72,7 @@ export default function Home() {
         {destinations.length === 0 ? (
           <div className="text-center py-16 animate-fade-in">
             <div className="max-w-2xl mx-auto bg-white/95 backdrop-blur-sm rounded-3xl p-12 shadow-2xl border-4 border-white/50">
-              <div className="w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+              <div className="w-32 h-32 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-full mx-auto mb-6 flex items-center justify-center">
                 <MapPin className="w-16 h-16 text-white" />
               </div>
               <h2 className="text-3xl font-bold text-slate-800 mb-4">
