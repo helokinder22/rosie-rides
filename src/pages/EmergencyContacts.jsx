@@ -1,0 +1,259 @@
+import React, { useState } from "react";
+import { base44 } from "@/api/base44Client";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Home, UserPlus, Trash2, Users, AlertTriangle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { createPageUrl } from "@/utils";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
+export default function EmergencyContacts() {
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    relationship: ""
+  });
+
+  const { data: contacts, isLoading } = useQuery({
+    queryKey: ['emergencyContacts'],
+    queryFn: () => base44.entities.EmergencyContact.list('-created_date'),
+    initialData: [],
+  });
+
+  const createMutation = useMutation({
+    mutationFn: (data) => base44.entities.EmergencyContact.create(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['emergencyContacts'] });
+      setShowForm(false);
+      setFormData({ name: "", email: "", phone: "", relationship: "" });
+    },
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: (id) => base44.entities.EmergencyContact.delete(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['emergencyContacts'] });
+    },
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createMutation.mutate(formData);
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-teal-500 via-teal-600 to-cyan-600 relative overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse delay-700"></div>
+      </div>
+
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <div className="mb-8">
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => navigate(createPageUrl("Home"))}
+            className="h-16 px-6 text-xl mb-8 border-3 border-white bg-white/90 hover:bg-white backdrop-blur-sm shadow-xl font-bold"
+          >
+            <Home className="w-6 h-6 mr-3" />
+            Back to Home
+          </Button>
+          
+          <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border-4 border-white/50">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 bg-gradient-to-br from-red-400 to-red-600 rounded-2xl flex items-center justify-center shadow-lg">
+                <AlertTriangle className="w-9 h-9 text-white" />
+              </div>
+              <div>
+                <h1 className="text-5xl font-black text-slate-800">
+                  Emergency Contacts
+                </h1>
+                <p className="text-xl text-slate-600 flex items-center gap-2 mt-1">
+                  <Users className="w-5 h-5" />
+                  People to alert in case of emergency
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {showForm ? (
+          <Card className="border-0 shadow-2xl bg-white/95 backdrop-blur-sm overflow-hidden mb-8">
+            <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-r from-red-400 via-orange-400 to-red-400"></div>
+            <CardHeader className="pb-6 pt-8">
+              <CardTitle className="text-4xl font-black text-slate-800">
+                <span className="text-3xl mr-3">👤</span>
+                Add Emergency Contact
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <Label htmlFor="name" className="text-2xl font-bold text-slate-700">
+                    Name *
+                  </Label>
+                  <Input
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="John Doe"
+                    required
+                    className="h-16 text-xl px-6 border-3 border-slate-200 rounded-2xl"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-2xl font-bold text-slate-700">
+                    Email *
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="john@example.com"
+                    required
+                    className="h-16 text-xl px-6 border-3 border-slate-200 rounded-2xl"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="phone" className="text-2xl font-bold text-slate-700">
+                    Phone
+                  </Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    placeholder="(555) 123-4567"
+                    className="h-16 text-xl px-6 border-3 border-slate-200 rounded-2xl"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="relationship" className="text-2xl font-bold text-slate-700">
+                    Relationship
+                  </Label>
+                  <Input
+                    id="relationship"
+                    value={formData.relationship}
+                    onChange={(e) => setFormData({ ...formData, relationship: e.target.value })}
+                    placeholder="e.g., Spouse, Child, Friend"
+                    className="h-16 text-xl px-6 border-3 border-slate-200 rounded-2xl"
+                  />
+                </div>
+
+                <div className="flex gap-4 pt-4">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => setShowForm(false)}
+                    className="flex-1 h-16 text-xl rounded-2xl font-bold"
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    type="submit"
+                    disabled={createMutation.isPending}
+                    className="flex-1 h-16 text-xl bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 rounded-2xl font-bold"
+                  >
+                    {createMutation.isPending ? "Saving..." : "Save Contact"}
+                  </Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+        ) : (
+          <Button
+            size="lg"
+            onClick={() => setShowForm(true)}
+            className="w-full h-24 text-3xl font-bold mb-8 bg-gradient-to-r from-red-400 to-red-600 hover:from-red-500 hover:to-red-700 rounded-3xl shadow-2xl border-4 border-white/50"
+          >
+            <UserPlus className="w-10 h-10 mr-4" />
+            Add Emergency Contact
+          </Button>
+        )}
+
+        <div className="space-y-4">
+          {isLoading ? (
+            <div className="text-center py-12 text-3xl text-white font-bold">Loading...</div>
+          ) : contacts.length === 0 ? (
+            <Card className="border-0 bg-white/95 backdrop-blur-sm shadow-xl">
+              <CardContent className="py-20 text-center">
+                <div className="text-6xl mb-4">👥</div>
+                <p className="text-3xl font-bold text-slate-700 mb-2">No contacts yet</p>
+                <p className="text-xl text-slate-600">Add emergency contacts to stay safe</p>
+              </CardContent>
+            </Card>
+          ) : (
+            contacts.map((contact) => (
+              <Card key={contact.id} className="border-0 bg-white/95 backdrop-blur-sm hover:shadow-2xl transition-all">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <h3 className="text-3xl font-black text-slate-800 mb-2">{contact.name}</h3>
+                      <p className="text-lg text-slate-600">📧 {contact.email}</p>
+                      {contact.phone && <p className="text-lg text-slate-600">📱 {contact.phone}</p>}
+                      {contact.relationship && (
+                        <span className="inline-block mt-2 px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-semibold">
+                          {contact.relationship}
+                        </span>
+                      )}
+                    </div>
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button
+                          variant="outline"
+                          size="lg"
+                          className="h-16 w-16 border-3 border-red-200 hover:bg-red-50 rounded-2xl"
+                        >
+                          <Trash2 className="w-7 h-7 text-red-600" />
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent className="max-w-md rounded-3xl">
+                        <AlertDialogHeader>
+                          <AlertDialogTitle className="text-3xl font-black">Delete Contact?</AlertDialogTitle>
+                          <AlertDialogDescription className="text-xl">
+                            Remove {contact.name} from emergency contacts?
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel className="h-16 text-xl rounded-2xl">Cancel</AlertDialogCancel>
+                          <AlertDialogAction
+                            onClick={() => deleteMutation.mutate(contact.id)}
+                            className="h-16 text-xl bg-red-500 hover:bg-red-600 rounded-2xl"
+                          >
+                            Delete
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+                  </div>
+                </CardContent>
+              </Card>
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

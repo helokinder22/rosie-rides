@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { Plus, MapPin, Car, Sparkles, Mic, MicOff } from "lucide-react";
+import { Plus, MapPin, Car, Sparkles, Mic, MicOff, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import DestinationCard from "../components/DestinationCard";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import EmergencyButton from "../components/EmergencyButton";
 
 export default function Home() {
   const [isListening, setIsListening] = useState(false);
@@ -31,7 +31,12 @@ export default function Home() {
         const transcript = event.results[0][0].transcript.toLowerCase();
         setSpokenText(transcript);
         
-        // Find matching destination
+        if (transcript.includes('emergency') || transcript.includes('help')) {
+          setSpokenText("Emergency detected! Use the emergency button below.");
+          setTimeout(() => setSpokenText(""), 4000);
+          return;
+        }
+        
         const match = destinations.find(dest => 
           dest.name.toLowerCase().includes(transcript) || 
           transcript.includes(dest.name.toLowerCase())
@@ -100,7 +105,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-500 via-teal-600 to-cyan-600 relative overflow-hidden">
-      {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute top-60 -left-40 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -108,7 +112,6 @@ export default function Home() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        {/* Header */}
         <div className="text-center mb-12 animate-fade-in">
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="relative">
@@ -130,7 +133,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Voice Command Button */}
           <div className="mt-8 flex flex-col items-center gap-4">
             <Button
               onClick={toggleVoiceCommand}
@@ -152,6 +154,20 @@ export default function Home() {
                 {spokenText || '🎤 Say a destination name'}
               </p>
             </div>
+          </div>
+
+          <div className="mt-8 flex justify-center gap-4">
+            <EmergencyButton className="h-20 px-10 text-2xl rounded-3xl" />
+            <Link to={createPageUrl("EmergencyContacts")}>
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-20 px-10 text-2xl bg-white/90 hover:bg-white backdrop-blur-sm shadow-xl font-bold rounded-3xl border-3 border-white"
+              >
+                <Settings className="w-7 h-7 mr-3" />
+                Emergency Contacts
+              </Button>
+            </Link>
           </div>
         </div>
 
@@ -186,7 +202,6 @@ export default function Home() {
           </div>
         )}
 
-        {/* Add Destination Button */}
         <div className="flex justify-center mt-12 animate-bounce-slow">
           <Link to={createPageUrl("ManageDestinations")}>
             <Button 
