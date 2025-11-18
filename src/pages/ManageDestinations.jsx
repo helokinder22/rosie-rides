@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Settings, Sparkles } from "lucide-react";
+import { Home, Settings, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import DestinationForm from "../components/DestinationForm";
@@ -80,7 +80,7 @@ export default function ManageDestinations() {
             onClick={() => navigate(createPageUrl("Home"))}
             className="h-16 px-6 text-xl mb-8 border-3 border-white bg-white/90 hover:bg-white backdrop-blur-sm shadow-xl font-bold"
           >
-            <ArrowLeft className="w-6 h-6 mr-3" />
+            <Home className="w-6 h-6 mr-3" />
             Back to Home
           </Button>
           
