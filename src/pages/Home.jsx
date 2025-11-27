@@ -57,9 +57,14 @@ export default function Home() {
             </div>
           </div>
           
-          <h1 className="text-6xl sm:text-7xl font-black text-white mb-4 drop-shadow-lg">
+          <a 
+            href="https://m.uber.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-6xl sm:text-7xl font-black text-white mb-4 drop-shadow-lg hover:text-yellow-200 transition-colors cursor-pointer block"
+          >
             Where to?
-          </h1>
+          </a>
           <div className="inline-block bg-white/20 backdrop-blur-md rounded-full px-8 py-4 border-2 border-white/30">
             <p className="text-2xl sm:text-3xl text-white font-semibold">
               🚗 Tap your destination below
