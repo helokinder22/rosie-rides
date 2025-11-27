@@ -1,86 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { Plus, MapPin, Car, Sparkles, Mic, MicOff, Settings } from "lucide-react";
+import { Plus, MapPin, Car, Sparkles, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import DestinationCard from "../components/DestinationCard";
 import EmergencyButton from "../components/EmergencyButton";
 
 export default function Home() {
-  const [isListening, setIsListening] = useState(false);
-  const [spokenText, setSpokenText] = useState("");
-  const [recognition, setRecognition] = useState(null);
-
   const { data: destinations, isLoading } = useQuery({
     queryKey: ['destinations'],
     queryFn: () => base44.entities.Destination.list('-created_date'),
     initialData: [],
   });
-
-  useEffect(() => {
-    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      const recognitionInstance = new SpeechRecognition();
-      recognitionInstance.continuous = false;
-      recognitionInstance.interimResults = false;
-      recognitionInstance.lang = 'en-US';
-
-      recognitionInstance.onresult = (event) => {
-        const transcript = event.results[0][0].transcript.toLowerCase();
-        setSpokenText(transcript);
-        
-        if (transcript.includes('emergency') || transcript.includes('help')) {
-          setSpokenText("Emergency detected! Use the emergency button below.");
-          setTimeout(() => setSpokenText(""), 4000);
-          return;
-        }
-        
-        const match = destinations.find(dest => 
-          dest.name.toLowerCase().includes(transcript) || 
-          transcript.includes(dest.name.toLowerCase())
-        );
-
-        if (match) {
-          openUber(match);
-        } else {
-          setSpokenText(`No match found for "${transcript}"`);
-          setTimeout(() => setSpokenText(""), 3000);
-        }
-      };
-
-      recognitionInstance.onend = () => {
-        setIsListening(false);
-      };
-
-      recognitionInstance.onerror = (event) => {
-        console.error('Speech recognition error:', event.error);
-        setIsListening(false);
-        setSpokenText("Voice command not available");
-        setTimeout(() => setSpokenText(""), 3000);
-      };
-
-      setRecognition(recognitionInstance);
-    }
-  }, [destinations]);
-
-  const toggleVoiceCommand = () => {
-    if (!recognition) {
-      setSpokenText("Voice commands not supported in this browser");
-      setTimeout(() => setSpokenText(""), 3000);
-      return;
-    }
-
-    if (isListening) {
-      recognition.stop();
-      setIsListening(false);
-    } else {
-      setSpokenText("Listening...");
-      recognition.start();
-      setIsListening(true);
-    }
-  };
 
   const openUber = (destination) => {
     const pickup = "current_location";
@@ -131,31 +64,6 @@ export default function Home() {
             <p className="text-2xl sm:text-3xl text-white font-semibold">
               🚗 Tap your destination below
             </p>
-          </div>
-
-          <div className="mt-8 flex flex-col items-center gap-4">
-            <Button
-              onClick={toggleVoiceCommand}
-              size="lg"
-              className={`h-24 w-24 rounded-full shadow-2xl border-4 border-white/50 transform hover:scale-110 transition-all duration-300 ${
-                isListening 
-                  ? 'bg-gradient-to-r from-red-400 to-red-600 hover:from-red-500 hover:to-red-700 animate-pulse' 
-                  : 'bg-gradient-to-r from-purple-400 to-purple-600 hover:from-purple-500 hover:to-purple-700'
-              }`}
-            >
-              {isListening ? (
-                <MicOff className="w-12 h-12" />
-              ) : (
-                <Mic className="w-12 h-12" />
-              )}
-            </Button>
-{spokenText && (
-              <div className="bg-white/20 backdrop-blur-md rounded-full px-6 py-3 border-2 border-white/30 min-w-[300px]">
-                <p className="text-xl text-white font-semibold">
-                  {spokenText}
-                </p>
-              </div>
-            )}
           </div>
 
           <div className="mt-8 flex justify-center gap-4">
