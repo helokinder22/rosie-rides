@@ -149,11 +149,13 @@ export default function Home() {
                 <Mic className="w-12 h-12" />
               )}
             </Button>
-            <div className="bg-white/20 backdrop-blur-md rounded-full px-6 py-3 border-2 border-white/30 min-w-[300px]">
-              <p className="text-xl text-white font-semibold">
-                {spokenText || '🎤 Say a destination name'}
-              </p>
-            </div>
+{spokenText && (
+              <div className="bg-white/20 backdrop-blur-md rounded-full px-6 py-3 border-2 border-white/30 min-w-[300px]">
+                <p className="text-xl text-white font-semibold">
+                  {spokenText}
+                </p>
+              </div>
+            )}
           </div>
 
           <div className="mt-8 flex justify-center gap-4">
