@@ -2,18 +2,27 @@ import React from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { Plus, MapPin, Car, Sparkles, Settings, Crown } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Plus, MapPin, Car, Sparkles, Settings, Crown, Lock } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import DestinationCard from "../components/DestinationCard";
 import EmergencyButton from "../components/EmergencyButton";
 
 export default function Home() {
+  const navigate = useNavigate(); // Make sure useNavigate is imported or remove if not needed (it's not imported in Home.js usually unless I check imports)
   const { data: destinations, isLoading } = useQuery({
     queryKey: ['destinations'],
     queryFn: () => base44.entities.Destination.list('-created_date'),
     initialData: [],
   });
+
+  const { data: user } = useQuery({
+    queryKey: ['user'],
+    queryFn: () => base44.auth.me(),
+  });
+
+  const isPremium = user?.subscription_status === 'premium';
+  const isLimitReached = !isPremium && destinations.length >= 2;
 
   const openUber = (destination) => {
     const pickup = "current_location";
@@ -127,15 +136,27 @@ export default function Home() {
         )}
 
         <div className="flex justify-center mt-12 animate-bounce-slow">
-          <Link to={createPageUrl("ManageDestinations")}>
-            <Button 
-              size="lg"
-              className="h-24 px-14 text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600 shadow-2xl rounded-3xl border-4 border-white/50 transform hover:scale-105 transition-all duration-300"
-            >
-              <Plus className="w-10 h-10 mr-4" />
-              Add Destination
-            </Button>
-          </Link>
+          {isLimitReached ? (
+            <Link to={createPageUrl("Subscription")}>
+              <Button 
+                size="lg"
+                className="h-24 px-14 text-3xl font-bold bg-gradient-to-r from-slate-400 to-slate-500 hover:from-slate-500 hover:to-slate-600 shadow-2xl rounded-3xl border-4 border-white/50 transform hover:scale-105 transition-all duration-300"
+              >
+                <Lock className="w-10 h-10 mr-4" />
+                Unlock More
+              </Button>
+            </Link>
+          ) : (
+            <Link to={createPageUrl("ManageDestinations")}>
+              <Button 
+                size="lg"
+                className="h-24 px-14 text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600 shadow-2xl rounded-3xl border-4 border-white/50 transform hover:scale-105 transition-all duration-300"
+              >
+                <Plus className="w-10 h-10 mr-4" />
+                Add Destination
+              </Button>
+            </Link>
+          )}
         </div>
       </div>
 

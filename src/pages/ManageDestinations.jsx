@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { Home, Settings, Sparkles } from "lucide-react";
+import { Home, Settings, Sparkles, Lock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import DestinationForm from "../components/DestinationForm";
@@ -19,6 +19,14 @@ export default function ManageDestinations() {
     queryFn: () => base44.entities.Destination.list('-created_date'),
     initialData: [],
   });
+
+  const { data: user } = useQuery({
+    queryKey: ['user'],
+    queryFn: () => base44.auth.me(),
+  });
+
+  const isPremium = user?.subscription_status === 'premium';
+  const isLimitReached = !isPremium && destinations.length >= 2;
 
   const createMutation = useMutation({
     mutationFn: (data) => base44.entities.Destination.create(data),
@@ -113,13 +121,24 @@ export default function ManageDestinations() {
           </div>
         ) : (
           <>
-            <Button
-              size="lg"
-              onClick={() => setShowForm(true)}
-              className="w-full h-24 text-3xl font-bold mb-8 bg-gradient-to-r from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600 rounded-3xl shadow-2xl border-4 border-white/50 transform hover:scale-105 transition-all duration-300"
-            >
-              ✨ Add New Destination
-            </Button>
+            {isLimitReached ? (
+              <Button
+                size="lg"
+                onClick={() => navigate(createPageUrl("Subscription"))}
+                className="w-full h-24 text-3xl font-bold mb-8 bg-gradient-to-r from-slate-400 to-slate-500 hover:from-slate-500 hover:to-slate-600 rounded-3xl shadow-2xl border-4 border-white/50 transform hover:scale-105 transition-all duration-300"
+              >
+                <Lock className="w-10 h-10 mr-4" />
+                Unlock More Destinations
+              </Button>
+            ) : (
+              <Button
+                size="lg"
+                onClick={() => setShowForm(true)}
+                className="w-full h-24 text-3xl font-bold mb-8 bg-gradient-to-r from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600 rounded-3xl shadow-2xl border-4 border-white/50 transform hover:scale-105 transition-all duration-300"
+              >
+                ✨ Add New Destination
+              </Button>
+            )}
 
             <div className="animate-fade-in">
               <DestinationList
