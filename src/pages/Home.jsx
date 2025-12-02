@@ -2,7 +2,7 @@ import React from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { Plus, MapPin, Car, Sparkles, Settings } from "lucide-react";
+import { Plus, MapPin, Car, Sparkles, Settings, Crown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import DestinationCard from "../components/DestinationCard";
@@ -71,7 +71,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-8 flex justify-center gap-4">
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
             <EmergencyButton className="h-20 px-10 text-2xl rounded-3xl" />
             <Link to={createPageUrl("EmergencyContacts")}>
               <Button
@@ -80,7 +80,16 @@ export default function Home() {
                 className="h-20 px-10 text-2xl bg-white/90 hover:bg-white backdrop-blur-sm shadow-xl font-bold rounded-3xl border-3 border-white"
               >
                 <Settings className="w-7 h-7 mr-3" />
-                Emergency Contacts
+                Contacts
+              </Button>
+            </Link>
+            <Link to={createPageUrl("Subscription")}>
+              <Button
+                size="lg"
+                className="h-20 px-10 text-2xl bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white shadow-xl font-bold rounded-3xl border-4 border-white/50"
+              >
+                <Crown className="w-7 h-7 mr-3" />
+                Premium
               </Button>
             </Link>
           </div>
