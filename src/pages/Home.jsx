@@ -92,15 +92,17 @@ export default function Home() {
                 Contacts
               </Button>
             </Link>
-            <Link to={createPageUrl("Subscription")}>
-              <Button
-                size="lg"
-                className="h-20 px-10 text-2xl bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white shadow-xl font-bold rounded-3xl border-4 border-white/50"
-              >
-                <Crown className="w-7 h-7 mr-3" />
-                Premium
-              </Button>
-            </Link>
+            {!isPremium && (
+              <Link to={createPageUrl("Subscription")}>
+                <Button
+                  size="lg"
+                  className="h-20 px-10 text-2xl bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white shadow-xl font-bold rounded-3xl border-4 border-white/50"
+                >
+                  <Crown className="w-7 h-7 mr-3" />
+                  Premium
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
 
