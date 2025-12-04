@@ -110,7 +110,7 @@ This is an automated emergency alert. Please check on ${user.full_name}.
           <AlertDialogAction
             onClick={sendEmergencyAlert}
             disabled={isSending}
-            className="h-16 text-xl bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 rounded-2xl font-bold"
+            className="h-16 text-xl bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white rounded-2xl font-bold"
           >
             <Send className="w-6 h-6 mr-2" />
             {isSending ? "Sending..." : "Send Alert"}
