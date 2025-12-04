@@ -2,7 +2,14 @@ import React from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { Plus, MapPin, Car, Sparkles, Settings, Crown, Lock } from "lucide-react";
+import { Plus, MapPin, Car, Sparkles, Settings, Crown, Lock, User, LogOut, CreditCard } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Link, useNavigate } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import DestinationCard from "../components/DestinationCard";
@@ -54,6 +61,57 @@ export default function Home() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        {/* Profile Button */}
+        <div className="absolute top-0 right-4 z-10">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                variant="secondary"
+                className="h-12 w-12 rounded-full bg-white/20 backdrop-blur-md border-2 border-white/50 hover:bg-white/40 shadow-lg p-0"
+              >
+                <User className="w-6 h-6 text-white" />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="bg-white/95 backdrop-blur-xl border-0 rounded-3xl shadow-2xl max-w-sm">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold text-center text-slate-800">My Profile</DialogTitle>
+              </DialogHeader>
+              <div className="flex flex-col items-center space-y-6 py-4">
+                <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center">
+                  <User className="w-10 h-10 text-slate-400" />
+                </div>
+                
+                <div className="text-center space-y-1">
+                  <h3 className="text-xl font-bold text-slate-900">{user?.full_name || 'Guest User'}</h3>
+                  <p className="text-slate-500">{user?.email}</p>
+                </div>
+
+                <div className="w-full bg-slate-50 rounded-xl p-4 flex items-center justify-between border border-slate-100">
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2 rounded-lg ${isPremium ? 'bg-yellow-100 text-yellow-600' : 'bg-slate-200 text-slate-600'}`}>
+                      <CreditCard className="w-5 h-5" />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-sm font-medium text-slate-500">Plan</p>
+                      <p className="font-bold text-slate-800">{isPremium ? 'Premium Member' : 'Free Plan'}</p>
+                    </div>
+                  </div>
+                  {isPremium && <Crown className="w-5 h-5 text-yellow-500" />}
+                </div>
+
+                <Button 
+                  variant="destructive" 
+                  className="w-full h-12 text-lg rounded-xl mt-2"
+                  onClick={() => base44.auth.logout()}
+                >
+                  <LogOut className="w-5 h-5 mr-2" />
+                  Sign Out
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
+
         <div className="text-center mb-12 animate-fade-in">
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="relative">
