@@ -97,9 +97,9 @@ export default function EmergencyContacts() {
 
         {showForm ? (
           <Card className="border-0 shadow-2xl bg-white/95 backdrop-blur-sm overflow-hidden mb-8">
-            <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-r from-red-400 via-orange-400 to-red-400"></div>
+            <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-r from-red-500 via-orange-500 to-red-500"></div>
             <CardHeader className="pb-6 pt-8">
-              <CardTitle className="text-4xl font-black text-slate-800">
+              <CardTitle className="text-4xl font-black text-slate-900">
                 <span className="text-3xl mr-3">👤</span>
                 Add Emergency Contact
               </CardTitle>
@@ -107,7 +107,7 @@ export default function EmergencyContacts() {
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="text-2xl font-bold text-slate-700">
+                  <Label htmlFor="name" className="text-2xl font-bold text-slate-900">
                     Name *
                   </Label>
                   <Input
@@ -116,12 +116,12 @@ export default function EmergencyContacts() {
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="John Doe"
                     required
-                    className="h-16 text-xl px-6 border-3 border-slate-200 rounded-2xl"
+                    className="h-16 text-xl px-6 border-2 border-slate-400 focus:border-slate-600 rounded-2xl bg-white"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-2xl font-bold text-slate-700">
+                  <Label htmlFor="email" className="text-2xl font-bold text-slate-900">
                     Email *
                   </Label>
                   <Input
@@ -131,12 +131,12 @@ export default function EmergencyContacts() {
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="john@example.com"
                     required
-                    className="h-16 text-xl px-6 border-3 border-slate-200 rounded-2xl"
+                    className="h-16 text-xl px-6 border-2 border-slate-400 focus:border-slate-600 rounded-2xl bg-white"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-2xl font-bold text-slate-700">
+                  <Label htmlFor="phone" className="text-2xl font-bold text-slate-900">
                     Phone
                   </Label>
                   <Input
@@ -145,12 +145,12 @@ export default function EmergencyContacts() {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="(555) 123-4567"
-                    className="h-16 text-xl px-6 border-3 border-slate-200 rounded-2xl"
+                    className="h-16 text-xl px-6 border-2 border-slate-400 focus:border-slate-600 rounded-2xl bg-white"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="relationship" className="text-2xl font-bold text-slate-700">
+                  <Label htmlFor="relationship" className="text-2xl font-bold text-slate-900">
                     Relationship
                   </Label>
                   <Input
@@ -158,7 +158,7 @@ export default function EmergencyContacts() {
                     value={formData.relationship}
                     onChange={(e) => setFormData({ ...formData, relationship: e.target.value })}
                     placeholder="e.g., Spouse, Child, Friend"
-                    className="h-16 text-xl px-6 border-3 border-slate-200 rounded-2xl"
+                    className="h-16 text-xl px-6 border-2 border-slate-400 focus:border-slate-600 rounded-2xl bg-white"
                   />
                 </div>
 
@@ -167,14 +167,14 @@ export default function EmergencyContacts() {
                     type="button"
                     variant="outline"
                     onClick={() => setShowForm(false)}
-                    className="flex-1 h-16 text-xl rounded-2xl font-bold"
+                    className="flex-1 h-16 text-xl rounded-2xl font-bold border-2 border-slate-300 text-slate-800 hover:bg-slate-50"
                   >
                     Cancel
                   </Button>
                   <Button
                     type="submit"
                     disabled={createMutation.isPending}
-                    className="flex-1 h-16 text-xl bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 rounded-2xl font-bold"
+                    className="flex-1 h-16 text-xl bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white rounded-2xl font-bold"
                   >
                     {createMutation.isPending ? "Saving..." : "Save Contact"}
                   </Button>
@@ -186,7 +186,7 @@ export default function EmergencyContacts() {
           <Button
             size="lg"
             onClick={() => setShowForm(true)}
-            className="w-full h-24 text-3xl font-bold mb-8 bg-gradient-to-r from-red-400 to-red-600 hover:from-red-500 hover:to-red-700 rounded-3xl shadow-2xl border-4 border-white/50"
+            className="w-full h-24 text-3xl font-bold mb-8 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white rounded-3xl shadow-2xl border-4 border-white/30"
           >
             <UserPlus className="w-10 h-10 mr-4" />
             Add Emergency Contact

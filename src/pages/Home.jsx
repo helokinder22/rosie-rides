@@ -67,9 +67,9 @@ export default function Home() {
             <DialogTrigger asChild>
               <Button
                 variant="secondary"
-                className="h-12 w-12 rounded-full bg-white/20 backdrop-blur-md border-2 border-white/50 hover:bg-white/40 shadow-lg p-0"
+                className="h-12 w-12 rounded-full bg-white text-teal-700 border-2 border-white shadow-lg p-0 hover:bg-slate-100"
               >
-                <User className="w-6 h-6 text-white" />
+                <User className="w-6 h-6" />
               </Button>
             </DialogTrigger>
             <DialogContent className="bg-white/95 backdrop-blur-xl border-0 rounded-3xl shadow-2xl max-w-sm">
@@ -132,8 +132,8 @@ export default function Home() {
           >
             Where to?
           </a>
-          <div className="inline-block bg-white/20 backdrop-blur-md rounded-full px-8 py-4 border-2 border-white/30">
-            <p className="text-2xl sm:text-3xl text-white font-semibold">
+          <div className="inline-block bg-black/40 backdrop-blur-md rounded-full px-8 py-4 border-2 border-white/20">
+            <p className="text-2xl sm:text-3xl text-white font-bold drop-shadow-md">
               🚗 Tap your destination below
             </p>
           </div>
@@ -200,7 +200,7 @@ export default function Home() {
             <Link to={createPageUrl("Subscription")}>
               <Button 
                 size="lg"
-                className="h-24 px-14 text-3xl font-bold bg-gradient-to-r from-slate-400 to-slate-500 hover:from-slate-500 hover:to-slate-600 shadow-2xl rounded-3xl border-4 border-white/50 transform hover:scale-105 transition-all duration-300"
+                className="h-24 px-14 text-3xl font-bold bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-white shadow-2xl rounded-3xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
               >
                 <Lock className="w-10 h-10 mr-4" />
                 Unlock More
@@ -210,7 +210,7 @@ export default function Home() {
             <Link to={createPageUrl("ManageDestinations")}>
               <Button 
                 size="lg"
-                className="h-24 px-14 text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600 shadow-2xl rounded-3xl border-4 border-white/50 transform hover:scale-105 transition-all duration-300"
+                className="h-24 px-14 text-3xl font-bold bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white shadow-2xl rounded-3xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
               >
                 <Plus className="w-10 h-10 mr-4" />
                 Add Destination

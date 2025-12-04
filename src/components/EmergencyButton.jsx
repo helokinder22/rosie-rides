@@ -80,7 +80,7 @@ This is an automated emergency alert. Please check on ${user.full_name}.
       <AlertDialogTrigger asChild>
         <Button
           size="lg"
-          className={`bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 shadow-2xl border-4 border-white/50 font-bold ${className}`}
+          className={`bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white shadow-2xl border-4 border-white/30 font-bold ${className}`}
         >
           <AlertTriangle className="w-8 h-8 mr-3" />
           EMERGENCY
