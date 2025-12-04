@@ -71,7 +71,7 @@ export default function EmergencyContacts() {
             variant="outline"
             size="lg"
             onClick={() => navigate(createPageUrl("Home"))}
-            className="h-16 px-6 text-xl mb-8 border-3 border-white bg-white/90 hover:bg-white backdrop-blur-sm shadow-xl font-bold"
+            className="h-16 px-6 text-xl mb-8 border-4 border-slate-200 bg-white hover:bg-slate-50 shadow-xl font-bold text-slate-900"
           >
             <Home className="w-6 h-6 mr-3" />
             Back to Home
@@ -240,7 +240,7 @@ export default function EmergencyContacts() {
                           <AlertDialogCancel className="h-16 text-xl rounded-2xl">Cancel</AlertDialogCancel>
                           <AlertDialogAction
                             onClick={() => deleteMutation.mutate(contact.id)}
-                            className="h-16 text-xl bg-red-500 hover:bg-red-600 rounded-2xl"
+                            className="h-16 text-xl bg-red-600 hover:bg-red-700 text-white rounded-2xl font-bold"
                           >
                             Delete
                           </AlertDialogAction>

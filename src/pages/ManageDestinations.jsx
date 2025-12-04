@@ -86,7 +86,7 @@ export default function ManageDestinations() {
             variant="outline"
             size="lg"
             onClick={() => navigate(createPageUrl("Home"))}
-            className="h-16 px-6 text-xl mb-8 border-3 border-white bg-white/90 hover:bg-white backdrop-blur-sm shadow-xl font-bold"
+            className="h-16 px-6 text-xl mb-8 border-4 border-slate-200 bg-white hover:bg-slate-50 shadow-xl font-bold text-slate-900"
           >
             <Home className="w-6 h-6 mr-3" />
             Back to Home
