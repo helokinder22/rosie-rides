@@ -2,7 +2,7 @@ import React from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { Plus, MapPin, Car, Sparkles, Settings, Crown, Lock, User, LogOut, CreditCard } from "lucide-react";
+import { Plus, MapPin, Car, Sparkles, Settings, Crown, Lock, User, LogOut, CreditCard, ShieldAlert } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -98,6 +98,16 @@ export default function Home() {
                   </div>
                   {isPremium && <Crown className="w-5 h-5 text-yellow-500" />}
                 </div>
+
+                <Link to={createPageUrl("Disclaimer")} className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-12 text-lg rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50"
+                  >
+                    <ShieldAlert className="w-5 h-5 mr-2" />
+                    Disclaimer
+                  </Button>
+                </Link>
 
                 <Button 
                   variant="destructive" 
