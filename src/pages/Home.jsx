@@ -2,7 +2,7 @@ import React from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { Plus, MapPin, Car, Sparkles, Settings, Crown, Lock, User, LogOut, CreditCard, ShieldAlert } from "lucide-react";
+import { Plus, MapPin, Car, Sparkles, Settings, Crown, Lock, User, LogOut, CreditCard, ShieldAlert, History } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -32,6 +32,14 @@ export default function Home() {
   const isLimitReached = !isPremium && destinations.length >= 2;
 
   const openUber = async (destination) => {
+    // Record trip in background
+    base44.entities.Trip.create({
+      destination_name: destination.name,
+      destination_address: destination.address,
+      category: destination.category,
+      trip_date: new Date().toISOString()
+    }).catch(err => console.error("Failed to record trip", err));
+
     // Notify contacts in background
     const notifyContacts = async () => {
       try {
@@ -129,6 +137,16 @@ They are opening the Uber app now.
                   </div>
                   {isPremium && <Crown className="w-5 h-5 text-yellow-500" />}
                 </div>
+
+                <Link to={createPageUrl("TripHistory")} className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-12 text-lg rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50"
+                  >
+                    <History className="w-5 h-5 mr-2" />
+                    Trip History
+                  </Button>
+                </Link>
 
                 <Link to={createPageUrl("Disclaimer")} className="w-full">
                   <Button 

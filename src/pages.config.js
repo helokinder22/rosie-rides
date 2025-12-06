@@ -3,6 +3,7 @@ import ManageDestinations from './pages/ManageDestinations';
 import EmergencyContacts from './pages/EmergencyContacts';
 import Subscription from './pages/Subscription';
 import Disclaimer from './pages/Disclaimer';
+import TripHistory from './pages/TripHistory';
 
 
 export const PAGES = {
@@ -11,6 +12,7 @@ export const PAGES = {
     "EmergencyContacts": EmergencyContacts,
     "Subscription": Subscription,
     "Disclaimer": Disclaimer,
+    "TripHistory": TripHistory,
 }
 
 export const pagesConfig = {
