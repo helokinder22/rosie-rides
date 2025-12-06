@@ -98,9 +98,9 @@ They are opening the Uber app now.
             <DialogTrigger asChild>
               <Button
                 variant="secondary"
-                className="h-12 w-12 rounded-full bg-white text-teal-700 border-2 border-white shadow-lg p-0 hover:bg-slate-100"
+                className="h-16 w-16 rounded-2xl bg-white text-teal-700 border-4 border-white/50 shadow-xl p-0 hover:bg-slate-50 transition-transform hover:scale-105"
               >
-                <User className="w-6 h-6" />
+                <User className="w-8 h-8" />
               </Button>
             </DialogTrigger>
             <DialogContent className="bg-white/95 backdrop-blur-xl border-0 rounded-3xl shadow-2xl max-w-sm">
