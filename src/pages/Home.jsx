@@ -31,7 +31,38 @@ export default function Home() {
   const isPremium = user?.subscription_status === 'premium';
   const isLimitReached = !isPremium && destinations.length >= 2;
 
-  const openUber = (destination) => {
+  const openUber = async (destination) => {
+    // Notify contacts in background
+    const notifyContacts = async () => {
+      try {
+        const contacts = await base44.entities.EmergencyContact.list();
+        if (contacts.length > 0) {
+          const emailPromises = contacts.map(contact => 
+            base44.integrations.Core.SendEmail({
+              to: contact.email,
+              subject: `🚗 Trip Alert: ${user?.full_name || 'User'} is going to ${destination.name}`,
+              body: `
+Hello ${contact.name},
+
+${user?.full_name || 'User'} has just tapped to go to:
+
+📍 ${destination.name}
+🏠 ${destination.address}
+
+Time: ${new Date().toLocaleString()}
+
+They are opening the Uber app now.
+              `
+            })
+          );
+          await Promise.all(emailPromises);
+        }
+      } catch (error) {
+        console.error("Failed to notify contacts", error);
+      }
+    };
+    notifyContacts();
+
     const pickup = "current_location";
     const dropoff = encodeURIComponent(destination.address);
     const uberUrl = `uber://?action=setPickup&pickup=${pickup}&dropoff[formatted_address]=${dropoff}`;
