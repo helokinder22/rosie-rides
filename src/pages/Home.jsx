@@ -31,6 +31,29 @@ export default function Home() {
   const isPremium = user?.subscription_status === 'premium';
   const isLimitReached = !isPremium && destinations.length >= 2;
 
+  const handleShare = async (destination) => {
+    const shareData = {
+      title: 'My Trip',
+      text: `I'm heading to ${destination.name} (${destination.address}) via Uber.`,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        console.log('Error sharing:', err);
+      }
+    } else {
+      // Fallback to SMS for mobile or alert
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if (isMobile) {
+        window.open(`sms:?body=${encodeURIComponent(shareData.text)}`);
+      } else {
+        alert(`Share this message:\n\n${shareData.text}`);
+      }
+    }
+  };
+
   const openUber = async (destination) => {
     // Record trip in background
     base44.entities.Trip.create({
@@ -248,6 +271,7 @@ They are opening the Uber app now.
                 <DestinationCard
                   destination={destination}
                   onSelect={openUber}
+                  onShare={handleShare}
                 />
               </div>
             ))}

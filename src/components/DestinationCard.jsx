@@ -8,7 +8,8 @@ import {
   Utensils, 
   Users, 
   MapPin,
-  ArrowRight
+  ArrowRight,
+  Share2
 } from "lucide-react";
 
 const categoryConfig = {
@@ -56,7 +57,7 @@ const categoryConfig = {
   },
 };
 
-export default function DestinationCard({ destination, onSelect }) {
+export default function DestinationCard({ destination, onSelect, onShare }) {
   const config = categoryConfig[destination.category] || categoryConfig.other;
   const Icon = config.icon;
 
@@ -71,6 +72,18 @@ export default function DestinationCard({ destination, onSelect }) {
       {/* Hover effect overlay */}
       <div className={`absolute inset-0 bg-gradient-to-br ${config.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
       
+      {/* Share Button */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onShare(destination);
+        }}
+        className="absolute top-4 right-4 z-10 p-3 bg-white/80 backdrop-blur-sm rounded-full shadow-lg hover:bg-white hover:scale-110 transition-all duration-200 text-slate-600 hover:text-blue-600"
+        title="Share Trip Details"
+      >
+        <Share2 className="w-5 h-5" />
+      </button>
+
       <div className="relative p-8">
         <div className="flex flex-col space-y-6">
           {/* Icon and emoji */}
