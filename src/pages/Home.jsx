@@ -2,7 +2,7 @@ import React from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { Plus, MapPin, Car, Sparkles, Settings, Crown, Lock, User, LogOut, CreditCard, ShieldAlert, History, Menu } from "lucide-react";
+import { Plus, MapPin, CarFront, Sparkles, Settings, Crown, Lock, User, LogOut, CreditCard, ShieldAlert, History, Menu } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -235,7 +235,7 @@ They are opening the Uber app now.
           </a>
           <div className="inline-block bg-black/70 backdrop-blur-md rounded-full px-8 py-4 border-2 border-black/30">
             <p className="text-2xl sm:text-3xl text-white font-bold flex items-center justify-center gap-3">
-              <Car className="w-8 h-8" style={{ color: '#0091a2' }} />
+              <CarFront className="w-8 h-8" style={{ color: '#0091a2' }} />
               Tap your destination below
             </p>
           </div>
