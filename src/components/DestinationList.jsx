@@ -22,6 +22,7 @@ const categoryEmojis = {
   grocery: "🛒",
   gym: "💪",
   home: "🏠",
+  hospital: "🏥",
   other: "📍",
   petcare: "🐾",
   pharmacy: "💊",
