@@ -23,7 +23,7 @@ import {
   X
 } from "lucide-react";
 
-import MapSearch from "./MapSearch";
+
 
 const categories = [
   { value: "doctor", label: "Doctor", icon: Stethoscope, emoji: "🏥" },
@@ -66,16 +66,7 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
     }
   }, [formData.number, formData.street, formData.city, formData.state, formData.zip]);
 
-  const handleAddressFromMap = (addressData) => {
-    setFormData({
-      ...formData,
-      number: addressData.number,
-      street: addressData.street,
-      city: addressData.city,
-      state: addressData.state,
-      zip: addressData.zip
-    });
-  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -120,8 +111,6 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
             <Label className="text-2xl font-bold text-slate-700 flex items-center gap-2">
               <span>📍</span> Address
             </Label>
-            
-            <MapSearch onAddressSelect={handleAddressFromMap} />
             
             <div className="grid grid-cols-3 gap-4">
               <div className="col-span-1">
