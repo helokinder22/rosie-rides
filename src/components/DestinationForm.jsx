@@ -141,7 +141,7 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
     
     // Validate required fields
     if (!formData.name || !formData.number || !formData.street || !formData.city || !formData.state || !formData.zip) {
-      alert('Please fill in all required fields (Name, Number, Street, City, State, ZIP)');
+      console.log('Validation failed - missing required fields');
       return;
     }
     
@@ -156,7 +156,6 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
       console.log('onSave completed successfully');
     } catch (error) {
       console.error('Error in onSave:', error);
-      alert('Error saving: ' + error.message);
     }
   };
 

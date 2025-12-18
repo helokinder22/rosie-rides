@@ -52,12 +52,8 @@ export default function ManageDestinations() {
       await queryClient.refetchQueries({ queryKey: ['destinations'] });
       console.log('Refetch complete, navigating to home');
       
-      alert('Destination saved! Redirecting to homepage...');
-      
       // Navigate to home to see the new destination
-      setTimeout(() => {
-        navigate(createPageUrl("Home"));
-      }, 500);
+      navigate(createPageUrl("Home"));
     },
     onError: (error) => {
       console.error('Error creating destination:', error);
@@ -73,12 +69,11 @@ export default function ManageDestinations() {
       console.log('Update result:', result);
       return result;
     },
-    onSuccess: () => {
+    onSuccess: async () => {
       console.log('Destination updated successfully');
-      queryClient.invalidateQueries({ queryKey: ['destinations'] });
-      alert('Destination updated successfully!');
-      setShowForm(false);
-      setEditingDestination(null);
+      queryClient.removeQueries({ queryKey: ['destinations'] });
+      await queryClient.refetchQueries({ queryKey: ['destinations'] });
+      navigate(createPageUrl("Home"));
     },
     onError: (error) => {
       console.error('Error updating destination:', error);
