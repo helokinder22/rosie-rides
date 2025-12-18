@@ -16,17 +16,17 @@ import {
 } from "@/components/ui/alert-dialog";
 
 const categoryEmojis = {
-  doctor: "🏥",
   dentist: "🦷",
+  doctor: "🏥",
+  family: "👨‍👩‍👧‍👦",
   grocery: "🛒",
-  salon: "💇",
+  gym: "💪",
+  home: "🏠",
+  other: "📍",
+  petcare: "🐾",
   pharmacy: "💊",
   restaurant: "🍽️",
-  gym: "💪",
-  petcare: "🐾",
-  family: "👨‍👩‍👧‍👦",
-  home: "🏠",
-  other: "📍"
+  salon: "💇"
 };
 
 export default function DestinationList({ destinations, onEdit, onDelete, onReorder, isLoading }) {

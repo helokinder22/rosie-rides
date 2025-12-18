@@ -14,17 +14,23 @@ import {
 } from "lucide-react";
 
 const categoryConfig = {
+  dentist: { 
+    icon: Stethoscope, 
+    gradient: "from-cyan-400 to-cyan-600", 
+    label: "Dentist",
+    emoji: "🦷"
+  },
   doctor: { 
     icon: Stethoscope, 
     gradient: "from-blue-400 to-blue-600", 
     label: "Doctor",
     emoji: "🏥"
   },
-  dentist: { 
-    icon: Stethoscope, 
-    gradient: "from-cyan-400 to-cyan-600", 
-    label: "Dentist",
-    emoji: "🦷"
+  family: { 
+    icon: Users, 
+    gradient: "from-purple-400 to-purple-600", 
+    label: "Family",
+    emoji: "👨‍👩‍👧‍👦"
   },
   grocery: { 
     icon: ShoppingCart, 
@@ -32,11 +38,29 @@ const categoryConfig = {
     label: "Grocery",
     emoji: "🛒"
   },
-  salon: { 
-    icon: Scissors, 
-    gradient: "from-pink-400 to-pink-600", 
-    label: "Salon",
-    emoji: "💇"
+  gym: { 
+    icon: MapPin, 
+    gradient: "from-amber-400 to-amber-600", 
+    label: "Gym",
+    emoji: "💪"
+  },
+  home: { 
+    icon: Home, 
+    gradient: "from-indigo-400 to-indigo-600", 
+    label: "Home",
+    emoji: "🏠"
+  },
+  other: { 
+    icon: MapPin, 
+    gradient: "from-slate-400 to-slate-600", 
+    label: "Other",
+    emoji: "📍"
+  },
+  petcare: { 
+    icon: MapPin, 
+    gradient: "from-lime-400 to-lime-600", 
+    label: "Pet Care",
+    emoji: "🐾"
   },
   pharmacy: { 
     icon: Pill, 
@@ -50,35 +74,11 @@ const categoryConfig = {
     label: "Restaurant",
     emoji: "🍽️"
   },
-  gym: { 
-    icon: MapPin, 
-    gradient: "from-amber-400 to-amber-600", 
-    label: "Gym",
-    emoji: "💪"
-  },
-  petcare: { 
-    icon: MapPin, 
-    gradient: "from-lime-400 to-lime-600", 
-    label: "Pet Care",
-    emoji: "🐾"
-  },
-  family: { 
-    icon: Users, 
-    gradient: "from-purple-400 to-purple-600", 
-    label: "Family",
-    emoji: "👨‍👩‍👧‍👦"
-  },
-  home: { 
-    icon: Home, 
-    gradient: "from-indigo-400 to-indigo-600", 
-    label: "Home",
-    emoji: "🏠"
-  },
-  other: { 
-    icon: MapPin, 
-    gradient: "from-slate-400 to-slate-600", 
-    label: "Other",
-    emoji: "📍"
+  salon: { 
+    icon: Scissors, 
+    gradient: "from-pink-400 to-pink-600", 
+    label: "Salon",
+    emoji: "💇"
   },
 };
 
