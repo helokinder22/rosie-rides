@@ -58,10 +58,16 @@ export default function Home() {
   };
 
   const openUber = async (destination) => {
+    // Construct full address from separate fields or use legacy address field
+    const fullAddress = destination.address || 
+      [destination.number, destination.street, destination.city, destination.state, destination.zip]
+        .filter(Boolean)
+        .join(' ');
+
     // Record trip in background
     base44.entities.Trip.create({
       destination_name: destination.name,
-      destination_address: destination.address,
+      destination_address: fullAddress,
       category: destination.category,
       trip_date: new Date().toISOString()
     }).catch(err => console.error("Failed to record trip", err));
@@ -76,17 +82,17 @@ export default function Home() {
               to: contact.email,
               subject: `🚗 Trip Alert: ${user?.full_name || 'User'} is going to ${destination.name}`,
               body: `
-Hello ${contact.name},
+  Hello ${contact.name},
 
-${user?.full_name || 'User'} has just tapped to go to:
+  ${user?.full_name || 'User'} has just tapped to go to:
 
-📍 ${destination.name}
-🏠 ${destination.address}
+  📍 ${destination.name}
+  🏠 ${fullAddress}
 
-Time: ${new Date().toLocaleString()}
+  Time: ${new Date().toLocaleString()}
 
-They are opening the Uber app now.
-              `
+  They are opening the Uber app now.
+            `
             })
           );
           await Promise.all(emailPromises);
@@ -98,11 +104,11 @@ They are opening the Uber app now.
     notifyContacts();
 
     const pickup = "current_location";
-    const dropoff = encodeURIComponent(destination.address);
+    const dropoff = encodeURIComponent(fullAddress);
     const uberUrl = `uber://?action=setPickup&pickup=${pickup}&dropoff[formatted_address]=${dropoff}`;
-    
+
     window.location.href = uberUrl;
-    
+
     setTimeout(() => {
       const webUrl = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${dropoff}`;
       window.open(webUrl, '_blank');
