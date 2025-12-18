@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Home, Smartphone } from "lucide-react";
+import { Home, Smartphone, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 
@@ -28,8 +28,15 @@ export default function AddToHomescreen() {
 
         <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 sm:p-12 shadow-2xl border-4 border-white/50 mb-8">
           <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="w-20 h-20 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-3xl flex items-center justify-center shadow-lg">
-              <Smartphone className="w-10 h-10 text-white" />
+            <div className="relative">
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
+                alt="Rosie's Rides"
+                className="w-24 h-24 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-6 transition-transform duration-300"
+              />
+              <div className="absolute -top-2 -right-2">
+                <Sparkles className="w-8 h-8 animate-pulse" style={{ color: '#00c2d1' }} />
+              </div>
             </div>
           </div>
 
