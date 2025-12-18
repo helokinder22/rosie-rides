@@ -391,10 +391,13 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
           Cancel
         </Button>
         <Button
-          onClick={(e) => {
-            e.preventDefault();
-            const form = document.querySelector('form');
-            if (form) form.requestSubmit();
+          type="button"
+          onClick={() => {
+            const saveData = {
+              ...formData,
+              address: fullAddress
+            };
+            onSave(saveData);
           }}
           disabled={isLoading}
           className="flex-1 h-20 text-2xl bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-2xl font-bold shadow-lg"
