@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Home, UserPlus, Trash2, Users, AlertTriangle } from "lucide-react";
+import { Home, UserPlus, Trash2, Users, AlertTriangle, Bell } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import {
@@ -28,7 +28,8 @@ export default function EmergencyContacts() {
     name: "",
     email: "",
     phone: "",
-    relationship: ""
+    relationship: "",
+    notify_on_ride: true
   });
 
   const { data: contacts, isLoading } = useQuery({
@@ -42,7 +43,7 @@ export default function EmergencyContacts() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['emergencyContacts'] });
       setShowForm(false);
-      setFormData({ name: "", email: "", phone: "", relationship: "" });
+      setFormData({ name: "", email: "", phone: "", relationship: "", notify_on_ride: true });
     },
   });
 
@@ -162,6 +163,20 @@ export default function EmergencyContacts() {
                   />
                 </div>
 
+                <div className="flex items-center space-x-3 p-4 bg-slate-50 rounded-2xl border-2 border-slate-200">
+                  <input
+                    type="checkbox"
+                    id="notify_on_ride"
+                    checked={formData.notify_on_ride}
+                    onChange={(e) => setFormData({ ...formData, notify_on_ride: e.target.checked })}
+                    className="w-6 h-6 rounded border-slate-300 text-red-600 focus:ring-red-500"
+                  />
+                  <Label htmlFor="notify_on_ride" className="text-xl font-bold text-slate-900 cursor-pointer flex items-center gap-2">
+                    <Bell className="w-5 h-5 text-red-600" />
+                    Notify this contact when I take a ride
+                  </Label>
+                </div>
+
                 <div className="flex gap-4 pt-4">
                   <Button
                     type="button"
@@ -213,11 +228,19 @@ export default function EmergencyContacts() {
                       <h3 className="text-3xl font-black text-slate-800 mb-2">{contact.name}</h3>
                       <p className="text-lg text-slate-600">📧 {contact.email}</p>
                       {contact.phone && <p className="text-lg text-slate-600">📱 {contact.phone}</p>}
-                      {contact.relationship && (
-                        <span className="inline-block mt-2 px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-semibold">
-                          {contact.relationship}
-                        </span>
-                      )}
+                      <div className="flex items-center gap-2 mt-2 flex-wrap">
+                        {contact.relationship && (
+                          <span className="inline-block px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-semibold">
+                            {contact.relationship}
+                          </span>
+                        )}
+                        {contact.notify_on_ride && (
+                          <span className="inline-flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">
+                            <Bell className="w-3 h-3" />
+                            Ride Notifications
+                          </span>
+                        )}
+                      </div>
                     </div>
                     <AlertDialog>
                       <AlertDialogTrigger asChild>
