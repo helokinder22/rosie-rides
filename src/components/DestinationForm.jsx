@@ -20,9 +20,11 @@ import {
   Users, 
   MapPin,
   Save,
-  X
+  X,
+  Sparkles
 } from "lucide-react";
 import AddressConfirmationMap from "./AddressConfirmationMap";
+import { base44 } from "@/api/base44Client";
 
 
 
@@ -59,6 +61,8 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
   const [businessQuery, setBusinessQuery] = useState("");
   const [businessSuggestions, setBusinessSuggestions] = useState([]);
   const [showBusinessSuggestions, setShowBusinessSuggestions] = useState(false);
+  const [aiQuery, setAiQuery] = useState("");
+  const [isAiSearching, setIsAiSearching] = useState(false);
 
   useEffect(() => {
     const parts = [
@@ -130,6 +134,47 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
 
 
 
+  const handleAiSearch = async () => {
+    if (!aiQuery.trim()) return;
+    
+    setIsAiSearching(true);
+    try {
+      const result = await base44.integrations.Core.InvokeLLM({
+        prompt: `Find the address for: "${aiQuery}". Return ONLY the address information in this exact JSON format with no additional text: {"name": "business/place name", "number": "street number", "street": "street name", "city": "city name", "state": "state abbreviation", "zip": "zip code"}. If you cannot find a specific address, return null.`,
+        add_context_from_internet: true,
+        response_json_schema: {
+          type: "object",
+          properties: {
+            name: { type: "string" },
+            number: { type: "string" },
+            street: { type: "string" },
+            city: { type: "string" },
+            state: { type: "string" },
+            zip: { type: "string" }
+          }
+        }
+      });
+
+      if (result) {
+        setFormData({
+          ...formData,
+          name: result.name || formData.name,
+          number: result.number || "",
+          street: result.street || "",
+          city: result.city || "",
+          state: result.state || "",
+          zip: result.zip || ""
+        });
+        setAiQuery("");
+      }
+    } catch (error) {
+      console.error("AI search failed", error);
+      alert("Could not find that address. Please try being more specific.");
+    } finally {
+      setIsAiSearching(false);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const saveData = {
@@ -155,6 +200,34 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
       
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-8">
+          <div className="space-y-3">
+            <Label className="text-2xl font-bold text-slate-700 flex items-center gap-2">
+              <Sparkles className="w-6 h-6 text-purple-500" /> Ask AI for Address
+            </Label>
+            <div className="flex gap-3">
+              <Input
+                value={aiQuery}
+                onChange={(e) => setAiQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleAiSearch();
+                  }
+                }}
+                placeholder="e.g., 'Nearest Starbucks in Seattle' or 'CVS on 5th Avenue'"
+                className="flex-1 h-16 text-xl px-6 border-4 border-purple-300 focus:border-purple-500 rounded-2xl shadow-sm"
+              />
+              <Button
+                type="button"
+                onClick={handleAiSearch}
+                disabled={isAiSearching || !aiQuery.trim()}
+                className="h-16 px-8 text-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-2xl font-bold"
+              >
+                {isAiSearching ? "Searching..." : <Sparkles className="w-6 h-6" />}
+              </Button>
+            </div>
+          </div>
+
           <div className="space-y-3">
             <Label className="text-2xl font-bold text-slate-700 flex items-center gap-2">
               <span>🔍</span> Search Business Name
