@@ -198,11 +198,11 @@ They are opening the Uber app now.
         <div className="text-center mb-12 animate-fade-in">
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="relative">
-              <div className="w-24 h-24 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-3xl flex items-center justify-center shadow-2xl transform rotate-3 hover:rotate-6 transition-transform duration-300">
+              <div className="w-24 h-24 rounded-3xl flex items-center justify-center shadow-2xl transform rotate-3 hover:rotate-6 transition-transform duration-300" style={{ backgroundColor: '#F3D250' }}>
                 <Car className="w-14 h-14 text-white" />
               </div>
               <div className="absolute -top-2 -right-2">
-                <Sparkles className="w-8 h-8 text-yellow-300 animate-pulse" />
+                <Sparkles className="w-8 h-8 animate-pulse" style={{ color: '#F3D250' }} />
               </div>
             </div>
           </div>
@@ -241,7 +241,8 @@ They are opening the Uber app now.
               <Link to={createPageUrl("Subscription")}>
                 <Button
                   size="lg"
-                  className="h-20 px-10 text-2xl bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white shadow-xl font-bold rounded-3xl border-4 border-white/50"
+                  className="h-20 px-10 text-2xl text-white shadow-xl font-bold rounded-3xl border-4 border-white/50"
+                  style={{ backgroundColor: '#F3D250' }}
                 >
                   <Crown className="w-7 h-7 mr-3" />
                   Premium
