@@ -302,7 +302,7 @@ They are opening the Uber app now.
               <Button 
                 size="lg"
                 className="h-24 px-14 text-3xl font-bold text-white shadow-2xl rounded-3xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
-                style={{ backgroundColor: '#4A90E2' }}
+                style={{ backgroundColor: '#00c2d1' }}
               >
                 <Plus className="w-10 h-10 mr-4" />
                 Add Destination
