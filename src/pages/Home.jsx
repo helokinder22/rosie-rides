@@ -111,19 +111,19 @@ export default function Home() {
       if (data && data.length > 0) {
         const { lat, lon } = data[0];
         const webUrl = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]=${lat}&dropoff[longitude]=${lon}&dropoff[nickname]=${encodeURIComponent(destination.name)}`;
-        window.open(webUrl, '_blank');
+        window.location.href = webUrl;
       } else {
         // Fallback to formatted address if geocoding fails
         const dropoff = encodeURIComponent(fullAddress);
         const webUrl = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${dropoff}`;
-        window.open(webUrl, '_blank');
+        window.location.href = webUrl;
       }
     } catch (error) {
       console.error("Geocoding failed", error);
       // Fallback to formatted address
       const dropoff = encodeURIComponent(fullAddress);
       const webUrl = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${dropoff}`;
-      window.open(webUrl, '_blank');
+      window.location.href = webUrl;
     }
   };
 
