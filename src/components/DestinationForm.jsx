@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -22,6 +22,7 @@ import {
   Save,
   X
 } from "lucide-react";
+import AddressMap from "./AddressMap";
 
 const categories = [
   { value: "doctor", label: "Doctor", icon: Stethoscope, emoji: "🏥" },
@@ -36,14 +37,40 @@ const categories = [
 export default function DestinationForm({ destination, onSave, onCancel, isLoading }) {
   const [formData, setFormData] = useState({
     name: destination?.name || "",
-    address: destination?.address || "",
+    number: destination?.number || "",
+    street: destination?.street || "",
+    city: destination?.city || "",
+    state: destination?.state || "",
+    zip: destination?.zip || "",
     category: destination?.category || "other",
     notes: destination?.notes || "",
   });
 
+  const [fullAddress, setFullAddress] = useState("");
+
+  useEffect(() => {
+    const parts = [
+      formData.number,
+      formData.street,
+      formData.city,
+      formData.state,
+      formData.zip
+    ].filter(Boolean);
+    
+    if (parts.length >= 3) {
+      setFullAddress(parts.join(" "));
+    } else {
+      setFullAddress("");
+    }
+  }, [formData.number, formData.street, formData.city, formData.state, formData.zip]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave(formData);
+    const saveData = {
+      ...formData,
+      address: fullAddress
+    };
+    onSave(saveData);
   };
 
   return (
@@ -76,18 +103,80 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
           </div>
 
           <div className="space-y-3">
-            <Label htmlFor="address" className="text-2xl font-bold text-slate-700 flex items-center gap-2">
+            <Label className="text-2xl font-bold text-slate-700 flex items-center gap-2">
               <span>📍</span> Address
             </Label>
-            <Input
-              id="address"
-              value={formData.address}
-              onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-              placeholder="123 Main St, City, State 12345"
-              required
-              className="h-16 text-xl px-6 border-3 border-slate-200 focus:border-purple-400 rounded-2xl shadow-sm"
-            />
+            
+            <div className="grid grid-cols-3 gap-4">
+              <div className="col-span-1">
+                <Input
+                  id="number"
+                  value={formData.number}
+                  onChange={(e) => setFormData({ ...formData, number: e.target.value })}
+                  placeholder="123"
+                  required
+                  className="h-16 text-xl px-6 border-3 border-slate-200 focus:border-purple-400 rounded-2xl shadow-sm"
+                />
+                <Label htmlFor="number" className="text-sm text-slate-500 mt-1 block">Number</Label>
+              </div>
+              <div className="col-span-2">
+                <Input
+                  id="street"
+                  value={formData.street}
+                  onChange={(e) => setFormData({ ...formData, street: e.target.value })}
+                  placeholder="Main Street"
+                  required
+                  className="h-16 text-xl px-6 border-3 border-slate-200 focus:border-purple-400 rounded-2xl shadow-sm"
+                />
+                <Label htmlFor="street" className="text-sm text-slate-500 mt-1 block">Street</Label>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-6 gap-4">
+              <div className="col-span-3">
+                <Input
+                  id="city"
+                  value={formData.city}
+                  onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                  placeholder="City"
+                  required
+                  className="h-16 text-xl px-6 border-3 border-slate-200 focus:border-purple-400 rounded-2xl shadow-sm"
+                />
+                <Label htmlFor="city" className="text-sm text-slate-500 mt-1 block">City</Label>
+              </div>
+              <div className="col-span-2">
+                <Input
+                  id="state"
+                  value={formData.state}
+                  onChange={(e) => setFormData({ ...formData, state: e.target.value })}
+                  placeholder="State"
+                  required
+                  className="h-16 text-xl px-6 border-3 border-slate-200 focus:border-purple-400 rounded-2xl shadow-sm"
+                />
+                <Label htmlFor="state" className="text-sm text-slate-500 mt-1 block">State</Label>
+              </div>
+              <div className="col-span-1">
+                <Input
+                  id="zip"
+                  value={formData.zip}
+                  onChange={(e) => setFormData({ ...formData, zip: e.target.value })}
+                  placeholder="12345"
+                  required
+                  className="h-16 text-xl px-6 border-3 border-slate-200 focus:border-purple-400 rounded-2xl shadow-sm"
+                />
+                <Label htmlFor="zip" className="text-sm text-slate-500 mt-1 block">ZIP</Label>
+              </div>
+            </div>
           </div>
+
+          {fullAddress && (
+            <div className="space-y-3">
+              <Label className="text-2xl font-bold text-slate-700 flex items-center gap-2">
+                <span>🗺️</span> Location Preview
+              </Label>
+              <AddressMap address={fullAddress} />
+            </div>
+          )}
 
           <div className="space-y-3">
             <Label htmlFor="category" className="text-2xl font-bold text-slate-700 flex items-center gap-2">
