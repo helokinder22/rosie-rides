@@ -33,20 +33,23 @@ export default function ManageDestinations() {
 
   const createMutation = useMutation({
     mutationFn: async (data) => {
-      console.log('Creating destination:', data);
+      console.log('Creating destination with data:', JSON.stringify(data));
       const result = await base44.entities.Destination.create(data);
-      console.log('Create result:', result);
+      console.log('Create API returned:', JSON.stringify(result));
       return result;
     },
-    onSuccess: () => {
-      console.log('Destination created successfully');
-      queryClient.invalidateQueries({ queryKey: ['destinations'] });
-      alert('Destination saved successfully!');
+    onSuccess: async (result) => {
+      console.log('Destination created successfully, invalidating cache');
+      await queryClient.invalidateQueries({ queryKey: ['destinations'] });
+      await queryClient.refetchQueries({ queryKey: ['destinations'] });
+      console.log('Cache invalidated and refetched');
+      alert('Destination saved successfully! ID: ' + result.id);
       setShowForm(false);
       setEditingDestination(null);
     },
     onError: (error) => {
       console.error('Error creating destination:', error);
+      console.error('Error details:', JSON.stringify(error));
       alert('Failed to save destination: ' + error.message);
     },
   });
