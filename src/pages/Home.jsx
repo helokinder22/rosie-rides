@@ -19,7 +19,10 @@ export default function Home() {
   const navigate = useNavigate(); // Make sure useNavigate is imported or remove if not needed (it's not imported in Home.js usually unless I check imports)
   const { data: destinations, isLoading } = useQuery({
     queryKey: ['destinations'],
-    queryFn: () => base44.entities.Destination.list('-created_date'),
+    queryFn: async () => {
+      const data = await base44.entities.Destination.list('sort_order');
+      return data.sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0));
+    },
     initialData: [],
   });
 

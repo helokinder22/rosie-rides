@@ -16,7 +16,10 @@ export default function ManageDestinations() {
 
   const { data: destinations, isLoading } = useQuery({
     queryKey: ['destinations'],
-    queryFn: () => base44.entities.Destination.list('-created_date'),
+    queryFn: async () => {
+      const data = await base44.entities.Destination.list('sort_order');
+      return data.sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0));
+    },
     initialData: [],
   });
 
@@ -57,8 +60,20 @@ export default function ManageDestinations() {
     if (editingDestination) {
       updateMutation.mutate({ id: editingDestination.id, data });
     } else {
-      createMutation.mutate(data);
+      const newData = {
+        ...data,
+        sort_order: destinations.length
+      };
+      createMutation.mutate(newData);
     }
+  };
+
+  const handleReorder = async (reorderedDestinations) => {
+    const updates = reorderedDestinations.map((dest, index) => 
+      base44.entities.Destination.update(dest.id, { sort_order: index })
+    );
+    await Promise.all(updates);
+    queryClient.invalidateQueries({ queryKey: ['destinations'] });
   };
 
   const handleEdit = (destination) => {
@@ -146,6 +161,7 @@ export default function ManageDestinations() {
                 destinations={destinations}
                 onEdit={handleEdit}
                 onDelete={(id) => deleteMutation.mutate(id)}
+                onReorder={handleReorder}
                 isLoading={isLoading}
               />
             </div>
