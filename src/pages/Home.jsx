@@ -2,7 +2,7 @@ import React from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { Plus, MapPin, Car, Sparkles, Settings, Crown, Lock, User, LogOut, CreditCard, ShieldAlert, History } from "lucide-react";
+import { Plus, MapPin, Car, Sparkles, Settings, Crown, Lock, User, LogOut, CreditCard, ShieldAlert, History, Menu } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -131,7 +131,7 @@ They are opening the Uber app now.
                 variant="secondary"
                 className="h-16 w-16 rounded-2xl bg-white text-teal-700 border-4 border-white/50 shadow-xl p-0 hover:bg-slate-50 transition-transform hover:scale-105"
               >
-                <User className="w-8 h-8" />
+                <Menu className="w-8 h-8" />
               </Button>
             </DialogTrigger>
             <DialogContent className="bg-white/95 backdrop-blur-xl border-0 rounded-3xl shadow-2xl max-w-sm">
