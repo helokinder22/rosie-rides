@@ -227,7 +227,7 @@ They are opening the Uber app now.
             href="https://m.uber.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-3xl sm:text-4xl font-black mb-4 drop-shadow-lg hover:text-yellow-200 transition-colors cursor-pointer block"
+            className="text-3xl sm:text-4xl font-black mb-4 hover:text-yellow-200 transition-colors cursor-pointer block"
             style={{ color: '#F3D250' }}
           >
             Where are you going?
