@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import { Check, Shield, Star, Home } from "lucide-react";
+import { Check, Shield, Star, Home, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
@@ -34,27 +34,36 @@ export default function Subscription() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 flex items-center justify-center p-4 relative">
+    <div className="min-h-screen bg-slate-100 p-4 relative">
       <Button
         variant="outline"
         size="lg"
         onClick={() => navigate(createPageUrl("Home"))}
-        className="absolute top-6 left-6 h-14 px-6 text-lg border-2 border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold"
+        className="absolute top-6 left-6 h-14 px-6 text-lg border-2 border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold z-10"
       >
         <Home className="w-5 h-5 mr-2" />
         Back to Home
       </Button>
 
-      <div className="text-center mb-8">
-        <img 
-          src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
-          alt="Rosie's Rides"
-          className="w-20 h-20 rounded-2xl shadow-lg mx-auto mb-3"
-        />
-        <h2 className="text-3xl font-black text-slate-800">Rosie's Rides</h2>
+      <div className="text-center pt-8 pb-12">
+        <div className="flex items-center justify-center gap-4 mb-6">
+          <div className="relative">
+            <img 
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
+              alt="Rosie's Rides"
+              className="w-24 h-24 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-6 transition-transform duration-300"
+            />
+            <div className="absolute -top-2 -right-2">
+              <Sparkles className="w-8 h-8 animate-pulse" style={{ color: '#00c2d1' }} />
+            </div>
+          </div>
+        </div>
+        <h1 className="text-5xl sm:text-6xl font-black mb-2" style={{ color: '#0091a2' }}>
+          Rosie's Rides
+        </h1>
       </div>
 
-      <div className="max-w-4xl w-full grid md:grid-cols-2 gap-8 items-center">
+      <div className="max-w-4xl w-full mx-auto grid md:grid-cols-2 gap-8 items-center">
 
         <div className="text-slate-700 space-y-6">
           <h1 className="text-5xl font-black leading-tight">
