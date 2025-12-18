@@ -87,8 +87,9 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
   };
 
   return (
-    <Card className="border-0 shadow-2xl bg-white/95 backdrop-blur-sm overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400"></div>
+    <>
+      <Card className="border-0 shadow-2xl bg-white/95 backdrop-blur-sm overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400"></div>
       
       <CardHeader className="pb-6 pt-8">
         <CardTitle className="text-5xl font-black text-slate-800 flex items-center gap-4">
