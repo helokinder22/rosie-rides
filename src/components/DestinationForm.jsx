@@ -28,10 +28,13 @@ import AddressConfirmationMap from "./AddressConfirmationMap";
 
 const categories = [
   { value: "doctor", label: "Doctor", icon: Stethoscope, emoji: "🏥" },
+  { value: "dentist", label: "Dentist", icon: Stethoscope, emoji: "🦷" },
   { value: "grocery", label: "Grocery Store", icon: ShoppingCart, emoji: "🛒" },
   { value: "salon", label: "Hair Salon", icon: Scissors, emoji: "💇" },
   { value: "pharmacy", label: "Pharmacy", icon: Pill, emoji: "💊" },
   { value: "restaurant", label: "Restaurant", icon: Utensils, emoji: "🍽️" },
+  { value: "gym", label: "Gym", icon: MapPin, emoji: "💪" },
+  { value: "petcare", label: "Pet Care", icon: MapPin, emoji: "🐾" },
   { value: "family", label: "Family/Friends", icon: Users, emoji: "👨‍👩‍👧‍👦" },
   { value: "home", label: "Home", icon: MapPin, emoji: "🏠" },
   { value: "other", label: "Other", icon: MapPin, emoji: "📍" },

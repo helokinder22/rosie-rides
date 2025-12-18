@@ -17,10 +17,13 @@ import {
 
 const categoryEmojis = {
   doctor: "🏥",
+  dentist: "🦷",
   grocery: "🛒",
   salon: "💇",
   pharmacy: "💊",
   restaurant: "🍽️",
+  gym: "💪",
+  petcare: "🐾",
   family: "👨‍👩‍👧‍👦",
   home: "🏠",
   other: "📍"
