@@ -239,7 +239,7 @@ They are opening the Uber app now.
           <div className="inline-block bg-black/70 backdrop-blur-md rounded-full px-8 py-4 border-2 border-black/30">
             <p className="text-2xl sm:text-3xl text-white font-bold flex items-center justify-center gap-3">
               <Car className="w-8 h-8" style={{ color: '#0091a2' }} />
-              Tap your destination below
+              Tap your Destination
             </p>
           </div>
 
