@@ -35,6 +35,16 @@ export default function Subscription() {
 
   return (
     <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4 relative">
+      <Button
+        variant="outline"
+        size="lg"
+        onClick={() => navigate(createPageUrl("Home"))}
+        className="absolute top-6 left-6 h-14 px-6 text-lg border-2 border-white/20 bg-white/10 hover:bg-white/20 text-white font-bold"
+      >
+        <Home className="w-5 h-5 mr-2" />
+        Back to Home
+      </Button>
+
       <div className="max-w-4xl w-full grid md:grid-cols-2 gap-8 items-center">
         
         <div className="text-white space-y-6">
