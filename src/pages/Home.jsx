@@ -2,7 +2,7 @@ import React from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { Plus, MapPin, Car, Sparkles, Settings, Crown, Lock, User, LogOut, CreditCard, ShieldAlert, History, Menu } from "lucide-react";
+import { Plus, MapPin, Car, Sparkles, Settings, Crown, Lock, User, LogOut, CreditCard, ShieldAlert, History, Menu, Smartphone } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -212,6 +212,16 @@ export default function Home() {
                   >
                     <Sparkles className="w-5 h-5 mr-2" />
                     About
+                  </Button>
+                </Link>
+
+                <Link to={createPageUrl("AddToHomescreen")} className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-12 text-lg rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50"
+                  >
+                    <Smartphone className="w-5 h-5 mr-2" />
+                    Add to Homescreen
                   </Button>
                 </Link>
 

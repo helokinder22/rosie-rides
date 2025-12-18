@@ -5,6 +5,7 @@ import Subscription from './pages/Subscription';
 import Disclaimer from './pages/Disclaimer';
 import TripHistory from './pages/TripHistory';
 import About from './pages/About';
+import AddToHomescreen from './pages/AddToHomescreen';
 
 
 export const PAGES = {
@@ -15,6 +16,7 @@ export const PAGES = {
     "Disclaimer": Disclaimer,
     "TripHistory": TripHistory,
     "About": About,
+    "AddToHomescreen": AddToHomescreen,
 }
 
 export const pagesConfig = {
