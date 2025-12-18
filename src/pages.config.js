@@ -4,6 +4,7 @@ import EmergencyContacts from './pages/EmergencyContacts';
 import Subscription from './pages/Subscription';
 import Disclaimer from './pages/Disclaimer';
 import TripHistory from './pages/TripHistory';
+import About from './pages/About';
 
 
 export const PAGES = {
@@ -13,6 +14,7 @@ export const PAGES = {
     "Subscription": Subscription,
     "Disclaimer": Disclaimer,
     "TripHistory": TripHistory,
+    "About": About,
 }
 
 export const pagesConfig = {
