@@ -258,5 +258,6 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
         </Button>
       </div>
     </div>
+    </>
   );
 }
