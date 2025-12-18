@@ -236,8 +236,8 @@ export default function Home() {
                 </Link>
 
                 <Button 
-                  variant="destructive" 
-                  className="w-full h-12 text-lg rounded-xl mt-2"
+                  className="w-full h-12 text-lg rounded-xl mt-2 text-gray-700 font-bold"
+                  style={{ backgroundColor: '#ffc20c' }}
                   onClick={() => base44.auth.logout()}
                 >
                   <LogOut className="w-5 h-5 mr-2" />
