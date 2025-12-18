@@ -167,13 +167,13 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
                         const addr = suggestion.address;
                         setFormData({
                           ...formData,
-                          number: addr.house_number || "",
-                          street: addr.road || addr.street || "",
-                          city: addr.city || addr.town || addr.village || "",
+                          number: addr.house_number || addr.building || "",
+                          street: addr.road || addr.street || addr.pedestrian || "",
+                          city: addr.city || addr.town || addr.village || addr.municipality || "",
                           state: addr.state || "",
                           zip: addr.postcode || ""
                         });
-                        setAddressQuery(suggestion.display_name);
+                        setAddressQuery("");
                         setShowSuggestions(false);
                         setSuggestions([]);
                       }}
