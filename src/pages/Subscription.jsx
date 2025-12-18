@@ -34,24 +34,24 @@ export default function Subscription() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4 relative">
+    <div className="min-h-screen bg-slate-100 flex items-center justify-center p-4 relative">
       <Button
         variant="outline"
         size="lg"
         onClick={() => navigate(createPageUrl("Home"))}
-        className="absolute top-6 left-6 h-14 px-6 text-lg border-2 border-white/20 bg-white/10 hover:bg-white/20 text-white font-bold"
+        className="absolute top-6 left-6 h-14 px-6 text-lg border-2 border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold"
       >
         <Home className="w-5 h-5 mr-2" />
         Back to Home
       </Button>
 
       <div className="max-w-4xl w-full grid md:grid-cols-2 gap-8 items-center">
-        
-        <div className="text-white space-y-6">
+
+        <div className="text-slate-700 space-y-6">
           <h1 className="text-5xl font-black leading-tight">
             Unlock <span className="text-yellow-400">Premium</span> Features
           </h1>
-          <p className="text-xl text-slate-300">
+          <p className="text-xl text-slate-600">
             Get unlimited access to all senior-friendly features and ensure your loved ones travel safely.
           </p>
           
