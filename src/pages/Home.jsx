@@ -103,16 +103,44 @@ export default function Home() {
     };
     notifyContacts();
 
-    const pickup = "current_location";
-    const dropoff = encodeURIComponent(fullAddress);
-    const uberUrl = `uber://?action=setPickup&pickup=${pickup}&dropoff[formatted_address]=${dropoff}`;
+    // Geocode the address to get coordinates for more reliable Uber integration
+    try {
+      const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(fullAddress)}`);
+      const data = await response.json();
 
-    window.location.href = uberUrl;
+      if (data && data.length > 0) {
+        const { lat, lon } = data[0];
+        const uberUrl = `uber://?action=setPickup&pickup=my_location&dropoff[latitude]=${lat}&dropoff[longitude]=${lon}&dropoff[nickname]=${encodeURIComponent(destination.name)}`;
 
-    setTimeout(() => {
-      const webUrl = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${dropoff}`;
-      window.open(webUrl, '_blank');
-    }, 1500);
+        window.location.href = uberUrl;
+
+        setTimeout(() => {
+          const webUrl = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]=${lat}&dropoff[longitude]=${lon}&dropoff[nickname]=${encodeURIComponent(destination.name)}`;
+          window.open(webUrl, '_blank');
+        }, 1500);
+      } else {
+        // Fallback to formatted address if geocoding fails
+        const dropoff = encodeURIComponent(fullAddress);
+        const uberUrl = `uber://?action=setPickup&pickup=my_location&dropoff[formatted_address]=${dropoff}`;
+        window.location.href = uberUrl;
+
+        setTimeout(() => {
+          const webUrl = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${dropoff}`;
+          window.open(webUrl, '_blank');
+        }, 1500);
+      }
+    } catch (error) {
+      console.error("Geocoding failed", error);
+      // Fallback to formatted address
+      const dropoff = encodeURIComponent(fullAddress);
+      const uberUrl = `uber://?action=setPickup&pickup=my_location&dropoff[formatted_address]=${dropoff}`;
+      window.location.href = uberUrl;
+
+      setTimeout(() => {
+        const webUrl = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${dropoff}`;
+        window.open(webUrl, '_blank');
+      }, 1500);
+    }
   };
 
   if (isLoading) {
