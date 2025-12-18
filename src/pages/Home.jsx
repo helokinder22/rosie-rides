@@ -115,7 +115,7 @@ They are opening the Uber app now.
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-500 via-teal-600 to-cyan-600 relative overflow-hidden">
+    <div className="min-h-screen bg-white relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute top-60 -left-40 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -206,7 +206,7 @@ They are opening the Uber app now.
             </div>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl font-black text-white mb-2 drop-shadow-lg">
+          <h1 className="text-5xl sm:text-6xl font-black mb-2 drop-shadow-lg" style={{ color: '#00c2d1' }}>
             Rosie's Rides
           </h1>
 
