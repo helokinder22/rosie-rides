@@ -22,6 +22,7 @@ import {
   Save,
   X
 } from "lucide-react";
+import AddressConfirmationMap from "./AddressConfirmationMap";
 
 
 
@@ -172,6 +173,15 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
                 <Label htmlFor="zip" className="text-sm text-slate-500 mt-1 block">ZIP</Label>
               </div>
             </div>
+
+            {fullAddress && (
+              <div className="mt-4">
+                <Label className="text-lg font-bold text-slate-600 mb-2 block">
+                  📍 Location Preview
+                </Label>
+                <AddressConfirmationMap address={fullAddress} />
+              </div>
+            )}
           </div>
 
 
