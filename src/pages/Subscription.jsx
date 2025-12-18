@@ -1,68 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import { Check, Crown, Shield, Star } from "lucide-react";
+import { Check, Crown, Shield, Star, Home } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { createPageUrl } from "@/utils";
+import { useQuery } from "@tanstack/react-query";
 
 export default function Subscription() {
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
+  const { data: user } = useQuery({
+    queryKey: ['user'],
+    queryFn: () => base44.auth.me(),
+  });
 
-  const checkAuth = async () => {
-    try {
-      const isAuth = await base44.auth.isAuthenticated();
-      setIsAuthenticated(isAuth);
-      if (isAuth) {
-        const userData = await base44.auth.me();
-        setUser(userData);
-        // Redirect if already premium
-        if (userData.subscription_status === 'premium') {
-            navigate(createPageUrl("Home"));
-        }
-      }
-    } catch (error) {
-      console.error("Auth check failed", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleAction = async () => {
-    if (!isAuthenticated) {
-      base44.auth.redirectToLogin(createPageUrl("Subscription"));
-      return;
-    }
-
-    // Mock Payment Process
+  const handleSubscribe = async () => {
     setIsProcessing(true);
     
-    // Simulate network delay for payment processing
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
     try {
       await base44.auth.updateMe({ subscription_status: 'premium' });
-      alert("Payment successful! Welcome to Premium.");
+      alert("🎉 Welcome to Premium! You now have unlimited access.");
       navigate(createPageUrl("Home"));
     } catch (error) {
-      console.error("Payment failed", error);
+      console.error("Subscription failed", error);
       alert("Something went wrong. Please try again.");
     } finally {
       setIsProcessing(false);
     }
   };
-
-  if (isLoading) {
-    return <div className="min-h-screen flex items-center justify-center text-white bg-slate-900">Loading...</div>;
-  }
 
   return (
     <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
