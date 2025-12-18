@@ -22,6 +22,7 @@ const categoryEmojis = {
   pharmacy: "💊",
   restaurant: "🍽️",
   family: "👨‍👩‍👧‍👦",
+  home: "🏠",
   other: "📍"
 };
 

@@ -31,6 +31,7 @@ const categories = [
   { value: "pharmacy", label: "Pharmacy", icon: Pill, emoji: "💊" },
   { value: "restaurant", label: "Restaurant", icon: Utensils, emoji: "🍽️" },
   { value: "family", label: "Family/Friends", icon: Users, emoji: "👨‍👩‍👧‍👦" },
+  { value: "home", label: "Home", icon: MapPin, emoji: "🏠" },
   { value: "other", label: "Other", icon: MapPin, emoji: "📍" },
 ];
 

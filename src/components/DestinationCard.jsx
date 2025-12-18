@@ -49,6 +49,12 @@ const categoryConfig = {
     label: "Family",
     emoji: "👨‍👩‍👧‍👦"
   },
+  home: { 
+    icon: MapPin, 
+    gradient: "from-cyan-400 to-cyan-600", 
+    label: "Home",
+    emoji: "🏠"
+  },
   other: { 
     icon: MapPin, 
     gradient: "from-slate-400 to-slate-600", 
