@@ -211,12 +211,12 @@ They are opening the Uber app now.
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="relative">
               <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/8f435bb78_icon.png"
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
                 alt="Rosie's Rides"
                 className="w-24 h-24 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-6 transition-transform duration-300"
               />
               <div className="absolute -top-2 -right-2">
-                <Sparkles className="w-8 h-8 animate-pulse" style={{ color: '#F3D250' }} />
+                <Sparkles className="w-8 h-8 animate-pulse" style={{ color: '#00c2d1' }} />
               </div>
             </div>
           </div>
