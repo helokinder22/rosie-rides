@@ -34,6 +34,13 @@ export default function Home() {
   const isPremium = user?.subscription_status === 'premium';
   const isLimitReached = !isPremium && destinations.length >= 2;
 
+  // Redirect to manage destinations if no destinations exist
+  React.useEffect(() => {
+    if (!isLoading && destinations.length === 0) {
+      navigate(createPageUrl("ManageDestinations"));
+    }
+  }, [isLoading, destinations.length, navigate]);
+
   const handleShare = async (destination) => {
     const shareData = {
       title: 'My Trip',
