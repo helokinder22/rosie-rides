@@ -58,9 +58,6 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
   const [addressQuery, setAddressQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [businessQuery, setBusinessQuery] = useState("");
-  const [businessSuggestions, setBusinessSuggestions] = useState([]);
-  const [showBusinessSuggestions, setShowBusinessSuggestions] = useState(false);
   const [aiQuery, setAiQuery] = useState("");
   const [isAiSearching, setIsAiSearching] = useState(false);
 
@@ -105,32 +102,6 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
 
     return () => clearTimeout(timeoutId);
   }, [addressQuery]);
-
-  useEffect(() => {
-    if (businessQuery.length < 3) {
-      setBusinessSuggestions([]);
-      return;
-    }
-
-    const timeoutId = setTimeout(async () => {
-      try {
-        const response = await fetch(
-          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(businessQuery)}&countrycodes=us&limit=5&addressdetails=1`,
-          {
-            headers: {
-              'User-Agent': 'RosiesRides/1.0'
-            }
-          }
-        );
-        const data = await response.json();
-        setBusinessSuggestions(data);
-      } catch (error) {
-        console.error("Business search failed", error);
-      }
-    }, 500);
-
-    return () => clearTimeout(timeoutId);
-  }, [businessQuery]);
 
 
 
@@ -225,54 +196,6 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
               >
                 {isAiSearching ? "Searching..." : <Sparkles className="w-6 h-6" />}
               </Button>
-            </div>
-          </div>
-
-          <div className="space-y-3">
-            <Label className="text-2xl font-bold text-slate-700 flex items-center gap-2">
-              <span>🔍</span> Search Business Name
-            </Label>
-            <div className="relative">
-              <Input
-                value={businessQuery}
-                onChange={(e) => {
-                  setBusinessQuery(e.target.value);
-                  setShowBusinessSuggestions(true);
-                }}
-                onFocus={() => setShowBusinessSuggestions(true)}
-                placeholder="Search for Starbucks, Walmart, CVS, etc..."
-                className="h-16 text-xl px-6 border-4 border-slate-300 focus:border-purple-500 rounded-2xl shadow-sm"
-              />
-              
-              {showBusinessSuggestions && businessSuggestions.length > 0 && (
-                <div className="absolute z-10 w-full mt-2 bg-white border-4 border-slate-300 rounded-2xl shadow-2xl max-h-80 overflow-y-auto">
-                  {businessSuggestions.map((suggestion, index) => (
-                    <button
-                      key={index}
-                      type="button"
-                      onClick={() => {
-                        const addr = suggestion.address;
-                        setFormData({
-                          ...formData,
-                          name: suggestion.name || suggestion.display_name.split(',')[0],
-                          number: addr.house_number || addr.building || "",
-                          street: addr.road || addr.street || addr.pedestrian || "",
-                          city: addr.city || addr.town || addr.village || addr.municipality || "",
-                          state: addr.state || "",
-                          zip: addr.postcode || ""
-                        });
-                        setBusinessQuery("");
-                        setShowBusinessSuggestions(false);
-                        setBusinessSuggestions([]);
-                      }}
-                      className="w-full text-left px-6 py-4 hover:bg-purple-50 border-b border-slate-200 last:border-b-0 transition-colors"
-                    >
-                      <div className="text-lg font-semibold text-slate-800">{suggestion.display_name}</div>
-                      <div className="text-sm text-slate-500">{suggestion.type}</div>
-                    </button>
-                  ))}
-                </div>
-              )}
             </div>
           </div>
 
