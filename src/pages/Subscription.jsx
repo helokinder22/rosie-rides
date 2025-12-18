@@ -113,17 +113,12 @@ export default function Subscription() {
             </CardContent>
             <CardFooter className="pb-10">
                 <Button 
-                    onClick={handleAction} 
+                    onClick={handleSubscribe} 
                     disabled={isProcessing}
                     className="w-full h-16 text-xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white shadow-lg rounded-xl transition-all hover:scale-105"
                 >
-                    {isProcessing ? "Processing..." : isAuthenticated ? "Subscribe Now" : "Sign Up & Subscribe"}
+                    {isProcessing ? "Processing..." : "Subscribe Now"}
                 </Button>
-                {!isAuthenticated && (
-                    <p className="text-center text-sm text-slate-400 mt-4 w-full">
-                        Already have an account? <button onClick={() => base44.auth.redirectToLogin()} className="text-blue-500 underline font-semibold">Log in</button>
-                    </p>
-                )}
             </CardFooter>
         </Card>
 
