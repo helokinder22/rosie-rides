@@ -205,7 +205,11 @@ They are opening the Uber app now.
               </div>
             </div>
           </div>
-          
+
+          <h1 className="text-5xl sm:text-6xl font-black text-white mb-2 drop-shadow-lg">
+            Rosie's Rides
+          </h1>
+
           <a 
             href="https://m.uber.com" 
             target="_blank" 
