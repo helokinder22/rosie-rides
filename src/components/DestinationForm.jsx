@@ -131,7 +131,10 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
     onSave(saveData);
   };
 
-  const handleSaveClick = () => {
+  const handleSaveClick = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
     console.log('Save button clicked on iPad');
     console.log('Form data:', formData);
     console.log('Full address:', fullAddress);
@@ -147,7 +150,14 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
       address: fullAddress
     };
     console.log('Calling onSave with:', saveData);
-    onSave(saveData);
+    
+    try {
+      await onSave(saveData);
+      console.log('onSave completed successfully');
+    } catch (error) {
+      console.error('Error in onSave:', error);
+      alert('Error saving: ' + error.message);
+    }
   };
 
   return (

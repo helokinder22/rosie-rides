@@ -78,15 +78,25 @@ export default function ManageDestinations() {
     },
   });
 
-  const handleSave = (data) => {
-    if (editingDestination) {
-      updateMutation.mutate({ id: editingDestination.id, data });
-    } else {
-      const newData = {
-        ...data,
-        sort_order: destinations.length
-      };
-      createMutation.mutate(newData);
+  const handleSave = async (data) => {
+    console.log('handleSave called with data:', data);
+    
+    try {
+      if (editingDestination) {
+        console.log('Updating existing destination:', editingDestination.id);
+        await updateMutation.mutateAsync({ id: editingDestination.id, data });
+      } else {
+        const newData = {
+          ...data,
+          sort_order: destinations.length
+        };
+        console.log('Creating new destination:', newData);
+        await createMutation.mutateAsync(newData);
+      }
+      console.log('Save operation completed successfully');
+    } catch (error) {
+      console.error('handleSave error:', error);
+      throw error;
     }
   };
 
