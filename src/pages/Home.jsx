@@ -76,8 +76,9 @@ export default function Home() {
     const notifyContacts = async () => {
       try {
         const contacts = await base44.entities.EmergencyContact.list();
-        if (contacts.length > 0) {
-          const emailPromises = contacts.map(contact => 
+        const notifyList = contacts.filter(c => c.notify_on_ride !== false);
+        if (notifyList.length > 0) {
+          const emailPromises = notifyList.map(contact => 
             base44.integrations.Core.SendEmail({
               to: contact.email,
               subject: `🚗 Trip Alert: ${user?.full_name || 'User'} is going to ${destination.name}`,
