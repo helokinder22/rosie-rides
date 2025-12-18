@@ -149,18 +149,6 @@ They are opening the Uber app now.
                   <p className="text-slate-500">{user?.email}</p>
                 </div>
 
-                <Link to={createPageUrl("EmergencyContacts")} className="w-full">
-                  <Button 
-                    variant="outline" 
-                    className="w-full h-12 text-lg rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50"
-                  >
-                    <Settings className="w-5 h-5 mr-2" />
-                    Emergency Contacts
-                  </Button>
-                </Link>
-
-                <EmergencyButton className="w-full h-12 text-lg rounded-xl" />
-
                 <div className="w-full bg-slate-50 rounded-xl p-4 flex items-center justify-between border border-slate-100">
                   <div className="flex items-center gap-3">
                     <div className={`p-2 rounded-lg ${isPremium ? 'bg-yellow-100 text-yellow-600' : 'bg-slate-200 text-slate-600'}`}>
@@ -173,6 +161,18 @@ They are opening the Uber app now.
                   </div>
                   {isPremium && <Crown className="w-5 h-5 text-yellow-500" />}
                 </div>
+
+                <EmergencyButton className="w-full h-12 text-lg rounded-xl" />
+
+                <Link to={createPageUrl("EmergencyContacts")} className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-12 text-lg rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50"
+                  >
+                    <Settings className="w-5 h-5 mr-2" />
+                    Emergency Contacts
+                  </Button>
+                </Link>
 
                 <Link to={createPageUrl("TripHistory")} className="w-full">
                   <Button 
