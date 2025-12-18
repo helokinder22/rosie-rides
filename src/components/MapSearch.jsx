@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { Input } from "@/components/ui/input";
@@ -40,12 +40,23 @@ function MapClickHandler({ onLocationSelect }) {
   return null;
 }
 
+function MapUpdater({ center }) {
+  const map = useMap();
+  
+  useEffect(() => {
+    if (center) {
+      map.setView(center, 15);
+    }
+  }, [center, map]);
+  
+  return null;
+}
+
 export default function MapSearch({ onAddressSelect }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [mapCenter, setMapCenter] = useState([37.7749, -122.4194]); // Default: San Francisco
   const [markerPosition, setMarkerPosition] = useState(null);
   const [selectedAddress, setSelectedAddress] = useState("");
-  const mapRef = useRef();
 
   useEffect(() => {
     // Try to get user's current location
@@ -84,11 +95,6 @@ export default function MapSearch({ onAddressSelect }) {
             lng,
             address: location.address
           });
-        }
-        
-        // Update map view
-        if (mapRef.current) {
-          mapRef.current.setView([lat, lng], 15);
         }
       }
     } catch (err) {
@@ -183,8 +189,6 @@ export default function MapSearch({ onAddressSelect }) {
           center={mapCenter}
           zoom={13}
           style={{ height: "100%", width: "100%" }}
-          key={`${mapCenter[0]}-${mapCenter[1]}`}
-          ref={mapRef}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -196,6 +200,7 @@ export default function MapSearch({ onAddressSelect }) {
             </Marker>
           )}
           <MapClickHandler onLocationSelect={handleLocationSelect} />
+          <MapUpdater center={mapCenter} />
         </MapContainer>
       </div>
       
