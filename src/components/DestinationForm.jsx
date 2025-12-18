@@ -35,6 +35,7 @@ const categories = [
   { value: "grocery", label: "Grocery Store", icon: ShoppingCart, emoji: "🛒" },
   { value: "gym", label: "Gym", icon: MapPin, emoji: "💪" },
   { value: "home", label: "Home", icon: MapPin, emoji: "🏠" },
+  { value: "hospital", label: "Hospital", icon: Stethoscope, emoji: "🏥" },
   { value: "other", label: "Other", icon: MapPin, emoji: "📍" },
   { value: "petcare", label: "Pet Care", icon: MapPin, emoji: "🐾" },
   { value: "pharmacy", label: "Pharmacy", icon: Pill, emoji: "💊" },

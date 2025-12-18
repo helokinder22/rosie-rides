@@ -50,6 +50,12 @@ const categoryConfig = {
     label: "Home",
     emoji: "🏠"
   },
+  hospital: { 
+    icon: Stethoscope, 
+    gradient: "from-red-500 to-red-700", 
+    label: "Hospital",
+    emoji: "🏥"
+  },
   other: { 
     icon: MapPin, 
     gradient: "from-slate-400 to-slate-600", 
