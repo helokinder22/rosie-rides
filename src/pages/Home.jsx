@@ -130,7 +130,7 @@ They are opening the Uber app now.
               <Button
                 variant="secondary"
                 className="h-16 w-16 rounded-2xl bg-white border-4 border-white/50 shadow-xl p-0 hover:bg-slate-50 transition-transform hover:scale-105"
-                style={{ color: '#4A90E2' }}
+                style={{ color: '#0091a2' }}
               >
                 <Menu className="w-8 h-8" />
               </Button>
