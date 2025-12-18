@@ -136,8 +136,8 @@ They are opening the Uber app now.
               </Button>
             </DialogTrigger>
             <DialogContent className="bg-white/95 backdrop-blur-xl border-0 rounded-3xl shadow-2xl max-w-sm">
-              <DialogHeader>
-                <DialogTitle className="text-2xl font-bold text-center text-slate-800">Menu</DialogTitle>
+              <DialogHeader className="rounded-t-3xl p-6 -m-6 mb-0" style={{ backgroundColor: '#0091a2' }}>
+                <DialogTitle className="text-2xl font-bold text-center text-white">Menu</DialogTitle>
               </DialogHeader>
               <div className="flex flex-col items-center space-y-6 py-4">
                 <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center">
