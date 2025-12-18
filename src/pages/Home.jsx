@@ -214,9 +214,9 @@ They are opening the Uber app now.
             href="https://m.uber.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-6xl sm:text-7xl font-black text-white mb-4 drop-shadow-lg hover:text-yellow-200 transition-colors cursor-pointer block"
+            className="text-3xl sm:text-4xl font-black text-white mb-4 drop-shadow-lg hover:text-yellow-200 transition-colors cursor-pointer block"
           >
-            Where to?
+            Where are you going?
           </a>
           <div className="inline-block bg-black/40 backdrop-blur-md rounded-full px-8 py-4 border-2 border-white/20">
             <p className="text-2xl sm:text-3xl text-white font-bold drop-shadow-md">
