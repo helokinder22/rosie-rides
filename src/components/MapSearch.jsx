@@ -189,6 +189,7 @@ export default function MapSearch({ onAddressSelect }) {
           center={mapCenter}
           zoom={13}
           style={{ height: "100%", width: "100%" }}
+          key={`${mapCenter[0]}-${mapCenter[1]}`}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
