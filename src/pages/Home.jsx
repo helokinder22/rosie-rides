@@ -219,7 +219,7 @@ They are opening the Uber app now.
             </div>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl font-black mb-2 drop-shadow-lg" style={{ color: '#00c2d1' }}>
+          <h1 className="text-5xl sm:text-6xl font-black mb-2" style={{ color: '#005662' }}>
             Rosie's Rides
           </h1>
 
@@ -227,13 +227,13 @@ They are opening the Uber app now.
             href="https://m.uber.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-3xl sm:text-4xl font-black mb-4 hover:text-yellow-200 transition-colors cursor-pointer block"
-            style={{ color: '#D4A017' }}
+            className="text-3xl sm:text-4xl font-black mb-4 hover:text-yellow-600 transition-colors cursor-pointer block"
+            style={{ color: '#8B6914' }}
           >
             Where are you going?
           </a>
-          <div className="inline-block bg-black/40 backdrop-blur-md rounded-full px-8 py-4 border-2 border-white/20">
-            <p className="text-2xl sm:text-3xl text-white font-bold drop-shadow-md">
+          <div className="inline-block bg-black/70 backdrop-blur-md rounded-full px-8 py-4 border-2 border-black/30">
+            <p className="text-2xl sm:text-3xl text-white font-bold">
               🚗 Tap your destination below
             </p>
           </div>
