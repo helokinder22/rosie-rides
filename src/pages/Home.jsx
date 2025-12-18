@@ -137,7 +137,7 @@ They are opening the Uber app now.
             </DialogTrigger>
             <DialogContent className="bg-white/95 backdrop-blur-xl border-0 rounded-3xl shadow-2xl max-w-sm">
               <DialogHeader>
-                <DialogTitle className="text-2xl font-bold text-center text-slate-800">My Profile</DialogTitle>
+                <DialogTitle className="text-2xl font-bold text-center text-slate-800">Menu</DialogTitle>
               </DialogHeader>
               <div className="flex flex-col items-center space-y-6 py-4">
                 <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center">
@@ -147,19 +147,6 @@ They are opening the Uber app now.
                 <div className="text-center space-y-1">
                   <h3 className="text-xl font-bold text-slate-900">{user?.full_name || 'Guest User'}</h3>
                   <p className="text-slate-500">{user?.email}</p>
-                </div>
-
-                <div className="w-full bg-slate-50 rounded-xl p-4 flex items-center justify-between border border-slate-100">
-                  <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg ${isPremium ? 'bg-yellow-100 text-yellow-600' : 'bg-slate-200 text-slate-600'}`}>
-                      <CreditCard className="w-5 h-5" />
-                    </div>
-                    <div className="text-left">
-                      <p className="text-sm font-medium text-slate-500">Plan</p>
-                      <p className="font-bold text-slate-800">{isPremium ? 'Premium Member' : 'Free Plan'}</p>
-                    </div>
-                  </div>
-                  {isPremium && <Crown className="w-5 h-5 text-yellow-500" />}
                 </div>
 
                 <Link to={createPageUrl("EmergencyContacts")} className="w-full">
@@ -173,6 +160,19 @@ They are opening the Uber app now.
                 </Link>
 
                 <EmergencyButton className="w-full h-12 text-lg rounded-xl" />
+
+                <div className="w-full bg-slate-50 rounded-xl p-4 flex items-center justify-between border border-slate-100">
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2 rounded-lg ${isPremium ? 'bg-yellow-100 text-yellow-600' : 'bg-slate-200 text-slate-600'}`}>
+                      <CreditCard className="w-5 h-5" />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-sm font-medium text-slate-500">Plan</p>
+                      <p className="font-bold text-slate-800">{isPremium ? 'Premium Member' : 'Free Plan'}</p>
+                    </div>
+                  </div>
+                  {isPremium && <Crown className="w-5 h-5 text-yellow-500" />}
+                </div>
 
                 <Link to={createPageUrl("TripHistory")} className="w-full">
                   <Button 
