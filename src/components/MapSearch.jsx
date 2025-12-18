@@ -180,6 +180,7 @@ export default function MapSearch({ onAddressSelect }) {
           zoom={13}
           style={{ height: "100%", width: "100%" }}
           key={`${mapCenter[0]}-${mapCenter[1]}`}
+          ref={mapRef}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -187,7 +188,7 @@ export default function MapSearch({ onAddressSelect }) {
           />
           {markerPosition && (
             <Marker position={markerPosition}>
-              <Popup>{selectedAddress}</Popup>
+              <Popup open>{selectedAddress}</Popup>
             </Marker>
           )}
           <MapClickHandler onLocationSelect={handleLocationSelect} />
