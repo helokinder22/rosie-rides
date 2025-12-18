@@ -159,11 +159,21 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
   };
 
   const handleSaveClick = () => {
-    console.log('Save button clicked');
+    console.log('Save button clicked on iPad');
+    console.log('Form data:', formData);
+    console.log('Full address:', fullAddress);
+    
+    // Validate required fields
+    if (!formData.name || !formData.number || !formData.street || !formData.city || !formData.state || !formData.zip) {
+      alert('Please fill in all required fields (Name, Number, Street, City, State, ZIP)');
+      return;
+    }
+    
     const saveData = {
       ...formData,
       address: fullAddress
     };
+    console.log('Calling onSave with:', saveData);
     onSave(saveData);
   };
 
