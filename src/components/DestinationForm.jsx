@@ -374,26 +374,28 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
             />
           </div>
 
-          <div className="fixed bottom-0 left-0 right-0 bg-white border-t-4 border-slate-200 p-4 shadow-2xl z-50">
-            <div className="max-w-5xl mx-auto flex gap-4">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={onCancel}
-                disabled={isLoading}
-                className="flex-1 h-20 text-2xl border-3 border-slate-300 hover:bg-slate-100 rounded-2xl font-bold shadow-lg"
-              >
-                <X className="w-7 h-7 mr-3" />
-                Cancel
-              </Button>
-              <Button
-                type="submit"
-                disabled={isLoading}
-                className="flex-1 h-20 text-2xl bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-2xl font-bold shadow-lg"
-              >
-                <Save className="w-7 h-7 mr-3" />
-                {isLoading ? "Saving..." : "Save"}
-              </Button>
+          <div className="pb-24">
+            <div className="fixed bottom-0 left-0 right-0 bg-white border-t-4 border-slate-200 p-4 shadow-2xl z-50">
+              <div className="max-w-5xl mx-auto flex gap-4">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={onCancel}
+                  disabled={isLoading}
+                  className="flex-1 h-20 text-2xl border-3 border-slate-300 hover:bg-slate-100 rounded-2xl font-bold shadow-lg"
+                >
+                  <X className="w-7 h-7 mr-3" />
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="flex-1 h-20 text-2xl bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-2xl font-bold shadow-lg"
+                >
+                  <Save className="w-7 h-7 mr-3" />
+                  {isLoading ? "Saving..." : "Save"}
+                </Button>
+              </div>
             </div>
           </div>
 
