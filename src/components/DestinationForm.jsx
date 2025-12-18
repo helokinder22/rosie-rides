@@ -149,6 +149,17 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('Form submitted with data:', formData);
+    const saveData = {
+      ...formData,
+      address: fullAddress
+    };
+    console.log('Calling onSave with:', saveData);
+    onSave(saveData);
+  };
+
+  const handleSaveClick = () => {
+    console.log('Save button clicked');
     const saveData = {
       ...formData,
       address: fullAddress
@@ -388,7 +399,8 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
                   Cancel
                 </Button>
                 <Button
-                  type="submit"
+                  type="button"
+                  onClick={handleSaveClick}
                   disabled={isLoading}
                   className="flex-1 h-20 text-2xl bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-2xl font-bold shadow-lg"
                 >
