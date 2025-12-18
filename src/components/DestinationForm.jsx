@@ -53,6 +53,9 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
   });
 
   const [fullAddress, setFullAddress] = useState("");
+  const [addressQuery, setAddressQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   useEffect(() => {
     const parts = [
@@ -69,6 +72,32 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
       setFullAddress("");
     }
   }, [formData.number, formData.street, formData.city, formData.state, formData.zip]);
+
+  useEffect(() => {
+    if (addressQuery.length < 3) {
+      setSuggestions([]);
+      return;
+    }
+
+    const timeoutId = setTimeout(async () => {
+      try {
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(addressQuery)}&countrycodes=us&limit=5&addressdetails=1`,
+          {
+            headers: {
+              'User-Agent': 'RosiesRides/1.0'
+            }
+          }
+        );
+        const data = await response.json();
+        setSuggestions(data);
+      } catch (error) {
+        console.error("Address search failed", error);
+      }
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, [addressQuery]);
 
 
 
@@ -107,7 +136,7 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               placeholder="e.g., Dr. Smith, Whole Foods"
               required
-              className="h-16 text-xl px-6 border-3 border-slate-200 focus:border-purple-400 rounded-2xl shadow-sm"
+              className="h-16 text-xl px-6 border-4 border-slate-300 focus:border-purple-500 rounded-2xl shadow-sm"
             />
           </div>
 
@@ -115,6 +144,47 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
             <Label className="text-2xl font-bold text-slate-700 flex items-center gap-2">
               <span>📍</span> Address
             </Label>
+
+            <div className="relative">
+              <Input
+                value={addressQuery}
+                onChange={(e) => {
+                  setAddressQuery(e.target.value);
+                  setShowSuggestions(true);
+                }}
+                onFocus={() => setShowSuggestions(true)}
+                placeholder="Start typing an address for suggestions..."
+                className="h-16 text-xl px-6 border-4 border-slate-300 focus:border-purple-500 rounded-2xl shadow-sm"
+              />
+              
+              {showSuggestions && suggestions.length > 0 && (
+                <div className="absolute z-10 w-full mt-2 bg-white border-4 border-slate-300 rounded-2xl shadow-2xl max-h-80 overflow-y-auto">
+                  {suggestions.map((suggestion, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      onClick={() => {
+                        const addr = suggestion.address;
+                        setFormData({
+                          ...formData,
+                          number: addr.house_number || "",
+                          street: addr.road || addr.street || "",
+                          city: addr.city || addr.town || addr.village || "",
+                          state: addr.state || "",
+                          zip: addr.postcode || ""
+                        });
+                        setAddressQuery(suggestion.display_name);
+                        setShowSuggestions(false);
+                        setSuggestions([]);
+                      }}
+                      className="w-full text-left px-6 py-4 hover:bg-purple-50 border-b border-slate-200 last:border-b-0 transition-colors"
+                    >
+                      <div className="text-lg font-semibold text-slate-800">{suggestion.display_name}</div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             
             <div className="grid grid-cols-3 gap-4">
               <div className="col-span-1">
@@ -124,7 +194,7 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
                   onChange={(e) => setFormData({ ...formData, number: e.target.value })}
                   placeholder="123"
                   required
-                  className="h-16 text-xl px-6 border-3 border-slate-200 focus:border-purple-400 rounded-2xl shadow-sm"
+                  className="h-16 text-xl px-6 border-4 border-slate-300 focus:border-purple-500 rounded-2xl shadow-sm"
                 />
                 <Label htmlFor="number" className="text-sm text-slate-500 mt-1 block">Number</Label>
               </div>
@@ -135,7 +205,7 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
                   onChange={(e) => setFormData({ ...formData, street: e.target.value })}
                   placeholder="Main Street"
                   required
-                  className="h-16 text-xl px-6 border-3 border-slate-200 focus:border-purple-400 rounded-2xl shadow-sm"
+                  className="h-16 text-xl px-6 border-4 border-slate-300 focus:border-purple-500 rounded-2xl shadow-sm"
                 />
                 <Label htmlFor="street" className="text-sm text-slate-500 mt-1 block">Street</Label>
               </div>
@@ -149,7 +219,7 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
                   onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                   placeholder="City"
                   required
-                  className="h-16 text-xl px-6 border-3 border-slate-200 focus:border-purple-400 rounded-2xl shadow-sm"
+                  className="h-16 text-xl px-6 border-4 border-slate-300 focus:border-purple-500 rounded-2xl shadow-sm"
                 />
                 <Label htmlFor="city" className="text-sm text-slate-500 mt-1 block">City</Label>
               </div>
@@ -160,7 +230,7 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
                   onChange={(e) => setFormData({ ...formData, state: e.target.value })}
                   placeholder="State"
                   required
-                  className="h-16 text-xl px-6 border-3 border-slate-200 focus:border-purple-400 rounded-2xl shadow-sm"
+                  className="h-16 text-xl px-6 border-4 border-slate-300 focus:border-purple-500 rounded-2xl shadow-sm"
                 />
                 <Label htmlFor="state" className="text-sm text-slate-500 mt-1 block">State</Label>
               </div>
@@ -171,7 +241,7 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
                   onChange={(e) => setFormData({ ...formData, zip: e.target.value })}
                   placeholder="12345"
                   required
-                  className="h-16 text-xl px-6 border-3 border-slate-200 focus:border-purple-400 rounded-2xl shadow-sm"
+                  className="h-16 text-xl px-6 border-4 border-slate-300 focus:border-purple-500 rounded-2xl shadow-sm"
                 />
                 <Label htmlFor="zip" className="text-sm text-slate-500 mt-1 block">ZIP</Label>
               </div>
@@ -197,7 +267,7 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
               value={formData.category}
               onValueChange={(value) => setFormData({ ...formData, category: value })}
             >
-              <SelectTrigger className="h-16 text-xl px-6 border-3 border-slate-200 focus:border-purple-400 rounded-2xl shadow-sm">
+              <SelectTrigger className="h-16 text-xl px-6 border-4 border-slate-300 focus:border-purple-500 rounded-2xl shadow-sm">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -226,7 +296,7 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
               placeholder="Any additional notes..."
-              className="min-h-32 text-xl px-6 py-4 border-3 border-slate-200 focus:border-purple-400 rounded-2xl shadow-sm"
+              className="min-h-32 text-xl px-6 py-4 border-4 border-slate-300 focus:border-purple-500 rounded-2xl shadow-sm"
             />
           </div>
 
