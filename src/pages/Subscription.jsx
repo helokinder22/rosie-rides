@@ -98,7 +98,7 @@ export default function Subscription() {
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="bg-blue-500/20 p-3 rounded-xl">
+              <div className="bg-blue-500/20 p-3 rounded-xl" style={{ boxShadow: '0 8px 20px rgba(0, 145, 162, 0.4)' }}>
                 <Star className="w-8 h-8" style={{ color: '#007580' }} />
               </div>
               <div>
