@@ -32,20 +32,36 @@ export default function ManageDestinations() {
   const isLimitReached = !isPremium && destinations.length >= 2;
 
   const createMutation = useMutation({
-    mutationFn: (data) => base44.entities.Destination.create(data),
+    mutationFn: (data) => {
+      console.log('Creating destination:', data);
+      return base44.entities.Destination.create(data);
+    },
     onSuccess: () => {
+      console.log('Destination created successfully');
       queryClient.invalidateQueries({ queryKey: ['destinations'] });
       setShowForm(false);
       setEditingDestination(null);
     },
+    onError: (error) => {
+      console.error('Error creating destination:', error);
+      alert('Failed to save destination: ' + error.message);
+    },
   });
 
   const updateMutation = useMutation({
-    mutationFn: ({ id, data }) => base44.entities.Destination.update(id, data),
+    mutationFn: ({ id, data }) => {
+      console.log('Updating destination:', id, data);
+      return base44.entities.Destination.update(id, data);
+    },
     onSuccess: () => {
+      console.log('Destination updated successfully');
       queryClient.invalidateQueries({ queryKey: ['destinations'] });
       setShowForm(false);
       setEditingDestination(null);
+    },
+    onError: (error) => {
+      console.error('Error updating destination:', error);
+      alert('Failed to update destination: ' + error.message);
     },
   });
 
