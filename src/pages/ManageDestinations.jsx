@@ -134,7 +134,8 @@ export default function ManageDestinations() {
               <Button
                 size="lg"
                 onClick={() => setShowForm(true)}
-                className="w-full h-24 text-3xl font-bold mb-8 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white rounded-3xl shadow-2xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
+                className="w-full h-24 text-3xl font-bold mb-8 text-white rounded-3xl shadow-2xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
+                style={{ backgroundColor: '#fbab13' }}
               >
                 ✨ Add New Destination
               </Button>
