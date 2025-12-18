@@ -45,6 +45,15 @@ export default function Subscription() {
         Back to Home
       </Button>
 
+      <div className="text-center mb-8">
+        <img 
+          src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
+          alt="Rosie's Rides"
+          className="w-20 h-20 rounded-2xl shadow-lg mx-auto mb-3"
+        />
+        <h2 className="text-3xl font-black text-slate-800">Rosie's Rides</h2>
+      </div>
+
       <div className="max-w-4xl w-full grid md:grid-cols-2 gap-8 items-center">
 
         <div className="text-slate-700 space-y-6">
