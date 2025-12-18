@@ -221,7 +221,7 @@ They are opening the Uber app now.
             </div>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl font-black mb-2" style={{ color: '#005662' }}>
+          <h1 className="text-5xl sm:text-6xl font-black mb-2" style={{ color: '#0091a2' }}>
             Rosie's Rides
           </h1>
 
