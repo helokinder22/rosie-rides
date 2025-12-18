@@ -32,13 +32,16 @@ export default function ManageDestinations() {
   const isLimitReached = !isPremium && destinations.length >= 2;
 
   const createMutation = useMutation({
-    mutationFn: (data) => {
+    mutationFn: async (data) => {
       console.log('Creating destination:', data);
-      return base44.entities.Destination.create(data);
+      const result = await base44.entities.Destination.create(data);
+      console.log('Create result:', result);
+      return result;
     },
     onSuccess: () => {
       console.log('Destination created successfully');
       queryClient.invalidateQueries({ queryKey: ['destinations'] });
+      alert('Destination saved successfully!');
       setShowForm(false);
       setEditingDestination(null);
     },
@@ -49,13 +52,16 @@ export default function ManageDestinations() {
   });
 
   const updateMutation = useMutation({
-    mutationFn: ({ id, data }) => {
+    mutationFn: async ({ id, data }) => {
       console.log('Updating destination:', id, data);
-      return base44.entities.Destination.update(id, data);
+      const result = await base44.entities.Destination.update(id, data);
+      console.log('Update result:', result);
+      return result;
     },
     onSuccess: () => {
       console.log('Destination updated successfully');
       queryClient.invalidateQueries({ queryKey: ['destinations'] });
+      alert('Destination updated successfully!');
       setShowForm(false);
       setEditingDestination(null);
     },
