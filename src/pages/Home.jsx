@@ -20,10 +20,13 @@ export default function Home() {
   const { data: destinations, isLoading } = useQuery({
     queryKey: ['destinations'],
     queryFn: async () => {
+      console.log('Home page: Fetching destinations...');
       const data = await base44.entities.Destination.list('sort_order');
+      console.log('Home page: Fetched destinations:', data.length);
       return data.sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0));
     },
     initialData: [],
+    staleTime: 0, // Always refetch on mount
   });
 
   const { data: user } = useQuery({

@@ -36,16 +36,28 @@ export default function ManageDestinations() {
       console.log('Creating destination with data:', JSON.stringify(data));
       const result = await base44.entities.Destination.create(data);
       console.log('Create API returned:', JSON.stringify(result));
+      
+      // Wait a moment to ensure database write is complete
+      await new Promise(resolve => setTimeout(resolve, 500));
       return result;
     },
     onSuccess: async (result) => {
-      console.log('Destination created successfully, invalidating cache');
-      await queryClient.invalidateQueries({ queryKey: ['destinations'] });
+      console.log('Destination created successfully with ID:', result.id);
+      
+      // Force remove all destination cache
+      queryClient.removeQueries({ queryKey: ['destinations'] });
+      console.log('Cache cleared, now refetching...');
+      
+      // Refetch to get latest data
       await queryClient.refetchQueries({ queryKey: ['destinations'] });
-      console.log('Cache invalidated and refetched');
-      alert('Destination saved successfully! ID: ' + result.id);
-      setShowForm(false);
-      setEditingDestination(null);
+      console.log('Refetch complete, navigating to home');
+      
+      alert('Destination saved! Redirecting to homepage...');
+      
+      // Navigate to home to see the new destination
+      setTimeout(() => {
+        navigate(createPageUrl("Home"));
+      }, 500);
     },
     onError: (error) => {
       console.error('Error creating destination:', error);
