@@ -129,7 +129,8 @@ They are opening the Uber app now.
             <DialogTrigger asChild>
               <Button
                 variant="secondary"
-                className="h-16 w-16 rounded-2xl bg-white text-teal-700 border-4 border-white/50 shadow-xl p-0 hover:bg-slate-50 transition-transform hover:scale-105"
+                className="h-16 w-16 rounded-2xl bg-white border-4 border-white/50 shadow-xl p-0 hover:bg-slate-50 transition-transform hover:scale-105"
+                style={{ color: '#4A90E2' }}
               >
                 <Menu className="w-8 h-8" />
               </Button>
@@ -206,7 +207,7 @@ They are opening the Uber app now.
             </div>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl font-black mb-2 drop-shadow-lg" style={{ color: '#00c2d1' }}>
+          <h1 className="text-5xl sm:text-6xl font-black mb-2 drop-shadow-lg" style={{ color: '#4A90E2' }}>
             Rosie's Rides
           </h1>
 
@@ -297,7 +298,8 @@ They are opening the Uber app now.
             <Link to={createPageUrl("ManageDestinations")}>
               <Button 
                 size="lg"
-                className="h-24 px-14 text-3xl font-bold bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white shadow-2xl rounded-3xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
+                className="h-24 px-14 text-3xl font-bold text-white shadow-2xl rounded-3xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
+                style={{ backgroundColor: '#4A90E2' }}
               >
                 <Plus className="w-10 h-10 mr-4" />
                 Add Destination
