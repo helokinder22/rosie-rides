@@ -162,6 +162,18 @@ They are opening the Uber app now.
                   {isPremium && <Crown className="w-5 h-5 text-yellow-500" />}
                 </div>
 
+                <Link to={createPageUrl("EmergencyContacts")} className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-12 text-lg rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50"
+                  >
+                    <Settings className="w-5 h-5 mr-2" />
+                    Emergency Contacts
+                  </Button>
+                </Link>
+
+                <EmergencyButton className="w-full h-12 text-lg rounded-xl" />
+
                 <Link to={createPageUrl("TripHistory")} className="w-full">
                   <Button 
                     variant="outline" 
@@ -226,19 +238,8 @@ They are opening the Uber app now.
             </p>
           </div>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <EmergencyButton className="h-20 px-10 text-2xl rounded-3xl" />
-            <Link to={createPageUrl("EmergencyContacts")}>
-              <Button
-                size="lg"
-                variant="outline"
-                className="h-20 px-10 text-2xl bg-white/90 hover:bg-white backdrop-blur-sm shadow-xl font-bold rounded-3xl border-3 border-white"
-              >
-                <Settings className="w-7 h-7 mr-3" />
-                Contacts
-              </Button>
-            </Link>
-            {!isPremium && (
+          {!isPremium && (
+            <div className="mt-8 flex justify-center">
               <Link to={createPageUrl("Subscription")}>
                 <Button
                   size="lg"
@@ -249,8 +250,8 @@ They are opening the Uber app now.
                   Premium
                 </Button>
               </Link>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
         {destinations.length === 0 ? (
