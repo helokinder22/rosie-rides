@@ -152,7 +152,8 @@ export default function ManageDestinations() {
                 className="w-full h-24 text-3xl font-bold mb-8 text-gray-700 rounded-3xl shadow-2xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
                 style={{ backgroundColor: '#fbab13' }}
               >
-                ✨ Add New Destination
+                <Sparkles className="w-8 h-8 mr-3 text-teal-600" />
+                Add New Destination
               </Button>
             )}
 
