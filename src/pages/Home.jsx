@@ -303,8 +303,8 @@ They are opening the Uber app now.
             <Link to={createPageUrl("ManageDestinations")}>
               <Button 
                 size="lg"
-                className="h-24 px-14 text-3xl font-bold text-white shadow-2xl rounded-3xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
-                style={{ backgroundColor: '#00c2d1' }}
+                className="h-24 px-14 text-3xl font-bold text-gray-700 shadow-2xl rounded-3xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
+                style={{ backgroundColor: '#ffc20c' }}
               >
                 <Plus className="w-10 h-10 mr-4" />
                 Add Destination
