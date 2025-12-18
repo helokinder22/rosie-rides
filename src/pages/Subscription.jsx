@@ -34,7 +34,7 @@ export default function Subscription() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4 relative">
       <div className="max-w-4xl w-full grid md:grid-cols-2 gap-8 items-center">
         
         <div className="text-white space-y-6">
