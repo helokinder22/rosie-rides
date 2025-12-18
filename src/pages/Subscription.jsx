@@ -99,7 +99,7 @@ export default function Subscription() {
 
             <div className="flex items-center gap-4">
               <div className="bg-blue-500/20 p-3 rounded-xl">
-                <Star className="w-8 h-8" style={{ color: '#0091a2' }} />
+                <Star className="w-8 h-8" style={{ color: '#007580' }} />
               </div>
               <div>
                 <h3 className="text-xl font-bold">Unlimited Destinations</h3>
