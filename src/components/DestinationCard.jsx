@@ -8,6 +8,7 @@ import {
   Utensils, 
   Users, 
   MapPin,
+  Home,
   ArrowRight,
   Share2
 } from "lucide-react";
@@ -18,6 +19,12 @@ const categoryConfig = {
     gradient: "from-blue-400 to-blue-600", 
     label: "Doctor",
     emoji: "🏥"
+  },
+  dentist: { 
+    icon: Stethoscope, 
+    gradient: "from-cyan-400 to-cyan-600", 
+    label: "Dentist",
+    emoji: "🦷"
   },
   grocery: { 
     icon: ShoppingCart, 
@@ -43,6 +50,18 @@ const categoryConfig = {
     label: "Restaurant",
     emoji: "🍽️"
   },
+  gym: { 
+    icon: MapPin, 
+    gradient: "from-amber-400 to-amber-600", 
+    label: "Gym",
+    emoji: "💪"
+  },
+  petcare: { 
+    icon: MapPin, 
+    gradient: "from-lime-400 to-lime-600", 
+    label: "Pet Care",
+    emoji: "🐾"
+  },
   family: { 
     icon: Users, 
     gradient: "from-purple-400 to-purple-600", 
@@ -50,8 +69,8 @@ const categoryConfig = {
     emoji: "👨‍👩‍👧‍👦"
   },
   home: { 
-    icon: MapPin, 
-    gradient: "from-cyan-400 to-cyan-600", 
+    icon: Home, 
+    gradient: "from-indigo-400 to-indigo-600", 
     label: "Home",
     emoji: "🏠"
   },
