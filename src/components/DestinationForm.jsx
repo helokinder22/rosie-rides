@@ -184,14 +184,7 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
             </div>
           </div>
 
-          {fullAddress && (
-            <div className="space-y-3">
-              <Label className="text-2xl font-bold text-slate-700 flex items-center gap-2">
-                <span>🗺️</span> Location Preview
-              </Label>
-              <AddressMap address={fullAddress} />
-            </div>
-          )}
+
 
           <div className="space-y-3">
             <Label htmlFor="category" className="text-2xl font-bold text-slate-700 flex items-center gap-2">
