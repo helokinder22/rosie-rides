@@ -77,7 +77,6 @@ export default function MapSearch({ onAddressSelect }) {
         
         setMapCenter([lat, lng]);
         setMarkerPosition([lat, lng]);
-        setSelectedAddress(location.display_name);
         
         if (location.address) {
           handleLocationSelect({
@@ -85,6 +84,11 @@ export default function MapSearch({ onAddressSelect }) {
             lng,
             address: location.address
           });
+        }
+        
+        // Update map view
+        if (mapRef.current) {
+          mapRef.current.setView([lat, lng], 15);
         }
       }
     } catch (err) {
