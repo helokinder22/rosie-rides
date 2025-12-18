@@ -210,9 +210,11 @@ They are opening the Uber app now.
         <div className="text-center mb-12 animate-fade-in">
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="relative">
-              <div className="w-24 h-24 rounded-3xl flex items-center justify-center shadow-2xl transform rotate-3 hover:rotate-6 transition-transform duration-300" style={{ backgroundColor: '#F3D250' }}>
-                <Car className="w-14 h-14 text-white" />
-              </div>
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/8f435bb78_icon.png"
+                alt="Rosie's Rides"
+                className="w-24 h-24 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-6 transition-transform duration-300"
+              />
               <div className="absolute -top-2 -right-2">
                 <Sparkles className="w-8 h-8 animate-pulse" style={{ color: '#F3D250' }} />
               </div>
