@@ -359,7 +359,7 @@ export default function Home() {
                 style={{ backgroundColor: '#ffc20c' }}
               >
                 <Plus className="w-10 h-10 mr-4" />
-                Add Destination
+                Add/Edit Destination
               </Button>
             </Link>
           )}
