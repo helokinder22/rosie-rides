@@ -22,7 +22,7 @@ import {
   Save,
   X
 } from "lucide-react";
-import AddressMap from "./AddressMap";
+
 import MapSearch from "./MapSearch";
 
 const categories = [
