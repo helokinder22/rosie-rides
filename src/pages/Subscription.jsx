@@ -25,17 +25,12 @@ export default function Subscription() {
 
   const handleSubscribe = async () => {
     setIsProcessing(true);
-    
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
     try {
-      await base44.auth.updateMe({ subscription_status: 'premium' });
-      alert("🎉 Welcome to Premium! You now have unlimited access.");
-      navigate(createPageUrl("Home"));
+      const { data } = await base44.functions.invoke('createCheckout', {});
+      window.location.href = data.url;
     } catch (error) {
-      console.error("Subscription failed", error);
-      alert("Something went wrong. Please try again.");
-    } finally {
+      console.error('Checkout error:', error);
+      alert('Failed to start checkout. Please try again.');
       setIsProcessing(false);
     }
   };
