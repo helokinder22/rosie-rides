@@ -29,6 +29,7 @@ import { base44 } from "@/api/base44Client";
 
 
 const categories = [
+  { value: "coffeeshop", label: "Coffee Shop", icon: Utensils, emoji: "☕" },
   { value: "dentist", label: "Dentist", icon: Stethoscope, emoji: "🦷" },
   { value: "doctor", label: "Doctor", icon: Stethoscope, emoji: "🏥" },
   { value: "family", label: "Family/Friends", icon: Users, emoji: "👨‍👩‍👧‍👦" },

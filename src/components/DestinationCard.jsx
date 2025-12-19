@@ -14,6 +14,12 @@ import {
 } from "lucide-react";
 
 const categoryConfig = {
+  coffeeshop: { 
+    icon: Utensils, 
+    gradient: "from-amber-600 to-amber-800", 
+    label: "Coffee Shop",
+    emoji: "☕"
+  },
   dentist: { 
     icon: Stethoscope, 
     gradient: "from-cyan-400 to-cyan-600", 
