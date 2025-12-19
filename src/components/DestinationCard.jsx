@@ -38,6 +38,12 @@ const categoryConfig = {
     label: "Family",
     emoji: "👨‍👩‍👧‍👦"
   },
+  friend: { 
+    icon: Users, 
+    gradient: "from-teal-400 to-teal-600", 
+    label: "Friend",
+    emoji: "👥"
+  },
   grocery: { 
     icon: ShoppingCart, 
     gradient: "from-green-400 to-green-600", 

@@ -33,6 +33,7 @@ const categories = [
   { value: "dentist", label: "Dentist", icon: Stethoscope, emoji: "🦷" },
   { value: "doctor", label: "Doctor", icon: Stethoscope, emoji: "🏥" },
   { value: "family", label: "Family/Friends", icon: Users, emoji: "👨‍👩‍👧‍👦" },
+  { value: "friend", label: "Friend", icon: Users, emoji: "👥" },
   { value: "grocery", label: "Grocery Store", icon: ShoppingCart, emoji: "🛒" },
   { value: "gym", label: "Gym", icon: MapPin, emoji: "💪" },
   { value: "home", label: "Home", icon: MapPin, emoji: "🏠" },
