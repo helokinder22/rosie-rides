@@ -60,12 +60,7 @@ export default function Home() {
     checkAuth();
   }, []);
 
-  // Redirect to manage destinations if no destinations exist
-  React.useEffect(() => {
-    if (!isLoading && destinations.length === 0) {
-      navigate(createPageUrl("ManageDestinations"));
-    }
-  }, [isLoading, destinations.length, navigate]);
+
 
   const handleShare = async (destination) => {
     const shareData = {
