@@ -59,7 +59,7 @@ export default function TripHistory() {
       <div className="absolute top-0 left-0 w-full h-64 rounded-b-[3rem] shadow-2xl" style={{ backgroundColor: '#0091a2' }}></div>
 
       {/* Profile Menu */}
-      <div className="absolute top-4 right-4 z-10">
+      <div className="absolute top-8 right-4 z-10">
         <Dialog>
           <DialogTrigger asChild>
             <Button

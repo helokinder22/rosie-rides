@@ -79,7 +79,7 @@ export default function EmergencyContacts() {
       </div>
 
       {/* Profile Menu */}
-      <div className="absolute top-4 right-4 z-10">
+      <div className="absolute top-8 sm:top-12 right-4 z-10">
         <Dialog>
           <DialogTrigger asChild>
             <Button
