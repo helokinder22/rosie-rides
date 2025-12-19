@@ -38,6 +38,18 @@ export default function ManageDestinations() {
   const isPremium = user?.subscription_status === 'premium';
   const isLimitReached = !isPremium && destinations.length >= 2;
 
+  // Check authentication on page load (iPad Safari fix)
+  React.useEffect(() => {
+    const checkAuth = async () => {
+      const isAuth = await base44.auth.isAuthenticated();
+      if (!isAuth) {
+        console.log('Not authenticated on page load, redirecting...');
+        base44.auth.redirectToLogin(window.location.href);
+      }
+    };
+    checkAuth();
+  }, []);
+
   const createMutation = useMutation({
     mutationFn: async (data) => {
       console.log('Creating destination with data:', JSON.stringify(data));
