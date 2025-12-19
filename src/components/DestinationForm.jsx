@@ -43,6 +43,7 @@ const categories = [
   { value: "pharmacy", label: "Pharmacy", icon: Pill, emoji: "💊" },
   { value: "restaurant", label: "Restaurant", icon: Utensils, emoji: "🍽️" },
   { value: "salon", label: "Hair Salon", icon: Scissors, emoji: "💇" },
+  { value: "shop", label: "Shop", icon: ShoppingCart, emoji: "🛍️" },
 ];
 
 export default function DestinationForm({ destination, onSave, onCancel, isLoading }) {
