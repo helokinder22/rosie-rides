@@ -38,12 +38,14 @@ export default function ManageDestinations() {
   const isPremium = user?.subscription_status === 'premium';
   const isLimitReached = !isPremium && destinations.length >= 2;
 
-  // Check authentication on page load (iPad Safari fix)
+  // Force authentication check on iPad
   React.useEffect(() => {
     const checkAuth = async () => {
-      const isAuth = await base44.auth.isAuthenticated();
-      if (!isAuth) {
-        console.log('Not authenticated on page load, redirecting...');
+      try {
+        await base44.auth.me();
+        console.log('User authenticated successfully');
+      } catch (error) {
+        console.log('Auth check failed, redirecting to login');
         base44.auth.redirectToLogin(window.location.href);
       }
     };
@@ -54,31 +56,27 @@ export default function ManageDestinations() {
     mutationFn: async (data) => {
       console.log('Creating destination with data:', JSON.stringify(data));
       
-      // Check authentication state
-      const isAuth = await base44.auth.isAuthenticated();
-      console.log('Is authenticated:', isAuth);
-      
-      if (!isAuth) {
-        console.error('User not authenticated, redirecting to login');
-        base44.auth.redirectToLogin(window.location.href);
-        throw new Error('Not authenticated');
+      try {
+        const result = await base44.entities.Destination.create(data);
+        console.log('Create API returned:', JSON.stringify(result));
+        
+        // Wait for database write to complete
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        // Verify it was saved by fetching it back
+        const verification = await base44.entities.Destination.list();
+        console.log('Verification fetch returned:', verification.length, 'destinations');
+        console.log('All destinations:', JSON.stringify(verification));
+        
+        return result;
+      } catch (error) {
+        // If authentication error, force re-login
+        if (error.message?.includes('auth') || error.status === 401 || error.message?.includes('Unauthorized')) {
+          console.log('Authentication error, forcing re-login');
+          base44.auth.redirectToLogin(window.location.href);
+        }
+        throw error;
       }
-      
-      const currentUser = await base44.auth.me();
-      console.log('Current user:', currentUser?.email);
-      
-      const result = await base44.entities.Destination.create(data);
-      console.log('Create API returned:', JSON.stringify(result));
-      
-      // Wait for database write to complete
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Verify it was saved by fetching it back
-      const verification = await base44.entities.Destination.list();
-      console.log('Verification fetch returned:', verification.length, 'destinations');
-      console.log('All destinations:', JSON.stringify(verification));
-      
-      return result;
     },
     onSuccess: async (result) => {
       console.log('Destination created successfully with ID:', result.id);

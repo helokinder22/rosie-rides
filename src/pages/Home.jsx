@@ -46,12 +46,14 @@ export default function Home() {
   const isPremium = user?.subscription_status === 'premium';
   const isLimitReached = !isPremium && destinations.length >= 2;
 
-  // Check authentication on page load (iPad Safari fix)
+  // Force authentication check on iPad
   React.useEffect(() => {
     const checkAuth = async () => {
-      const isAuth = await base44.auth.isAuthenticated();
-      if (!isAuth) {
-        console.log('Not authenticated on page load, redirecting...');
+      try {
+        await base44.auth.me();
+        console.log('User authenticated successfully');
+      } catch (error) {
+        console.log('Auth check failed, redirecting to login');
         base44.auth.redirectToLogin(window.location.href);
       }
     };
