@@ -50,6 +50,9 @@ export default function ManageDestinations() {
       }
     };
     checkAuth();
+    
+    // Scroll to top on page load
+    window.scrollTo(0, 0);
   }, []);
 
   const createMutation = useMutation({
