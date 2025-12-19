@@ -98,6 +98,12 @@ const categoryConfig = {
     label: "Salon",
     emoji: "💇"
   },
+  shop: { 
+    icon: ShoppingCart, 
+    gradient: "from-violet-400 to-violet-600", 
+    label: "Shop",
+    emoji: "🛍️"
+  },
 };
 
 export default function DestinationCard({ destination, onSelect, onShare }) {
