@@ -156,7 +156,7 @@ export default function About() {
             <div className="relative">
               <img 
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
-                alt="Rosie's Rides"
+                alt="Rosie Rides"
                 className="w-24 h-24 rounded-3xl shadow-2xl transform rotate-3"
               />
               <div className="absolute -top-2 -right-2">
@@ -166,18 +166,18 @@ export default function About() {
           </div>
 
           <h1 className="text-5xl sm:text-6xl font-black mb-8 text-center" style={{ color: '#0091a2' }}>
-            About Rosie's Rides
+            About Rosie Rides
           </h1>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-2xl text-slate-700 leading-relaxed">
-              Rosie's Rides makes getting an Uber effortless. Set your pickup and drop‑off in seconds, see clear options and prices, and request with one tap. The clean, friendly interface cuts the clutter so you can book faster and with confidence. Behind the scenes, Rosie's Rides talks to Uber to bring a driver to your door—while Uber handles payment, safety, and receipts. Simple, fast, and reliable.
+              Rosie Rides makes getting an Uber effortless. Set your pickup and drop‑off in seconds, see clear options and prices, and request with one tap. The clean, friendly interface cuts the clutter so you can book faster and with confidence. Behind the scenes, Rosie Rides talks to Uber to bring a driver to your door—while Uber handles payment, safety, and receipts. Simple, fast, and reliable.
             </p>
           </div>
         </div>
 
         <div className="text-center py-8 text-gray-500 text-sm">
-          © 2026 Rosie's Rides. All rights reserved.
+          © 2026 Rosie Rides. All rights reserved.
         </div>
       </div>
     </div>

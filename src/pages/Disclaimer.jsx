@@ -46,7 +46,7 @@ export default function Disclaimer() {
         </div>
 
         <div className="text-center py-8 text-gray-500 text-sm">
-          © 2026 Rosie's Rides. All rights reserved.
+          © 2026 Rosie Rides. All rights reserved.
         </div>
       </div>
     </div>

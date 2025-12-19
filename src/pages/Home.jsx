@@ -300,7 +300,7 @@ export default function Home() {
             <div className="relative">
               <img 
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
-                alt="Rosie's Rides"
+                alt="Rosie Rides"
                 className="w-24 h-24 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-6 transition-transform duration-300"
               />
               <div className="absolute -top-4 -right-3">
@@ -310,7 +310,7 @@ export default function Home() {
           </div>
 
           <h1 className="text-5xl sm:text-6xl font-black mb-2" style={{ color: '#0091a2' }}>
-            Rosie's Rides
+            Rosie Rides
           </h1>
 
           <a 
@@ -403,7 +403,7 @@ export default function Home() {
         </div>
 
         <div className="text-center py-8 text-gray-500 text-sm">
-          © 2026 Rosie's Rides. All rights reserved.
+          © 2026 Rosie Rides. All rights reserved.
         </div>
 
         <style>{`

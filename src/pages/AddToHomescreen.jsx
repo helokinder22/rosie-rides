@@ -31,7 +31,7 @@ export default function AddToHomescreen() {
             <div className="relative">
               <img 
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
-                alt="Rosie's Rides"
+                alt="Rosie Rides"
                 className="w-24 h-24 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-6 transition-transform duration-300"
               />
               <div className="absolute -top-2 -right-2">
@@ -45,7 +45,7 @@ export default function AddToHomescreen() {
           </h1>
 
           <p className="text-xl text-slate-600 text-center mb-8">
-            Here's how to add Rosie's Rides to your home screen:
+            Here's how to add Rosie Rides to your home screen:
           </p>
         </div>
 
@@ -60,7 +60,7 @@ export default function AddToHomescreen() {
             </CardHeader>
             <CardContent className="text-lg text-slate-700 space-y-2">
               <ol className="list-decimal list-inside space-y-2">
-                <li>Open Rosie's Rides in Safari.</li>
+                <li>Open Rosie Rides in Safari.</li>
                 <li>Tap the Share icon.</li>
                 <li>Choose Add to Home Screen.</li>
                 <li>Tap Add.</li>
@@ -78,7 +78,7 @@ export default function AddToHomescreen() {
             </CardHeader>
             <CardContent className="text-lg text-slate-700 space-y-2">
               <ol className="list-decimal list-inside space-y-2">
-                <li>Open Rosie's Rides in Chrome.</li>
+                <li>Open Rosie Rides in Chrome.</li>
                 <li>Tap the three‑dot menu.</li>
                 <li>Tap Add to Home screen or Install app.</li>
                 <li>Confirm Add.</li>
@@ -96,7 +96,7 @@ export default function AddToHomescreen() {
             </CardHeader>
             <CardContent className="text-lg text-slate-700 space-y-2">
               <ol className="list-decimal list-inside space-y-2">
-                <li>Open Rosie's Rides.</li>
+                <li>Open Rosie Rides.</li>
                 <li>Tap the three‑dot menu.</li>
                 <li>Tap Install or Add to Home screen.</li>
                 <li>Confirm.</li>
@@ -114,7 +114,7 @@ export default function AddToHomescreen() {
             </CardHeader>
             <CardContent className="text-lg text-slate-700 space-y-2">
               <ol className="list-decimal list-inside space-y-2">
-                <li>Open Rosie's Rides.</li>
+                <li>Open Rosie Rides.</li>
                 <li>Tap the menu (≡).</li>
                 <li>Tap Add page to and choose Home screen.</li>
               </ol>
@@ -123,7 +123,7 @@ export default function AddToHomescreen() {
         </div>
 
         <div className="text-center py-8 text-gray-500 text-sm">
-          © 2026 Rosie's Rides. All rights reserved.
+          © 2026 Rosie Rides. All rights reserved.
         </div>
       </div>
     </div>
