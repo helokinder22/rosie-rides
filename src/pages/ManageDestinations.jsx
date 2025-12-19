@@ -33,9 +33,14 @@ export default function ManageDestinations() {
 
   const createMutation = useMutation({
     mutationFn: async (data) => {
+      // Check current user
+      const currentUser = await base44.auth.me();
+      console.log('Current user email:', currentUser?.email);
       console.log('Creating destination with data:', JSON.stringify(data));
+      
       const result = await base44.entities.Destination.create(data);
       console.log('Create API returned:', JSON.stringify(result));
+      console.log('Created destination created_by:', result.created_by);
       
       // Wait for database write to complete
       await new Promise(resolve => setTimeout(resolve, 1000));
@@ -43,6 +48,7 @@ export default function ManageDestinations() {
       // Verify it was saved by fetching it back
       const verification = await base44.entities.Destination.list();
       console.log('Verification fetch returned:', verification.length, 'destinations');
+      console.log('All destinations:', JSON.stringify(verification));
       
       return result;
     },

@@ -20,13 +20,17 @@ export default function Home() {
   const { data: destinations, isLoading } = useQuery({
     queryKey: ['destinations'],
     queryFn: async () => {
+      const currentUser = await base44.auth.me();
+      console.log('Home page - Current user email:', currentUser?.email);
       console.log('Home page: Fetching destinations...');
       const data = await base44.entities.Destination.list('sort_order');
-      console.log('Home page: Fetched destinations:', data.length);
+      console.log('Home page: Fetched destinations count:', data.length);
+      console.log('Home page: Destinations data:', JSON.stringify(data));
       return data.sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0));
     },
     initialData: [],
     staleTime: 0, // Always refetch on mount
+    refetchOnMount: 'always',
   });
 
   const { data: user } = useQuery({
