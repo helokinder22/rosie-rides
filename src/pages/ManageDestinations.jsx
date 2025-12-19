@@ -2,8 +2,15 @@ import React, { useState } from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import { Home, Settings, Sparkles, Lock } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Home, Settings, Sparkles, Lock, Menu, User, LogOut, CreditCard, Crown, ShieldAlert, History, Smartphone } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { useNavigate, Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import DestinationForm from "../components/DestinationForm";
 import DestinationList from "../components/DestinationList";
@@ -182,6 +189,118 @@ export default function ManageDestinations() {
       </div>
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        {/* Profile Menu */}
+        <div className="absolute top-0 right-4 z-10">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                variant="secondary"
+                className="h-16 w-16 rounded-2xl bg-white border-4 border-white/50 shadow-xl p-0 hover:bg-slate-50 transition-transform hover:scale-105"
+                style={{ color: '#0091a2' }}
+              >
+                <Menu className="w-8 h-8" />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="bg-white/95 backdrop-blur-xl border-0 rounded-3xl shadow-2xl max-w-sm">
+              <DialogHeader className="rounded-t-3xl p-6 -m-6 mb-0" style={{ backgroundColor: '#0091a2' }}>
+                <DialogTitle className="text-2xl font-bold text-center text-white">Menu</DialogTitle>
+              </DialogHeader>
+              <div className="flex flex-col items-center space-y-6 py-4">
+                <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center">
+                  <User className="w-10 h-10" style={{ color: '#0091a2' }} />
+                </div>
+                
+                <div className="text-center space-y-1">
+                  <h3 className="text-xl font-bold text-slate-900">{user?.full_name || 'Guest User'}</h3>
+                  <p className="text-slate-500">{user?.email}</p>
+                </div>
+
+                <div className="w-full bg-slate-50 rounded-xl p-4 flex items-center justify-between border border-slate-100">
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2 rounded-lg ${isPremium ? 'bg-yellow-100 text-yellow-600' : 'bg-slate-200 text-slate-600'}`}>
+                      <CreditCard className="w-5 h-5" />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-sm font-medium text-slate-500">Plan</p>
+                      <p className="font-bold text-slate-800">{isPremium ? 'Premium Member' : 'Free Plan'}</p>
+                    </div>
+                  </div>
+                  {isPremium && <Crown className="w-5 h-5 text-yellow-500" />}
+                </div>
+
+                <Link to={createPageUrl("Home")} className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-12 text-lg rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50"
+                  >
+                    <Home className="w-5 h-5 mr-2" style={{ color: '#0091a2' }} />
+                    Home
+                  </Button>
+                </Link>
+
+                <Link to={createPageUrl("EmergencyContacts")} className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-12 text-lg rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50"
+                  >
+                    <Settings className="w-5 h-5 mr-2" style={{ color: '#0091a2' }} />
+                    Emergency Contacts
+                  </Button>
+                </Link>
+
+                <Link to={createPageUrl("TripHistory")} className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-12 text-lg rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50"
+                  >
+                    <History className="w-5 h-5 mr-2" style={{ color: '#0091a2' }} />
+                    Trip History
+                  </Button>
+                </Link>
+
+                <Link to={createPageUrl("About")} className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-12 text-lg rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50"
+                  >
+                    <Sparkles className="w-5 h-5 mr-2" style={{ color: '#0091a2' }} />
+                    About
+                  </Button>
+                </Link>
+
+                <Link to={createPageUrl("AddToHomescreen")} className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-12 text-lg rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50"
+                  >
+                    <Smartphone className="w-5 h-5 mr-2" style={{ color: '#0091a2' }} />
+                    Add to Homescreen
+                  </Button>
+                </Link>
+
+                <Link to={createPageUrl("Disclaimer")} className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-12 text-lg rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50"
+                  >
+                    <ShieldAlert className="w-5 h-5 mr-2" style={{ color: '#0091a2' }} />
+                    Disclaimer
+                  </Button>
+                </Link>
+
+                <Button 
+                  className="w-full h-12 text-lg rounded-xl mt-2 text-gray-700 font-bold"
+                  style={{ backgroundColor: '#ffc20c' }}
+                  onClick={() => base44.auth.logout()}
+                >
+                  <LogOut className="w-5 h-5 mr-2" style={{ color: '#0091a2' }} />
+                  Sign Out
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
+
         {/* Header */}
         <div className="mb-8 animate-fade-in">
           <Button
