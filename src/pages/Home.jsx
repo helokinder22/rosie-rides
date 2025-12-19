@@ -83,6 +83,9 @@ export default function Home() {
         .filter(Boolean)
         .join(' ');
 
+    console.log('Opening Uber with destination:', destination.name);
+    console.log('Full address:', fullAddress);
+
     // Record trip in background
     base44.entities.Trip.create({
       destination_name: destination.name,
@@ -123,28 +126,33 @@ export default function Home() {
     };
     notifyContacts();
 
-    // Geocode the address to get coordinates for more reliable Uber integration
+    // Try multiple Uber URL formats for best compatibility
+    const encodedAddress = encodeURIComponent(fullAddress);
+    const encodedName = encodeURIComponent(destination.name);
+    
+    // Format 1: Try with coordinates first (most reliable)
     try {
-      const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(fullAddress)}`);
+      const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodedAddress}`);
       const data = await response.json();
 
       if (data && data.length > 0) {
         const { lat, lon } = data[0];
-        const webUrl = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]=${lat}&dropoff[longitude]=${lon}&dropoff[nickname]=${encodeURIComponent(destination.name)}`;
-        window.location.href = webUrl;
-      } else {
-        // Fallback to formatted address if geocoding fails
-        const dropoff = encodeURIComponent(fullAddress);
-        const webUrl = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${dropoff}`;
-        window.location.href = webUrl;
+        console.log('Geocoded coordinates:', lat, lon);
+        // Use universal link format with coordinates
+        const uberUrl = `uber://?action=setPickup&pickup=my_location&dropoff[latitude]=${lat}&dropoff[longitude]=${lon}&dropoff[nickname]=${encodedName}`;
+        console.log('Opening Uber URL:', uberUrl);
+        window.location.href = uberUrl;
+        return;
       }
     } catch (error) {
       console.error("Geocoding failed", error);
-      // Fallback to formatted address
-      const dropoff = encodeURIComponent(fullAddress);
-      const webUrl = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${dropoff}`;
-      window.location.href = webUrl;
     }
+
+    // Format 2: Fallback to address-based deep link
+    console.log('Using address-based fallback');
+    const uberUrl = `uber://?action=setPickup&pickup=my_location&dropoff[formatted_address]=${encodedAddress}&dropoff[nickname]=${encodedName}`;
+    console.log('Opening Uber URL:', uberUrl);
+    window.location.href = uberUrl;
   };
 
   if (isLoading) {
