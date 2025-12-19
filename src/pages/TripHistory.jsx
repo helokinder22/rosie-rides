@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { base44 } from "@/api/base44Client";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -19,6 +19,7 @@ import { subDays, isAfter, startOfDay } from "date-fns";
 
 export default function TripHistory() {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const [searchTerm, setSearchTerm] = useState("");
   const [timeFilter, setTimeFilter] = useState("all");
 
@@ -26,6 +27,13 @@ export default function TripHistory() {
     queryKey: ['trips'],
     queryFn: () => base44.entities.Trip.list('-created_date', 100), // Get last 100 trips
     initialData: [],
+  });
+
+  const toggleCompleteMutation = useMutation({
+    mutationFn: ({ id, completed }) => base44.entities.Trip.update(id, { completed }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['trips'] });
+    },
   });
 
   const { data: user } = useQuery({
@@ -232,7 +240,11 @@ export default function TripHistory() {
             </div>
           ) : (
             filteredTrips.map((trip) => (
-              <TripHistoryItem key={trip.id} trip={trip} />
+              <TripHistoryItem 
+                key={trip.id} 
+                trip={trip}
+                onToggleComplete={() => toggleCompleteMutation.mutate({ id: trip.id, completed: !trip.completed })}
+              />
             ))
           )}
         </div>
