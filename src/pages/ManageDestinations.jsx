@@ -25,7 +25,14 @@ export default function ManageDestinations() {
 
   const { data: user } = useQuery({
     queryKey: ['user'],
-    queryFn: () => base44.auth.me(),
+    queryFn: async () => {
+      try {
+        return await base44.auth.me();
+      } catch (error) {
+        console.error('Failed to fetch user:', error);
+        return null;
+      }
+    },
   });
 
   const isPremium = user?.subscription_status === 'premium';
