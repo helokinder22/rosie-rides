@@ -237,7 +237,7 @@ export default function TripHistory() {
           )}
         </div>
 
-        <div className="text-center py-8 text-slate-600 text-sm">
+        <div className="text-center py-8 text-gray-500 text-sm">
           © 2026 Rosie's Rides. All rights reserved.
         </div>
       </div>

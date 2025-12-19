@@ -176,7 +176,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="text-center py-8 text-white text-sm opacity-70">
+        <div className="text-center py-8 text-gray-500 text-sm">
           © 2026 Rosie's Rides. All rights reserved.
         </div>
       </div>
