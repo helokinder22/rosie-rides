@@ -5,8 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Home, UserPlus, Trash2, Users, AlertTriangle, Bell } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Home, UserPlus, Trash2, Users, AlertTriangle, Bell, Menu, User, LogOut, CreditCard, Crown, Settings, Sparkles, ShieldAlert, History, Smartphone } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { useNavigate, Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import {
   AlertDialog,
