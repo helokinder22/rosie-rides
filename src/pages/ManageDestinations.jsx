@@ -374,6 +374,10 @@ export default function ManageDestinations() {
             </div>
           </>
         )}
+
+        <div className="text-center py-8 text-white text-sm opacity-70">
+          © 2026 Rosie's Rides. All rights reserved.
+        </div>
       </div>
 
       <style>{`
