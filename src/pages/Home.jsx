@@ -303,8 +303,8 @@ export default function Home() {
                 alt="Rosie's Rides"
                 className="w-24 h-24 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-6 transition-transform duration-300"
               />
-              <div className="absolute -top-2 -right-2">
-                <Sparkles className="w-8 h-8 animate-pulse" style={{ color: '#00c2d1' }} />
+              <div className="absolute -top-4 -right-3">
+                <Sparkles className="w-5 h-5 animate-pulse" style={{ color: '#00c2d1' }} />
               </div>
             </div>
           </div>
