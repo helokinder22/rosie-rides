@@ -42,6 +42,19 @@ export default function ManageDestinations() {
     mutationFn: async (data) => {
       console.log('Creating destination with data:', JSON.stringify(data));
       
+      // Check authentication state
+      const isAuth = await base44.auth.isAuthenticated();
+      console.log('Is authenticated:', isAuth);
+      
+      if (!isAuth) {
+        console.error('User not authenticated, redirecting to login');
+        base44.auth.redirectToLogin(window.location.href);
+        throw new Error('Not authenticated');
+      }
+      
+      const currentUser = await base44.auth.me();
+      console.log('Current user:', currentUser?.email);
+      
       const result = await base44.entities.Destination.create(data);
       console.log('Create API returned:', JSON.stringify(result));
       
