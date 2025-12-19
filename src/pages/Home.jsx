@@ -321,8 +321,8 @@ export default function Home() {
           >
             Where are you going?
           </a>
-          <div className="inline-block bg-black/70 backdrop-blur-md rounded-full px-8 py-4 border-2 border-black/30">
-            <p className="text-2xl sm:text-3xl text-white font-bold flex items-center justify-center gap-3">
+          <div className="inline-block">
+            <p className="text-2xl sm:text-3xl text-gray-700 font-bold flex items-center justify-center gap-3">
               <Car className="w-8 h-8" style={{ color: '#0091a2' }} />
               Tap your Destination
             </p>
