@@ -20,8 +20,6 @@ export default function Home() {
   const { data: destinations, isLoading } = useQuery({
     queryKey: ['destinations'],
     queryFn: async () => {
-      const currentUser = await base44.auth.me();
-      console.log('Home page - Current user email:', currentUser?.email);
       console.log('Home page: Fetching destinations...');
       const data = await base44.entities.Destination.list('sort_order');
       console.log('Home page: Fetched destinations count:', data.length);
