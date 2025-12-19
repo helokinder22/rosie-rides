@@ -324,7 +324,7 @@ export default function Home() {
           <div className="inline-block">
             <p className="text-2xl sm:text-3xl text-gray-700 font-bold flex items-center justify-center gap-3">
               <Car className="w-8 h-8" style={{ color: '#0091a2' }} />
-              Tap your Destination
+              Tap your destination below
             </p>
           </div>
 
