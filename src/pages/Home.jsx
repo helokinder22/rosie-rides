@@ -400,9 +400,13 @@ export default function Home() {
             </Link>
           )}
         </div>
-      </div>
+        </div>
 
-      <style>{`
+        <div className="text-center py-8 text-white text-sm opacity-70">
+        © 2026 Rosie's Rides. All rights reserved.
+        </div>
+
+        <style>{`
         @keyframes fade-in {
           from { opacity: 0; transform: translateY(-20px); }
           to { opacity: 1; transform: translateY(0); }
