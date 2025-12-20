@@ -24,8 +24,8 @@ Deno.serve(async (req) => {
                 },
             ],
             mode: 'subscription',
-            success_url: `${req.headers.get('origin')}/Home?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${req.headers.get('origin')}/Subscription`,
+            success_url: `${req.headers.get('origin')}/#/Home?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${req.headers.get('origin')}/#/Subscription`,
             customer_email: user.email,
             metadata: {
                 user_id: user.id,
