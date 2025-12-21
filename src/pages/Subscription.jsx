@@ -96,6 +96,16 @@ export default function Subscription() {
                 </Button>
               </Link>
 
+              <Link to={createPageUrl("ManageSubscription")} className="w-full">
+                <Button 
+                  variant="outline" 
+                  className="w-full h-12 text-lg rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50"
+                >
+                  <CreditCard className="w-5 h-5 mr-2" style={{ color: '#0091a2' }} />
+                  Manage Subscription
+                </Button>
+              </Link>
+
               <Link to={createPageUrl("EmergencyContacts")} className="w-full">
                 <Button 
                   variant="outline" 

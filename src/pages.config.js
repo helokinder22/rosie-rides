@@ -7,6 +7,7 @@ import TripHistory from './pages/TripHistory';
 import About from './pages/About';
 import AddToHomescreen from './pages/AddToHomescreen';
 import BusinessInfo from './pages/BusinessInfo';
+import ManageSubscription from './pages/ManageSubscription';
 
 
 export const PAGES = {
@@ -19,6 +20,7 @@ export const PAGES = {
     "About": About,
     "AddToHomescreen": AddToHomescreen,
     "BusinessInfo": BusinessInfo,
+    "ManageSubscription": ManageSubscription,
 }
 
 export const pagesConfig = {
