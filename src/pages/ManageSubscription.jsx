@@ -42,10 +42,9 @@ export default function ManageSubscription() {
         variant="outline"
         size="lg"
         onClick={() => navigate(createPageUrl("Home"))}
-        className="h-14 px-6 text-lg border-2 border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold mb-8"
+        className="h-14 w-14 border-2 border-slate-300 bg-white hover:bg-slate-50 mb-8 p-0"
       >
-        <Home className="w-5 h-5 mr-2" />
-        Back to Home
+        <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
       </Button>
 
       <div className="text-center pt-8 pb-12">

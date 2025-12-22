@@ -20,10 +20,9 @@ export default function AddToHomescreen() {
           variant="outline"
           size="lg"
           onClick={() => navigate(createPageUrl("Home"))}
-          className="h-16 px-6 text-xl mb-8 border-4 border-slate-200 bg-white hover:bg-slate-50 shadow-xl font-bold text-slate-900"
+          className="h-16 w-16 mb-8 border-4 border-slate-200 bg-white hover:bg-slate-50 shadow-xl p-0"
         >
-          <Home className="w-6 h-6 mr-3" />
-          Back to Home
+          <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
         </Button>
 
         <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 sm:p-12 shadow-2xl border-4 border-white/50 mb-8">
