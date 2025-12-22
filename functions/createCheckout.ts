@@ -14,7 +14,7 @@ Deno.serve(async (req) => {
 
         const priceId = Deno.env.get("STRIPE_PRICE_ID");
 
-        const baseUrl = Deno.env.get('BASE_URL') || 'https://rosierides.base44.app';
+        const baseUrl = 'https://rosierides.base44.app';
         
         // Create Stripe Checkout Session
         const session = await stripe.checkout.sessions.create({
@@ -26,8 +26,8 @@ Deno.serve(async (req) => {
                 },
             ],
             mode: 'subscription',
-            success_url: `${baseUrl}?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: baseUrl,
+            success_url: `${baseUrl}/Home?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${baseUrl}/Home`,
             customer_email: user.email,
             metadata: {
                 user_id: user.id,
