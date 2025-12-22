@@ -18,6 +18,7 @@ Deno.serve(async (req) => {
         if (event.type === 'checkout.session.completed') {
             const session = event.data.object;
             const userEmail = session.customer_email || session.metadata?.user_email;
+            const customerId = session.customer;
 
             if (userEmail) {
                 // Update user subscription status
@@ -25,9 +26,10 @@ Deno.serve(async (req) => {
                 
                 if (users.length > 0) {
                     await base44.asServiceRole.entities.User.update(users[0].id, {
-                        subscription_status: 'premium'
+                        subscription_status: 'premium',
+                        stripe_customer_id: customerId
                     });
-                    console.log(`Updated user ${userEmail} to premium`);
+                    console.log(`Updated user ${userEmail} to premium with customer ID ${customerId}`);
                 }
             }
         }
@@ -44,7 +46,8 @@ Deno.serve(async (req) => {
                 if (users.length > 0) {
                     const status = subscription.status === 'active' ? 'premium' : 'free';
                     await base44.asServiceRole.entities.User.update(users[0].id, {
-                        subscription_status: status
+                        subscription_status: status,
+                        stripe_customer_id: subscription.customer
                     });
                     console.log(`Updated user ${userEmail} to ${status}`);
                 }
