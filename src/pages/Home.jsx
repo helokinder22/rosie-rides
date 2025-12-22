@@ -85,14 +85,14 @@ export default function Home() {
     }
   };
 
-  const openUber = async (destination) => {
+  const openTransportApp = async (destination) => {
     // Construct full address from separate fields or use legacy address field
     const fullAddress = destination.address || 
       [destination.number, destination.street, destination.city, destination.state, destination.zip]
         .filter(Boolean)
         .join(' ');
 
-    console.log('Opening Uber with destination:', destination.name);
+    console.log('Opening transportation app with destination:', destination.name);
     console.log('Full address:', fullAddress);
 
     // Record trip in background
@@ -123,7 +123,7 @@ export default function Home() {
 
   Time: ${new Date().toLocaleString()}
 
-  They are opening the Uber app now.
+  They are opening the transportation app now.
             `
             })
           );
@@ -135,7 +135,7 @@ export default function Home() {
     };
     notifyContacts();
 
-    // Try multiple Uber URL formats for best compatibility
+    // Try multiple URL formats for best compatibility
     const encodedAddress = encodeURIComponent(fullAddress);
     const encodedName = encodeURIComponent(destination.name);
     
@@ -149,7 +149,7 @@ export default function Home() {
         console.log('Geocoded coordinates:', lat, lon);
         // Use universal link format with coordinates
         const uberUrl = `uber://?action=setPickup&pickup=my_location&dropoff[latitude]=${lat}&dropoff[longitude]=${lon}&dropoff[nickname]=${encodedName}`;
-        console.log('Opening Uber URL:', uberUrl);
+        console.log('Opening transportation URL:', uberUrl);
         window.location.href = uberUrl;
         return;
       }
@@ -160,7 +160,7 @@ export default function Home() {
     // Format 2: Fallback to address-based deep link
     console.log('Using address-based fallback');
     const uberUrl = `uber://?action=setPickup&pickup=my_location&dropoff[formatted_address]=${encodedAddress}&dropoff[nickname]=${encodedName}`;
-    console.log('Opening Uber URL:', uberUrl);
+    console.log('Opening transportation URL:', uberUrl);
     window.location.href = uberUrl;
   };
 
@@ -323,14 +323,9 @@ export default function Home() {
             Rosie Rides
           </h1>
 
-          <a 
-            href="https://m.uber.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-3xl sm:text-4xl font-black mb-4 hover:text-yellow-600 transition-colors cursor-pointer block text-gray-700"
-          >
+          <h2 className="text-3xl sm:text-4xl font-black mb-4 text-gray-700">
             Where are you going?
-          </a>
+          </h2>
           <div className="inline-block">
             <p className="text-2xl sm:text-3xl text-gray-700 font-bold flex items-center justify-center gap-3">
               <Car className="w-8 h-8" style={{ color: '#0091a2' }} />
@@ -391,7 +386,7 @@ export default function Home() {
               >
                 <DestinationCard
                   destination={destination}
-                  onSelect={openUber}
+                  onSelect={openTransportApp}
                   onShare={handleShare}
                 />
               </div>

@@ -171,7 +171,7 @@ export default function About() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-2xl text-slate-700 leading-relaxed">
-              Rosie Rides makes getting an Uber effortless. Set your pickup and drop‑off in seconds, see clear options and prices, and request with one tap. The clean, friendly interface cuts the clutter so you can book faster and with confidence. Behind the scenes, Rosie Rides talks to Uber to bring a driver to your door—while Uber handles payment, safety, and receipts. Simple, fast, and reliable.
+              Rosie Rides makes getting a ride effortless. Set your pickup and drop‑off in seconds, see clear options and prices, and request with one tap. The clean, friendly interface cuts the clutter so you can book faster and with confidence. Behind the scenes, Rosie Rides connects to transportation services to bring a driver to your door—handling payment, safety, and receipts. Simple, fast, and reliable.
             </p>
           </div>
         </div>
