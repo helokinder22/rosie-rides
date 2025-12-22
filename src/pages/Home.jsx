@@ -394,10 +394,10 @@ export default function Home() {
             <Link to={createPageUrl("ManageDestinations")}>
               <Button 
                 size="lg"
-                className="h-24 px-14 text-3xl font-bold text-gray-700 shadow-2xl rounded-3xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
+                className="h-16 sm:h-20 md:h-24 px-6 sm:px-10 md:px-14 text-xl sm:text-2xl md:text-3xl font-bold text-gray-700 shadow-2xl rounded-3xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
                 style={{ backgroundColor: '#ffc20c' }}
               >
-                <Plus className="w-10 h-10 mr-4" />
+                <Plus className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 mr-2 sm:mr-3 md:mr-4" />
                 Add/Edit Destination
               </Button>
             </Link>
