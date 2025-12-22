@@ -241,7 +241,7 @@ export default function Subscription() {
             <CardContent className="text-center space-y-6">
                 <div className="flex justify-center items-baseline">
                     <span className="text-6xl font-black text-slate-900">$9.99</span>
-                    <span className="text-xl text-slate-500 ml-2">/month</span>
+                    <span className="text-xl text-slate-500 ml-2">/year</span>
                 </div>
                 
                 <ul className="space-y-3 text-left max-w-xs mx-auto">
