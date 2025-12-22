@@ -83,7 +83,7 @@ export default function ManageSubscription() {
               <div className="flex items-center justify-between">
                 <span className="text-slate-700 font-medium">Current Plan</span>
                 <span className="text-slate-900 font-bold">
-                  {isPremium ? 'Premium ($9.99/month)' : 'Free'}
+                  {isPremium ? 'Premium ($9.99/year)' : 'Free'}
                 </span>
               </div>
               
