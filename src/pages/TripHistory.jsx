@@ -41,6 +41,10 @@ export default function TripHistory() {
     queryFn: () => base44.auth.me(),
   });
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const filteredTrips = useMemo(() => {
     return trips.filter(trip => {
       const matchesSearch = 
