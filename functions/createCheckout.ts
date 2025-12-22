@@ -13,8 +13,8 @@ Deno.serve(async (req) => {
         }
 
         const priceId = Deno.env.get("STRIPE_PRICE_ID");
-        
-        const baseUrl = 'https://rosierides.base44.app';
+
+        const baseUrl = Deno.env.get('BASE_URL') || 'https://rosierides.base44.app';
         
         // Create Stripe Checkout Session
         const session = await stripe.checkout.sessions.create({
