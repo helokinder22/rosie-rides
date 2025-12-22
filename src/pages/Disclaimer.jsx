@@ -33,13 +33,13 @@ export default function Disclaimer() {
 
             <div className="prose prose-slate prose-xl max-w-none">
               <p className="text-xl text-slate-700 leading-relaxed font-medium">
-                This application is an independent entity and is not affiliated with Uber Technologies, Inc.
+                This application is an independent entity and is not affiliated with any ride-sharing or transportation companies.
               </p>
               <p className="text-xl text-slate-700 leading-relaxed font-medium mt-4">
-                The app serves merely as a user-friendly interface for accessing Uber services. We do not assume any liability for actions or decisions made by Uber or its drivers.
+                The app serves merely as a user-friendly interface for accessing transportation services. We do not assume any liability for actions or decisions made by transportation providers or their drivers.
               </p>
               <p className="text-xl text-slate-700 leading-relaxed font-medium mt-4">
-                Users are encouraged to review Uber's terms of service and policies for complete information regarding their services.
+                Users are encouraged to review each service provider's terms of service and policies for complete information regarding their services.
               </p>
             </div>
           </div>

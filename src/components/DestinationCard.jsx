@@ -165,7 +165,7 @@ export default function DestinationCard({ destination, onSelect, onShare }) {
           {/* Call to action */}
           <div className={`flex items-center justify-between pt-4 border-t-2 border-slate-100 group-hover:border-transparent transition-colors duration-300`}>
             <span className="text-xl font-bold text-slate-700 group-hover:text-slate-900">
-              Call Uber
+              Get a Ride
             </span>
             <div className={`w-12 h-12 bg-gradient-to-br ${config.gradient} rounded-full flex items-center justify-center group-hover:translate-x-2 transition-transform duration-300 shadow-md`}>
               <ArrowRight className="w-6 h-6 text-white" />
