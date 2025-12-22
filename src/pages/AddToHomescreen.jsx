@@ -45,7 +45,7 @@ export default function AddToHomescreen() {
             <DialogHeader className="rounded-t-3xl p-6 -m-6 mb-0" style={{ backgroundColor: '#0091a2' }}>
               <DialogTitle className="text-2xl font-bold text-center text-white">Menu</DialogTitle>
             </DialogHeader>
-            <div className="flex flex-col items-center space-y-6 py-4">
+            <div className="flex flex-col items-center space-y-6 py-4" ref={(el) => el?.parentElement?.scrollTo(0, 0)}>
               <Link to={createPageUrl("Home")} className="w-full">
                 <Button 
                   variant="outline" 

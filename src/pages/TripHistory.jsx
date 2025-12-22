@@ -86,7 +86,7 @@ export default function TripHistory() {
             <DialogHeader className="rounded-t-3xl p-6 -m-6 mb-0" style={{ backgroundColor: '#0091a2' }}>
               <DialogTitle className="text-2xl font-bold text-center text-white">Menu</DialogTitle>
             </DialogHeader>
-            <div className="flex flex-col items-center space-y-6 py-4">
+            <div className="flex flex-col items-center space-y-6 py-4" ref={(el) => el?.parentElement?.scrollTo(0, 0)}>
               <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center">
                 <User className="w-10 h-10" style={{ color: '#0091a2' }} />
               </div>
