@@ -16,6 +16,10 @@ import {
 export default function Disclaimer() {
   const navigate = useNavigate();
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { data: user } = useQuery({
     queryKey: ['user'],
     queryFn: () => base44.auth.me(),

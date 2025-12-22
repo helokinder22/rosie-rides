@@ -16,6 +16,10 @@ import { base44 } from "@/api/base44Client";
 export default function About() {
   const navigate = useNavigate();
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { data: user } = useQuery({
     queryKey: ['user'],
     queryFn: () => base44.auth.me(),
