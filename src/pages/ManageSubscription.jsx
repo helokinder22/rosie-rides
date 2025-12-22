@@ -22,10 +22,16 @@ export default function ManageSubscription() {
     setIsLoading(true);
     try {
       const { data } = await base44.functions.invoke('createPortalSession', {});
+      if (data.error) {
+        alert(data.error);
+        setIsLoading(false);
+        return;
+      }
       window.location.href = data.url;
     } catch (error) {
       console.error('Portal error:', error);
-      alert('Failed to open subscription management. Please try again.');
+      const errorMessage = error.response?.data?.error || 'Failed to open subscription management. Please try again.';
+      alert(errorMessage);
       setIsLoading(false);
     }
   };
