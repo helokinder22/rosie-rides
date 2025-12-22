@@ -354,19 +354,19 @@ export default function ManageDestinations() {
               <Button
                 size="lg"
                 onClick={() => navigate(createPageUrl("Subscription"))}
-                className="w-full h-24 text-3xl font-bold mb-8 bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-white rounded-3xl shadow-2xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
+                className="w-full h-16 sm:h-20 md:h-24 text-xl sm:text-2xl md:text-3xl font-bold mb-8 bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-white rounded-3xl shadow-2xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
               >
-                <Lock className="w-10 h-10 mr-4" />
+                <Lock className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 mr-2 sm:mr-3 md:mr-4" />
                 Unlock More Destinations
               </Button>
             ) : (
               <Button
                 size="lg"
                 onClick={() => setShowForm(true)}
-                className="w-full h-24 text-3xl font-bold mb-8 text-gray-700 rounded-3xl shadow-2xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
+                className="w-full h-16 sm:h-20 md:h-24 text-xl sm:text-2xl md:text-3xl font-bold mb-8 text-gray-700 rounded-3xl shadow-2xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
                 style={{ backgroundColor: '#fbab13' }}
               >
-                <Sparkles className="w-8 h-8 mr-3 text-teal-600" />
+                <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 mr-2 sm:mr-2.5 md:mr-3 text-teal-600" />
                 Add New Destination
               </Button>
             )}
