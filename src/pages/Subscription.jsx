@@ -42,7 +42,7 @@ export default function Subscription() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 p-4 relative">
+    <div className="min-h-screen bg-slate-100 p-4 relative overflow-y-auto">
       {/* Profile Menu */}
       <div className="absolute top-6 right-4 z-10">
         <Dialog>

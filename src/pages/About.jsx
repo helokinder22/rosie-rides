@@ -22,7 +22,7 @@ export default function About() {
   });
 
   return (
-    <div className="min-h-screen relative overflow-hidden" style={{ backgroundColor: '#F5F5F5' }}>
+    <div className="min-h-screen relative overflow-y-auto" style={{ backgroundColor: '#F5F5F5' }}>
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute top-60 -left-40 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
