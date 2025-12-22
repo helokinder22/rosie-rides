@@ -27,7 +27,7 @@ Deno.serve(async (req) => {
             ],
             mode: 'subscription',
             success_url: `${baseUrl}/#/Home?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${baseUrl}/#/Subscription`,
+            cancel_url: 'https://rosierides.com',
             customer_email: user.email,
             metadata: {
                 user_id: user.id,
