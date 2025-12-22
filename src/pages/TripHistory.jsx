@@ -108,10 +108,10 @@ export default function TripHistory() {
               <Link to={createPageUrl("Home")} className="w-full">
                 <Button 
                   variant="outline" 
-                  className="w-full h-12 text-lg rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50"
+                  className="w-full h-12 rounded-xl border-2 text-white font-bold"
+                  style={{ backgroundColor: '#0091a2', borderColor: '#0091a2' }}
                 >
-                  <Home className="w-5 h-5 mr-2" style={{ color: '#0091a2' }} />
-                  Home
+                  <Home className="w-5 h-5" />
                 </Button>
               </Link>
 
@@ -183,10 +183,9 @@ export default function TripHistory() {
           variant="secondary"
           size="lg"
           onClick={() => navigate(createPageUrl("Home"))}
-          className="mb-8 bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-md"
+          className="mb-8 h-14 w-14 bg-white/20 hover:bg-white/30 border border-white/30 backdrop-blur-md p-0"
         >
-          <Home className="w-5 h-5 mr-2" />
-          Back to Home
+          <Home className="w-6 h-6 text-white" />
         </Button>
 
         <div className="flex items-center gap-4 mb-8 text-white">

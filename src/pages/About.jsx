@@ -70,10 +70,10 @@ export default function About() {
               <Link to={createPageUrl("Home")} className="w-full">
                 <Button 
                   variant="outline" 
-                  className="w-full h-12 text-lg rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50"
+                  className="w-full h-12 rounded-xl border-2 text-white font-bold"
+                  style={{ backgroundColor: '#0091a2', borderColor: '#0091a2' }}
                 >
-                  <Home className="w-5 h-5 mr-2" style={{ color: '#0091a2' }} />
-                  Home
+                  <Home className="w-5 h-5" />
                 </Button>
               </Link>
 
@@ -145,10 +145,9 @@ export default function About() {
           variant="outline"
           size="lg"
           onClick={() => navigate(createPageUrl("Home"))}
-          className="h-16 px-6 text-xl mb-8 border-4 border-slate-200 bg-white hover:bg-slate-50 shadow-xl font-bold text-slate-900"
+          className="h-16 w-16 mb-8 border-4 border-slate-200 bg-white hover:bg-slate-50 shadow-xl p-0"
         >
-          <Home className="w-6 h-6 mr-3" />
-          Back to Home
+          <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
         </Button>
 
         <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 sm:p-12 shadow-2xl border-4 border-white/50">
