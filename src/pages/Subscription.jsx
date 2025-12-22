@@ -27,10 +27,16 @@ export default function Subscription() {
     setIsProcessing(true);
     try {
       const { data } = await base44.functions.invoke('createCheckout', {});
+      if (data.error) {
+        alert(data.error);
+        setIsProcessing(false);
+        return;
+      }
       window.location.href = data.url;
     } catch (error) {
       console.error('Checkout error:', error);
-      alert('Failed to start checkout. Please try again.');
+      const errorMessage = error.response?.data?.error || 'Failed to start checkout. Please try again.';
+      alert(errorMessage);
       setIsProcessing(false);
     }
   };
