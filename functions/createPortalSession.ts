@@ -12,12 +12,16 @@ Deno.serve(async (req) => {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const BASE_URL = Deno.env.get('BASE_URL');
+    if (!user.stripe_customer_id) {
+      return Response.json({ error: 'No subscription found. Please subscribe first.' }, { status: 400 });
+    }
+
+    const BASE_URL = Deno.env.get('BASE_URL') || 'https://rosierides.base44.app';
 
     // Create a portal session
     const session = await stripe.billingPortal.sessions.create({
       customer: user.stripe_customer_id,
-      return_url: `${BASE_URL}#/ManageSubscription`,
+      return_url: `${BASE_URL}/#/ManageSubscription`,
     });
 
     return Response.json({ url: session.url });
