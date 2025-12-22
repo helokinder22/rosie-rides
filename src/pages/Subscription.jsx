@@ -9,6 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose,
 } from "@/components/ui/dialog";
 import { useNavigate, Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
