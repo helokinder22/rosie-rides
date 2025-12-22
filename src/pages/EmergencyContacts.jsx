@@ -324,9 +324,9 @@ export default function EmergencyContacts() {
           <Button
             size="lg"
             onClick={() => setShowForm(true)}
-            className="w-full h-24 text-3xl font-bold mb-8 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white rounded-3xl shadow-2xl border-4 border-white/30"
+            className="w-full h-24 text-xl sm:text-2xl lg:text-3xl font-bold mb-8 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white rounded-3xl shadow-2xl border-4 border-white/30"
           >
-            <UserPlus className="w-10 h-10 mr-4" />
+            <UserPlus className="w-8 h-8 sm:w-10 sm:h-10 mr-2 sm:mr-4" />
             Add Emergency Contact
           </Button>
         )}
