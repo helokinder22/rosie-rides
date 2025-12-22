@@ -198,6 +198,15 @@ export default function Home() {
                 <DialogTitle className="text-2xl font-bold text-center text-white">Menu</DialogTitle>
               </DialogHeader>
               <div className="flex flex-col items-center space-y-6 py-4">
+                <Link to={createPageUrl("Home")} className="w-full">
+                  <Button 
+                    className="w-full h-14 text-xl rounded-xl text-white font-bold"
+                    style={{ backgroundColor: '#0091a2' }}
+                  >
+                    <Home className="w-6 h-6 mr-2" />
+                    Back to Home
+                  </Button>
+                </Link>
                 <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center">
                   <User className="w-10 h-10" style={{ color: '#0091a2' }} />
                 </div>
