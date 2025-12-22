@@ -23,6 +23,10 @@ export default function ManageSubscription() {
     queryFn: () => base44.auth.me(),
   });
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const isPremium = user?.subscription_status === 'premium';
 
   const handleManageSubscription = async () => {

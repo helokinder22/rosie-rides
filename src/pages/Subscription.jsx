@@ -23,6 +23,10 @@ export default function Subscription() {
     queryFn: () => base44.auth.me(),
   });
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleSubscribe = async () => {
     setIsProcessing(true);
     try {
