@@ -338,7 +338,20 @@ export default function Home() {
             </p>
           </div>
 
-          {!isPremium && (
+          {destinations.length === 0 ? (
+            <div className="mt-8 flex justify-center">
+              <Link to={createPageUrl("ManageDestinations")}>
+                <Button
+                  size="lg"
+                  className="h-20 px-10 text-2xl text-gray-700 shadow-xl font-bold rounded-3xl border-4 border-white/50"
+                  style={{ backgroundColor: '#ffc20c' }}
+                >
+                  <Plus className="w-7 h-7 mr-3" />
+                  Add Destination
+                </Button>
+              </Link>
+            </div>
+          ) : !isPremium && (
             <div className="mt-8 flex justify-center">
               <Link to={createPageUrl("Subscription")}>
                 <Button
@@ -386,30 +399,47 @@ export default function Home() {
           </div>
         )}
 
-        <div className="flex justify-center mt-12 animate-bounce-slow">
-          {isLimitReached ? (
+        {destinations.length > 0 && (
+          <div className="flex justify-center mt-12 animate-bounce-slow">
+            {isLimitReached ? (
+              <Link to={createPageUrl("Subscription")}>
+                <Button 
+                  size="lg"
+                  className="h-24 px-14 text-3xl font-bold bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-white shadow-2xl rounded-3xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
+                >
+                  <Lock className="w-10 h-10 mr-4" />
+                  Unlock More
+                </Button>
+              </Link>
+            ) : (
+              <Link to={createPageUrl("ManageDestinations")}>
+                <Button 
+                  size="lg"
+                  className="h-24 px-14 text-3xl font-bold text-gray-700 shadow-2xl rounded-3xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
+                  style={{ backgroundColor: '#ffc20c' }}
+                >
+                  <Plus className="w-10 h-10 mr-4" />
+                  Add/Edit Destination
+                </Button>
+              </Link>
+            )}
+          </div>
+        )}
+
+        {destinations.length === 0 && (
+          <div className="flex justify-center mt-12 animate-bounce-slow">
             <Link to={createPageUrl("Subscription")}>
               <Button 
                 size="lg"
-                className="h-24 px-14 text-3xl font-bold bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-white shadow-2xl rounded-3xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
+                className="h-24 px-14 text-3xl font-bold text-white shadow-2xl rounded-3xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
+                style={{ backgroundColor: '#F3D250' }}
               >
-                <Lock className="w-10 h-10 mr-4" />
-                Unlock More
+                <Crown className="w-10 h-10 mr-4" />
+                Subscribe
               </Button>
             </Link>
-          ) : (
-            <Link to={createPageUrl("ManageDestinations")}>
-              <Button 
-                size="lg"
-                className="h-24 px-14 text-3xl font-bold text-gray-700 shadow-2xl rounded-3xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
-                style={{ backgroundColor: '#ffc20c' }}
-              >
-                <Plus className="w-10 h-10 mr-4" />
-                Add/Edit Destination
-              </Button>
-            </Link>
-          )}
-        </div>
+          </div>
+        )}
         </div>
 
         <div className="text-center py-8 text-gray-500 text-sm">
