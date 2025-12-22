@@ -92,26 +92,20 @@ export default function TripHistory() {
               </DialogClose>
             </DialogHeader>
             <div className="flex flex-col items-center space-y-6 py-8 px-6" ref={(el) => el?.parentElement?.scrollTo(0, 0)}>
-              <div className="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center">
-                <User className="w-12 h-12" style={{ color: '#0091a2' }} />
+              <div className="relative">
+                <div className="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center mx-auto">
+                  <User className="w-12 h-12" style={{ color: '#0091a2' }} />
+                </div>
+                {user?.subscription_status === 'premium' && (
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2">
+                    <Crown className="w-8 h-8 text-yellow-500" />
+                  </div>
+                )}
               </div>
               
               <div className="text-center space-y-1">
                 <h3 className="text-2xl font-black text-slate-900">{user?.full_name || 'Guest User'}</h3>
                 <p className="text-slate-600 text-lg">{user?.email}</p>
-              </div>
-
-              <div className="w-full bg-slate-50 rounded-2xl p-5 flex items-center justify-between border border-slate-100">
-                <div className="flex items-center gap-4">
-                  <div className={`p-3 rounded-xl ${user?.subscription_status === 'premium' ? 'bg-yellow-100 text-yellow-600' : 'bg-slate-200 text-slate-600'}`}>
-                    <CreditCard className="w-6 h-6" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-sm font-semibold text-slate-500">Plan</p>
-                    <p className="font-black text-lg text-slate-900">{user?.subscription_status === 'premium' ? 'Premium Member' : 'Free Plan'}</p>
-                  </div>
-                </div>
-                {user?.subscription_status === 'premium' && <Crown className="w-7 h-7 text-yellow-500" />}
               </div>
 
               <Link to={createPageUrl("Home")} className="w-full">
