@@ -267,10 +267,19 @@ export default function ManageSubscription() {
                   className="w-full h-14 text-lg font-bold bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white shadow-lg rounded-xl"
                 >
                   <ExternalLink className="w-5 h-5 mr-2" />
-                  {isLoading ? 'Loading...' : 'Manage via Stripe Portal'}
+                  {isLoading ? 'Loading...' : 'Manage Subscription'}
+                </Button>
+                <Button
+                  onClick={handleManageSubscription}
+                  disabled={isLoading}
+                  variant="outline"
+                  className="w-full h-14 text-lg font-bold border-2 border-red-300 text-red-600 hover:bg-red-50 rounded-xl"
+                >
+                  <XCircle className="w-5 h-5 mr-2" />
+                  {isLoading ? 'Loading...' : 'Cancel Subscription'}
                 </Button>
                 <p className="text-sm text-slate-500 text-center">
-                  Cancel anytime, update payment method, view invoices
+                  Manage payment method, view invoices, or cancel subscription
                 </p>
               </div>
             ) : (
