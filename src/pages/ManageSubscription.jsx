@@ -49,9 +49,36 @@ export default function ManageSubscription() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 p-4 overflow-y-auto">
-      {/* Profile Menu */}
-      <div className="absolute top-8 sm:top-12 right-4 z-10">
+    <div className="min-h-screen bg-slate-100 relative overflow-y-auto">
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        {/* Header with logo and buttons */}
+        <div className="flex justify-between items-center mb-12">
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => navigate(createPageUrl("Home"))}
+            className="h-16 w-16 border-4 border-white/50 bg-white hover:bg-slate-50 shadow-xl rounded-2xl p-0"
+          >
+            <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
+          </Button>
+          
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="relative">
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
+                alt="Rosie Rides"
+                className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl shadow-lg"
+              />
+              <div className="absolute -top-2 -right-2">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse" style={{ color: '#00c2d1' }} />
+              </div>
+            </div>
+            <h1 className="text-xl sm:text-3xl font-black" style={{ color: '#0091a2' }}>
+              Rosie Rides
+            </h1>
+          </div>
+          
+          <div>
         <Dialog>
           <DialogTrigger asChild>
             <Button
@@ -168,36 +195,14 @@ export default function ManageSubscription() {
             </div>
           </DialogContent>
         </Dialog>
-      </div>
-
-      <Button
-        variant="outline"
-        size="lg"
-        onClick={() => navigate(createPageUrl("Home"))}
-        className="h-16 w-16 border-4 border-white/50 bg-white hover:bg-slate-50 shadow-xl rounded-2xl mb-8 p-0"
-      >
-        <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
-      </Button>
-
-      <div className="text-center pt-8 pb-12">
-        <div className="flex items-center justify-center gap-3 mb-6">
-          <div className="relative">
-            <img 
-              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
-              alt="Rosie Rides"
-              className="w-16 h-16 sm:w-24 sm:h-24 rounded-3xl shadow-2xl"
-            />
-            <div className="absolute -top-2 -right-2">
-              <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" style={{ color: '#00c2d1' }} />
-            </div>
           </div>
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black" style={{ color: '#0091a2' }}>
-            Manage Subscription
-          </h1>
         </div>
-      </div>
 
-      <div className="max-w-2xl mx-auto">
+        <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border-4 border-white/50 mb-8">
+          <h2 className="text-4xl sm:text-5xl font-black mb-6 text-center" style={{ color: '#0091a2' }}>
+            Manage Subscription
+          </h2>
+        </div>
         <Card className="bg-white border-0 shadow-2xl">
           <CardHeader className="text-center">
             <div className="flex justify-center mb-4">
@@ -294,10 +299,10 @@ export default function ManageSubscription() {
             )}
           </CardContent>
         </Card>
-      </div>
 
-      <div className="text-center py-8 text-gray-500 text-sm">
-        © 2026 Rosie Rides. All rights reserved.
+        <div className="text-center py-8 text-gray-500 text-sm">
+          © 2026 Rosie Rides. All rights reserved.
+        </div>
       </div>
     </div>
   );
