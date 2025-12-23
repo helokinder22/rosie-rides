@@ -191,6 +191,15 @@ export default function About() {
             <p className="text-2xl text-slate-700 leading-relaxed">
               Rosie Rides makes getting a ride effortless. Set your pickup and drop‑off in seconds, see clear options and prices, and request with one tap. The clean, friendly interface cuts the clutter so you can book faster and with confidence. Behind the scenes, Rosie Rides connects to transportation services to bring a driver to your door—handling payment, safety, and receipts. Simple, fast, and reliable.
             </p>
+
+            <div className="mt-8 pt-8 border-t border-slate-200">
+              <p className="text-xl text-slate-600 text-center">
+                Questions? Contact us at{' '}
+                <a href="mailto:info@rosierides.com" className="font-bold hover:underline" style={{ color: '#0091a2' }}>
+                  info@rosierides.com
+                </a>
+              </p>
+            </div>
           </div>
         </div>
 
