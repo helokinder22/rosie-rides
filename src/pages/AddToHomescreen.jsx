@@ -31,18 +31,18 @@ export default function AddToHomescreen() {
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        {/* Home Button */}
-        <Button
-          variant="outline"
-          size="lg"
-          onClick={() => navigate(createPageUrl("Home"))}
-          className="absolute top-0 left-0 h-16 w-16 border-4 border-white/50 bg-white hover:bg-slate-50 shadow-xl rounded-2xl p-0 z-10"
-        >
-          <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
-        </Button>
-
-        {/* Profile Menu */}
-        <div className="absolute top-0 right-0 z-10">
+        {/* Header with buttons on same row */}
+        <div className="flex justify-between items-start mb-12">
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => navigate(createPageUrl("Home"))}
+            className="h-16 w-16 border-4 border-white/50 bg-white hover:bg-slate-50 shadow-xl rounded-2xl p-0"
+          >
+            <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
+          </Button>
+          
+          <div>
           <Dialog>
             <DialogTrigger asChild>
               <Button
@@ -159,25 +159,29 @@ export default function AddToHomescreen() {
               </div>
             </DialogContent>
           </Dialog>
+          </div>
         </div>
 
-        <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 sm:p-12 shadow-2xl border-4 border-white/50 mt-24 mb-8">
-          <div className="flex items-center justify-center gap-4 mb-8">
+        {/* Logo and Title */}
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center gap-4 mb-6">
             <div className="relative">
               <img 
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
                 alt="Rosie Rides"
-                className="w-24 h-24 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-6 transition-transform duration-300"
+                className="w-24 h-24 rounded-3xl shadow-2xl transform rotate-3"
               />
-              <div className="absolute -top-2 -right-2">
-                <Sparkles className="w-8 h-8 animate-pulse" style={{ color: '#00c2d1' }} />
-              </div>
             </div>
           </div>
-
-          <h1 className="text-5xl sm:text-6xl font-black mb-6 text-center" style={{ color: '#0091a2' }}>
-            Add to Homescreen
+          <h1 className="text-5xl sm:text-6xl font-black mb-2" style={{ color: '#0091a2' }}>
+            Rosie Rides
           </h1>
+        </div>
+
+        <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 sm:p-12 shadow-2xl border-4 border-white/50 mb-8">
+          <h2 className="text-4xl sm:text-5xl font-black mb-6 text-center" style={{ color: '#0091a2' }}>
+            Add to Homescreen
+          </h2>
 
           <p className="text-xl text-slate-600 text-center mb-8">
             Here's how to add Rosie Rides to your home screen:
