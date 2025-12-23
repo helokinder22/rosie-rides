@@ -34,6 +34,16 @@ export default function About() {
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        {/* Home Button */}
+        <Button
+          variant="outline"
+          size="lg"
+          onClick={() => navigate(createPageUrl("Home"))}
+          className="absolute top-0 left-0 h-16 w-16 border-4 border-white/50 bg-white hover:bg-slate-50 shadow-xl rounded-2xl p-0 z-10"
+        >
+          <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
+        </Button>
+
         {/* Profile Menu */}
         <div className="absolute top-0 right-0 z-10">
           <Dialog>
@@ -154,16 +164,7 @@ export default function About() {
           </Dialog>
         </div>
 
-        <Button
-          variant="outline"
-          size="lg"
-          onClick={() => navigate(createPageUrl("Home"))}
-          className="h-16 w-16 mb-8 border-4 border-white/50 bg-white hover:bg-slate-50 shadow-xl rounded-2xl p-0"
-        >
-          <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
-        </Button>
-
-        <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 sm:p-12 shadow-2xl border-4 border-white/50">
+        <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 sm:p-12 shadow-2xl border-4 border-white/50 mt-24">
           <div className="flex items-center justify-center gap-4 mb-8">
             <div className="relative">
               <img 

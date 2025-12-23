@@ -72,6 +72,16 @@ export default function TripHistory() {
       <div className="absolute top-0 left-0 w-full h-64 rounded-b-[3rem] shadow-2xl" style={{ backgroundColor: '#0091a2' }}></div>
 
       <div className="relative max-w-3xl mx-auto px-4 sm:px-6 py-8">
+        {/* Home Button */}
+        <Button
+          variant="secondary"
+          size="lg"
+          onClick={() => navigate(createPageUrl("Home"))}
+          className="absolute top-0 left-0 h-16 w-16 bg-white/20 hover:bg-white/30 border-4 border-white/50 backdrop-blur-md rounded-2xl shadow-xl p-0 z-10"
+        >
+          <Home className="w-6 h-6 text-white" />
+        </Button>
+
         {/* Profile Menu */}
         <div className="absolute top-0 right-0 z-10">
           <Dialog>
@@ -182,16 +192,7 @@ export default function TripHistory() {
           </Dialog>
         </div>
 
-        <Button
-          variant="secondary"
-          size="lg"
-          onClick={() => navigate(createPageUrl("Home"))}
-          className="mb-8 h-16 w-16 bg-white/20 hover:bg-white/30 border-4 border-white/50 backdrop-blur-md rounded-2xl shadow-xl p-0"
-        >
-          <Home className="w-6 h-6 text-white" />
-        </Button>
-
-        <div className="flex items-center gap-4 mb-8 text-white">
+        <div className="flex items-center gap-4 mb-8 text-white mt-24">
           <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/30">
             <History className="w-8 h-8" />
           </div>
