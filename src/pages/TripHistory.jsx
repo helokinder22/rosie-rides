@@ -68,8 +68,7 @@ export default function TripHistory() {
   }, [trips, searchTerm, timeFilter]);
 
   return (
-    <div className="min-h-screen bg-slate-50 relative overflow-y-auto">
-      <div className="absolute top-0 left-0 w-full h-64 rounded-b-[3rem] shadow-2xl" style={{ backgroundColor: '#0091a2' }}></div>
+    <div className="min-h-screen bg-slate-100 relative overflow-y-auto">
 
       <div className="relative max-w-3xl mx-auto px-4 sm:px-6 py-8">
         {/* Header with logo and buttons */}
