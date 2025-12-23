@@ -180,18 +180,16 @@ export default function ManageSubscription() {
       </Button>
 
       <div className="text-center pt-8 pb-12">
-        <div className="flex items-center justify-center gap-4 mb-6">
-          <div className="relative">
-            <img 
-              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
-              alt="Rosie Rides"
-              className="w-24 h-24 rounded-3xl shadow-2xl"
-            />
-          </div>
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <img 
+            src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
+            alt="Rosie Rides"
+            className="w-16 h-16 sm:w-24 sm:h-24 rounded-3xl shadow-2xl"
+          />
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black" style={{ color: '#0091a2' }}>
+            Manage Subscription
+          </h1>
         </div>
-        <h1 className="text-5xl sm:text-6xl font-black mb-2" style={{ color: '#0091a2' }}>
-          Manage Subscription
-        </h1>
       </div>
 
       <div className="max-w-2xl mx-auto">

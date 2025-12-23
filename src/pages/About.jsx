@@ -45,13 +45,13 @@ export default function About() {
             <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
           </Button>
           
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <img 
               src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
               alt="Rosie Rides"
-              className="w-16 h-16 rounded-2xl shadow-lg"
+              className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl shadow-lg"
             />
-            <h1 className="text-3xl font-black" style={{ color: '#0091a2' }}>
+            <h1 className="text-xl sm:text-3xl font-black" style={{ color: '#0091a2' }}>
               Rosie Rides
             </h1>
           </div>
