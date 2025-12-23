@@ -184,7 +184,7 @@ export default function Subscription() {
         variant="outline"
         size="lg"
         onClick={() => navigate(createPageUrl("Home"))}
-        className="absolute top-6 left-6 h-14 w-14 border-2 border-slate-300 bg-white hover:bg-slate-50 z-10 p-0"
+        className="absolute top-6 left-6 h-16 w-16 border-4 border-white/50 bg-white hover:bg-slate-50 shadow-xl rounded-2xl z-10 p-0"
       >
         <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
       </Button>

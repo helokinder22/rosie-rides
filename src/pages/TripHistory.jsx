@@ -186,7 +186,7 @@ export default function TripHistory() {
           variant="secondary"
           size="lg"
           onClick={() => navigate(createPageUrl("Home"))}
-          className="mb-8 h-14 w-14 bg-white/20 hover:bg-white/30 border border-white/30 backdrop-blur-md p-0"
+          className="mb-8 h-16 w-16 bg-white/20 hover:bg-white/30 border-4 border-white/50 backdrop-blur-md rounded-2xl shadow-xl p-0"
         >
           <Home className="w-6 h-6 text-white" />
         </Button>
