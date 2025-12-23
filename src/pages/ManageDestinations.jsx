@@ -191,7 +191,7 @@ export default function ManageDestinations() {
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Profile Menu */}
-        <div className="absolute top-8 sm:top-12 right-4 sm:right-6 z-10">
+        <div className="absolute top-0 right-0 z-10">
           <Dialog>
             <DialogTrigger asChild>
               <Button
