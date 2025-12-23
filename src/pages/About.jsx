@@ -177,18 +177,6 @@ export default function About() {
         </div>
 
         <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 sm:p-12 shadow-2xl border-4 border-white/50">
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="relative">
-              <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
-                alt="Rosie Rides"
-                className="w-24 h-24 rounded-3xl shadow-2xl transform rotate-3"
-              />
-              <div className="absolute -top-2 -right-2">
-                <Sparkles className="w-8 h-8 animate-pulse" style={{ color: '#00c2d1' }} />
-              </div>
-            </div>
-          </div>
 
           <h2 className="text-4xl sm:text-5xl font-black mb-8 text-center" style={{ color: '#0091a2' }}>
             About
