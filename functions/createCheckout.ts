@@ -29,6 +29,7 @@ Deno.serve(async (req) => {
             success_url: `${baseUrl}/Home?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${baseUrl}/Home`,
             customer_email: user.email,
+            allow_promotion_codes: true,
             metadata: {
                 user_id: user.id,
                 user_email: user.email,
