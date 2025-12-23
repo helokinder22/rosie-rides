@@ -182,16 +182,31 @@ export default function ManageDestinations() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-500 via-teal-600 to-cyan-600 relative overflow-y-auto">
-      {/* Animated background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse delay-700"></div>
-      </div>
-
+    <div className="min-h-screen bg-slate-100 relative overflow-y-auto">
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        {/* Profile Menu */}
-        <div className="absolute top-0 right-0 z-10">
+        {/* Header with logo and buttons */}
+        <div className="flex justify-between items-center mb-12">
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => navigate(createPageUrl("Home"))}
+            className="h-16 w-16 border-4 border-white/50 bg-white hover:bg-slate-50 shadow-xl rounded-2xl p-0"
+          >
+            <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
+          </Button>
+          
+          <div className="flex items-center gap-3">
+            <img 
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
+              alt="Rosie Rides"
+              className="w-16 h-16 rounded-2xl shadow-lg"
+            />
+            <h1 className="text-3xl font-black" style={{ color: '#0091a2' }}>
+              Rosie Rides
+            </h1>
+          </div>
+          
+          <div>
           <Dialog>
             <DialogTrigger asChild>
               <Button
@@ -308,33 +323,22 @@ export default function ManageDestinations() {
               </div>
             </DialogContent>
           </Dialog>
+          </div>
         </div>
 
-        {/* Header */}
-        <div className="mb-8 animate-fade-in">
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => navigate(createPageUrl("Home"))}
-            className="h-16 w-16 mb-8 border-4 border-white/50 bg-white hover:bg-slate-50 shadow-xl rounded-2xl p-0"
-          >
-            <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
-          </Button>
-          
-          <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border-4 border-white/50">
-            <div className="flex items-center gap-4 mb-3">
-              <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg">
-                <Settings className="w-9 h-9 text-white" />
-              </div>
-              <div>
-                <h1 className="text-5xl font-black text-slate-800">
-                  Manage Places
-                </h1>
-                <p className="text-xl text-slate-600 flex items-center gap-2 mt-1">
-                  <Sparkles className="w-5 h-5" />
-                  Add, edit, or remove your destinations
-                </p>
-              </div>
+        <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border-4 border-white/50 mb-8">
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg">
+              <Settings className="w-9 h-9 text-white" />
+            </div>
+            <div>
+              <h2 className="text-4xl font-black text-slate-800">
+                Manage Places
+              </h2>
+              <p className="text-xl text-slate-600 flex items-center gap-2 mt-1">
+                <Sparkles className="w-5 h-5" />
+                Add, edit, or remove your destinations
+              </p>
             </div>
           </div>
         </div>
