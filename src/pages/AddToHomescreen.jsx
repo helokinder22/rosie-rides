@@ -31,7 +31,7 @@ export default function AddToHomescreen() {
       </div>
 
       {/* Profile Menu */}
-      <div className="absolute top-8 sm:top-12 right-4 z-10">
+      <div className="absolute top-8 sm:top-12 right-4 sm:right-6 z-10">
         <Dialog>
           <DialogTrigger asChild>
             <Button

@@ -182,7 +182,7 @@ export default function Home() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Profile Button */}
-        <div className="absolute top-0 right-4 z-10">
+        <div className="absolute top-0 right-4 sm:right-6 z-10">
           <Dialog>
             <DialogTrigger asChild>
               <Button

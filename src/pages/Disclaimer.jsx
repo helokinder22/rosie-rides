@@ -29,7 +29,7 @@ export default function Disclaimer() {
   return (
     <div className="min-h-screen bg-slate-50 relative overflow-y-auto">
       {/* Profile Menu */}
-      <div className="absolute top-8 sm:top-12 right-4 z-10">
+      <div className="absolute top-8 sm:top-12 right-4 sm:right-6 z-10">
         <Dialog>
           <DialogTrigger asChild>
             <Button
