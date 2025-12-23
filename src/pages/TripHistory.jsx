@@ -83,11 +83,16 @@ export default function TripHistory() {
           </Button>
           
           <div className="flex items-center gap-2 sm:gap-3">
-            <img 
-              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
-              alt="Rosie Rides"
-              className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl shadow-lg"
-            />
+            <div className="relative">
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
+                alt="Rosie Rides"
+                className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl shadow-lg"
+              />
+              <div className="absolute -top-2 -right-2">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse" style={{ color: '#00c2d1' }} />
+              </div>
+            </div>
             <h1 className="text-xl sm:text-3xl font-black" style={{ color: '#0091a2' }}>
               Rosie Rides
             </h1>
