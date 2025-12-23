@@ -72,16 +72,27 @@ export default function TripHistory() {
       <div className="absolute top-0 left-0 w-full h-64 rounded-b-[3rem] shadow-2xl" style={{ backgroundColor: '#0091a2' }}></div>
 
       <div className="relative max-w-3xl mx-auto px-4 sm:px-6 py-8">
-        {/* Header with buttons on same row */}
-        <div className="flex justify-between items-start mb-12">
+        {/* Header with logo and buttons */}
+        <div className="flex justify-between items-center mb-12">
           <Button
-            variant="secondary"
+            variant="outline"
             size="lg"
             onClick={() => navigate(createPageUrl("Home"))}
-            className="h-16 w-16 bg-white/20 hover:bg-white/30 border-4 border-white/50 backdrop-blur-md rounded-2xl shadow-xl p-0"
+            className="h-16 w-16 border-4 border-white/50 bg-white hover:bg-slate-50 shadow-xl rounded-2xl p-0"
           >
-            <Home className="w-6 h-6 text-white" />
+            <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
           </Button>
+          
+          <div className="flex items-center gap-3">
+            <img 
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
+              alt="Rosie Rides"
+              className="w-16 h-16 rounded-2xl shadow-lg"
+            />
+            <h1 className="text-3xl font-black" style={{ color: '#0091a2' }}>
+              Rosie Rides
+            </h1>
+          </div>
           
           <div>
           <Dialog>
@@ -193,29 +204,13 @@ export default function TripHistory() {
           </div>
         </div>
 
-        {/* Logo and Title */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="relative">
-              <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
-                alt="Rosie Rides"
-                className="w-24 h-24 rounded-3xl shadow-2xl transform rotate-3"
-              />
-            </div>
-          </div>
-          <h1 className="text-5xl sm:text-6xl font-black mb-2 text-white">
-            Rosie Rides
-          </h1>
-        </div>
-
-        <div className="flex items-center gap-4 mb-8 text-white">
-          <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/30">
-            <History className="w-8 h-8" />
+        <div className="flex items-center gap-4 mb-8">
+          <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center border-2 border-slate-200 shadow-lg">
+            <History className="w-8 h-8" style={{ color: '#0091a2' }} />
           </div>
           <div>
-            <h2 className="text-4xl font-black">Trip History</h2>
-            <p className="text-blue-100 text-lg">Your past journeys</p>
+            <h2 className="text-4xl font-black" style={{ color: '#0091a2' }}>Trip History</h2>
+            <p className="text-slate-600 text-lg">Your past journeys</p>
           </div>
         </div>
 

@@ -24,15 +24,15 @@ export default function AddToHomescreen() {
   });
 
   return (
-    <div className="min-h-screen relative overflow-y-auto" style={{ backgroundColor: '#F5F5F5' }}>
+    <div className="min-h-screen relative overflow-y-auto bg-slate-100">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute top-60 -left-40 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        {/* Header with buttons on same row */}
-        <div className="flex justify-between items-start mb-12">
+        {/* Header with logo and buttons */}
+        <div className="flex justify-between items-center mb-12">
           <Button
             variant="outline"
             size="lg"
@@ -41,6 +41,17 @@ export default function AddToHomescreen() {
           >
             <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
           </Button>
+          
+          <div className="flex items-center gap-3">
+            <img 
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
+              alt="Rosie Rides"
+              className="w-16 h-16 rounded-2xl shadow-lg"
+            />
+            <h1 className="text-3xl font-black" style={{ color: '#0091a2' }}>
+              Rosie Rides
+            </h1>
+          </div>
           
           <div>
           <Dialog>
@@ -160,22 +171,6 @@ export default function AddToHomescreen() {
             </DialogContent>
           </Dialog>
           </div>
-        </div>
-
-        {/* Logo and Title */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="relative">
-              <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
-                alt="Rosie Rides"
-                className="w-24 h-24 rounded-3xl shadow-2xl transform rotate-3"
-              />
-            </div>
-          </div>
-          <h1 className="text-5xl sm:text-6xl font-black mb-2" style={{ color: '#0091a2' }}>
-            Rosie Rides
-          </h1>
         </div>
 
         <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 sm:p-12 shadow-2xl border-4 border-white/50 mb-8">

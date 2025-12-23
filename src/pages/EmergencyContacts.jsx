@@ -73,15 +73,15 @@ export default function EmergencyContacts() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-500 via-teal-600 to-cyan-600 relative overflow-y-auto">
+    <div className="min-h-screen bg-slate-100 relative overflow-y-auto">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse delay-700"></div>
       </div>
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        {/* Header with buttons on same row */}
-        <div className="flex justify-between items-start mb-12">
+        {/* Header with logo and buttons */}
+        <div className="flex justify-between items-center mb-12">
           <Button
             variant="outline"
             size="lg"
@@ -90,6 +90,17 @@ export default function EmergencyContacts() {
           >
             <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
           </Button>
+          
+          <div className="flex items-center gap-3">
+            <img 
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
+              alt="Rosie Rides"
+              className="w-16 h-16 rounded-2xl shadow-lg"
+            />
+            <h1 className="text-3xl font-black" style={{ color: '#0091a2' }}>
+              Rosie Rides
+            </h1>
+          </div>
           
           <div>
           <Dialog>
@@ -219,22 +230,6 @@ export default function EmergencyContacts() {
             </DialogContent>
           </Dialog>
           </div>
-        </div>
-
-        {/* Logo and Title */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="relative">
-              <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
-                alt="Rosie Rides"
-                className="w-24 h-24 rounded-3xl shadow-2xl transform rotate-3"
-              />
-            </div>
-          </div>
-          <h1 className="text-5xl sm:text-6xl font-black mb-2" style={{ color: '#0091a2' }}>
-            Rosie Rides
-          </h1>
         </div>
 
         <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border-4 border-white/50 mb-8">

@@ -27,10 +27,10 @@ export default function Disclaimer() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-50 relative overflow-y-auto">
+    <div className="min-h-screen bg-slate-100 relative overflow-y-auto">
       <div className="relative max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        {/* Header with buttons on same row */}
-        <div className="flex justify-between items-start mb-12">
+        {/* Header with logo and buttons */}
+        <div className="flex justify-between items-center mb-12">
           <Button
             variant="outline"
             size="lg"
@@ -39,6 +39,17 @@ export default function Disclaimer() {
           >
             <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
           </Button>
+          
+          <div className="flex items-center gap-3">
+            <img 
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
+              alt="Rosie Rides"
+              className="w-16 h-16 rounded-2xl shadow-lg"
+            />
+            <h1 className="text-3xl font-black" style={{ color: '#0091a2' }}>
+              Rosie Rides
+            </h1>
+          </div>
           
           <div>
           <Dialog>
@@ -158,22 +169,6 @@ export default function Disclaimer() {
             </DialogContent>
           </Dialog>
           </div>
-        </div>
-
-        {/* Logo and Title */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="relative">
-              <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
-                alt="Rosie Rides"
-                className="w-24 h-24 rounded-3xl shadow-2xl transform rotate-3"
-              />
-            </div>
-          </div>
-          <h1 className="text-5xl sm:text-6xl font-black mb-2" style={{ color: '#0091a2' }}>
-            Rosie Rides
-          </h1>
         </div>
 
         <div className="bg-white rounded-3xl p-8 shadow-xl border-2 border-slate-100">
