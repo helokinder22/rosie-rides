@@ -16,15 +16,26 @@ export default function Layout({ children }) {
 
   const fontSize = user?.font_size || 'medium';
 
-  const fontSizeMap = {
-    'small': '14px',
-    'medium': '16px',
-    'large': '18px',
-    'extra-large': '20px'
+  const fontSizeScales = {
+    'small': '0.875',
+    'medium': '1',
+    'large': '1.125',
+    'extra-large': '1.25'
   };
 
   return (
-    <div style={{ fontSize: fontSizeMap[fontSize] }}>
+    <div style={{ 
+      '--font-scale': fontSizeScales[fontSize],
+      fontSize: `calc(${fontSizeScales[fontSize]} * 1rem)`
+    }}>
+      <style>{`
+        body {
+          font-size: calc(${fontSizeScales[fontSize]} * 16px);
+        }
+        h1, h2, h3, h4, h5, h6, p, span, button, a, input, textarea, select, label {
+          font-size: inherit;
+        }
+      `}</style>
       {children}
     </div>
   );
