@@ -240,6 +240,16 @@ export default function Home() {
                   </Button>
                 </Link>
 
+                <Link to={createPageUrl("Settings")} className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-14 text-lg rounded-2xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50 font-semibold"
+                  >
+                    <Settings className="w-5 h-5 mr-2" style={{ color: '#0091a2' }} />
+                    Settings
+                  </Button>
+                </Link>
+
                 <Link to={createPageUrl("EmergencyContacts")} className="w-full">
                   <Button 
                     variant="outline" 
