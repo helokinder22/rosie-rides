@@ -88,9 +88,9 @@ export default function Home() {
   const openTransportApp = async (destination) => {
     // Construct full address from separate fields or use legacy address field
     const fullAddress = destination.address || 
-      [destination.number, destination.street, destination.city, destination.state, destination.zip]
+      [destination.number, destination.street, destination.city, destination.state, destination.zip, destination.country]
         .filter(Boolean)
-        .join(' ');
+        .join(', ');
 
     console.log('Opening transportation app with destination:', destination.name);
     console.log('Full address:', fullAddress);

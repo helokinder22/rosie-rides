@@ -54,6 +54,7 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
     city: destination?.city || "",
     state: destination?.state || "",
     zip: destination?.zip || "",
+    country: destination?.country || "",
     category: destination?.category || "other",
     notes: destination?.notes || "",
   });
@@ -68,15 +69,16 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
       formData.street,
       formData.city,
       formData.state,
-      formData.zip
+      formData.zip,
+      formData.country
     ].filter(Boolean);
     
     if (parts.length >= 3) {
-      setFullAddress(parts.join(" "));
+      setFullAddress(parts.join(", "));
     } else {
       setFullAddress("");
     }
-  }, [formData.number, formData.street, formData.city, formData.state, formData.zip]);
+  }, [formData.number, formData.street, formData.city, formData.state, formData.zip, formData.country]);
 
 
 
@@ -88,7 +90,7 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
     setIsAiSearching(true);
     try {
       const result = await base44.integrations.Core.InvokeLLM({
-        prompt: `Find the address for: "${aiQuery}". Return ONLY the address information in this exact JSON format with no additional text: {"name": "business/place name", "number": "street number", "street": "street name", "city": "city name", "state": "state abbreviation", "zip": "zip code"}. If you cannot find a specific address, return null.`,
+        prompt: `Find the address for: "${aiQuery}". Return ONLY the address information in this exact JSON format with no additional text: {"name": "business/place name", "number": "street number", "street": "street name", "city": "city name", "state": "state abbreviation", "zip": "zip code", "country": "country name"}. If you cannot find a specific address, return null.`,
         add_context_from_internet: true,
         response_json_schema: {
           type: "object",
@@ -98,7 +100,8 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
             street: { type: "string" },
             city: { type: "string" },
             state: { type: "string" },
-            zip: { type: "string" }
+            zip: { type: "string" },
+            country: { type: "string" }
           }
         }
       });
@@ -111,7 +114,8 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
           street: result.street || "",
           city: result.city || "",
           state: result.state || "",
-          zip: result.zip || ""
+          zip: result.zip || "",
+          country: result.country || ""
         });
         setAiQuery("");
       }
@@ -143,7 +147,7 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
     console.log('Full address:', fullAddress);
     
     // Validate required fields
-    if (!formData.name || !formData.number || !formData.street || !formData.city || !formData.state || !formData.zip) {
+    if (!formData.name || !formData.number || !formData.street || !formData.city) {
       console.log('Validation failed - missing required fields');
       return;
     }
@@ -267,11 +271,10 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
                   id="state"
                   value={formData.state}
                   onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                  placeholder="State"
-                  required
+                  placeholder="State/Region"
                   className="h-16 text-xl px-6 border-4 border-slate-300 focus:border-purple-500 rounded-2xl shadow-sm"
                 />
-                <Label htmlFor="state" className="text-sm text-slate-500 mt-1 block">State</Label>
+                <Label htmlFor="state" className="text-sm text-slate-500 mt-1 block">State/Region</Label>
               </div>
               <div className="col-span-1">
                 <Input
@@ -279,10 +282,22 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
                   value={formData.zip}
                   onChange={(e) => setFormData({ ...formData, zip: e.target.value })}
                   placeholder="12345"
-                  required
                   className="h-16 text-xl px-6 border-4 border-slate-300 focus:border-purple-500 rounded-2xl shadow-sm"
                 />
-                <Label htmlFor="zip" className="text-sm text-slate-500 mt-1 block">ZIP</Label>
+                <Label htmlFor="zip" className="text-sm text-slate-500 mt-1 block">ZIP/Postal</Label>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4">
+              <div>
+                <Input
+                  id="country"
+                  value={formData.country}
+                  onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                  placeholder="Mexico, United States, Canada..."
+                  className="h-16 text-xl px-6 border-4 border-slate-300 focus:border-purple-500 rounded-2xl shadow-sm"
+                />
+                <Label htmlFor="country" className="text-sm text-slate-500 mt-1 block">Country</Label>
               </div>
             </div>
 
