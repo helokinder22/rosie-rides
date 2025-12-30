@@ -95,6 +95,12 @@ export default function Home() {
     console.log('Opening transportation app with destination:', destination.name);
     console.log('Full address:', fullAddress);
 
+    // Validate we have enough address information
+    if (!fullAddress || fullAddress.length < 10) {
+      alert('Address is incomplete. Please edit this destination and add more details.');
+      return;
+    }
+
     // Record trip in background
     base44.entities.Trip.create({
       destination_name: destination.name,
@@ -135,32 +141,44 @@ export default function Home() {
     };
     notifyContacts();
 
-    // Try multiple URL formats for best compatibility
     const encodedAddress = encodeURIComponent(fullAddress);
     const encodedName = encodeURIComponent(destination.name);
-    
-    // Format 1: Try with coordinates first (most reliable)
-    try {
-      const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodedAddress}`);
-      const data = await response.json();
 
-      if (data && data.length > 0) {
-        const { lat, lon } = data[0];
-        console.log('Geocoded coordinates:', lat, lon);
-        // Use universal link format with coordinates
-        const uberUrl = `uber://?action=setPickup&pickup=my_location&dropoff[latitude]=${lat}&dropoff[longitude]=${lon}&dropoff[nickname]=${encodedName}`;
-        console.log('Opening transportation URL:', uberUrl);
-        window.location.href = uberUrl;
-        return;
+    // Try geocoding with better error handling
+    try {
+      console.log('Attempting to geocode:', fullAddress);
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&q=${encodedAddress}&limit=1`,
+        {
+          headers: {
+            'User-Agent': 'RosieRides/1.0'
+          }
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Geocoding response:', data);
+
+        if (data && data.length > 0) {
+          const { lat, lon } = data[0];
+          console.log('Successfully geocoded to:', lat, lon);
+
+          // Use coordinates-based deep link (most reliable)
+          const uberUrl = `uber://?action=setPickup&pickup=my_location&dropoff[latitude]=${lat}&dropoff[longitude]=${lon}&dropoff[nickname]=${encodedName}`;
+          console.log('Opening Uber with coordinates URL:', uberUrl);
+          window.location.href = uberUrl;
+          return;
+        }
       }
     } catch (error) {
-      console.error("Geocoding failed", error);
+      console.error("Geocoding error:", error);
     }
 
-    // Format 2: Fallback to address-based deep link
-    console.log('Using address-based fallback');
+    // Fallback: Use address-based deep link
+    console.warn('Geocoding failed, using address fallback');
     const uberUrl = `uber://?action=setPickup&pickup=my_location&dropoff[formatted_address]=${encodedAddress}&dropoff[nickname]=${encodedName}`;
-    console.log('Opening transportation URL:', uberUrl);
+    console.log('Opening Uber with address URL:', uberUrl);
     window.location.href = uberUrl;
   };
 

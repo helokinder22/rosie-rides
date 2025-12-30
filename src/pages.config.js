@@ -6,9 +6,9 @@ import EmergencyContacts from './pages/EmergencyContacts';
 import Home from './pages/Home';
 import ManageDestinations from './pages/ManageDestinations';
 import ManageSubscription from './pages/ManageSubscription';
+import Settings from './pages/Settings';
 import Subscription from './pages/Subscription';
 import TripHistory from './pages/TripHistory';
-import Settings from './pages/Settings';
 import __Layout from './Layout.jsx';
 
 
@@ -21,9 +21,9 @@ export const PAGES = {
     "Home": Home,
     "ManageDestinations": ManageDestinations,
     "ManageSubscription": ManageSubscription,
+    "Settings": Settings,
     "Subscription": Subscription,
     "TripHistory": TripHistory,
-    "Settings": Settings,
 }
 
 export const pagesConfig = {
