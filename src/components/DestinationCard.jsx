@@ -68,6 +68,24 @@ const categoryConfig = {
     label: "Hospital",
     emoji: "🏥"
   },
+  hotel: { 
+    icon: MapPin, 
+    gradient: "from-sky-400 to-sky-600", 
+    label: "Hotel",
+    emoji: "🏨"
+  },
+  museum: { 
+    icon: MapPin, 
+    gradient: "from-stone-400 to-stone-600", 
+    label: "Museum",
+    emoji: "🏛️"
+  },
+  music: { 
+    icon: MapPin, 
+    gradient: "from-fuchsia-400 to-fuchsia-600", 
+    label: "Music",
+    emoji: "🎵"
+  },
   other: { 
     icon: MapPin, 
     gradient: "from-slate-400 to-slate-600", 
