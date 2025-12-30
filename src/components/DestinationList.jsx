@@ -16,18 +16,24 @@ import {
 } from "@/components/ui/alert-dialog";
 
 const categoryEmojis = {
+  coffeeshop: "☕",
   dentist: "🦷",
   doctor: "🏥",
   family: "👨‍👩‍👧‍👦",
+  friends: "👥",
   grocery: "🛒",
   gym: "💪",
   home: "🏠",
   hospital: "🏥",
+  hotel: "🏨",
+  museum: "🏛️",
+  music: "🎵",
   other: "📍",
   petcare: "🐾",
   pharmacy: "💊",
   restaurant: "🍽️",
-  salon: "💇"
+  salon: "💇",
+  shop: "🛍️"
 };
 
 export default function DestinationList({ destinations, onEdit, onDelete, onReorder, isLoading }) {
