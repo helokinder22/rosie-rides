@@ -73,7 +73,8 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
       formData.country
     ].filter(Boolean);
     
-    if (parts.length >= 3) {
+    // Build address if we have at least street and city (or any 2 key parts)
+    if (parts.length >= 2 && (formData.street || formData.city)) {
       setFullAddress(parts.join(", "));
     } else {
       setFullAddress("");
