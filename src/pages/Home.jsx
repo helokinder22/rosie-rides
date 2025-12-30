@@ -141,14 +141,24 @@ export default function Home() {
     };
     notifyContacts();
 
-    const encodedAddress = encodeURIComponent(fullAddress);
+    // Normalize address for better geocoding (expand abbreviations)
+    const normalizedAddress = fullAddress
+      .replace(/Av\./gi, 'Avenida')
+      .replace(/Nte\./gi, 'Norte')
+      .replace(/Sur\./gi, 'South')
+      .replace(/Ote\./gi, 'Oriente')
+      .replace(/Pte\./gi, 'Poniente')
+      .replace(/St\./gi, 'Street')
+      .replace(/Dr\./gi, 'Drive');
+
+    const encodedAddress = encodeURIComponent(normalizedAddress);
     const encodedName = encodeURIComponent(destination.name);
 
     // Try geocoding with better error handling
     try {
-      console.log('Attempting to geocode:', fullAddress);
+      console.log('Attempting to geocode:', normalizedAddress);
       const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${encodedAddress}&limit=1`,
+        `https://nominatim.openstreetmap.org/search?format=json&q=${encodedAddress}&limit=1&addressdetails=1`,
         {
           headers: {
             'User-Agent': 'RosieRides/1.0'
@@ -168,6 +178,10 @@ export default function Home() {
           const uberUrl = `uber://?action=setPickup&pickup=my_location&dropoff[latitude]=${lat}&dropoff[longitude]=${lon}&dropoff[nickname]=${encodedName}`;
           console.log('Opening Uber with coordinates URL:', uberUrl);
           window.location.href = uberUrl;
+          return;
+        } else {
+          console.error('No geocoding results found');
+          alert('Could not find this address. Please verify the address is correct and try again, or contact support.');
           return;
         }
       }

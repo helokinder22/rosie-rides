@@ -24,22 +24,37 @@ export default function AddressConfirmationMap({ address }) {
     const geocodeAddress = async () => {
       setLoading(true);
       try {
+        // Normalize the address for better geocoding
+        const normalizedAddress = address
+          .replace(/Av\./gi, 'Avenida')
+          .replace(/Nte\./gi, 'Norte')
+          .replace(/Sur\./gi, 'South')
+          .replace(/Ote\./gi, 'Oriente')
+          .replace(/Pte\./gi, 'Poniente')
+          .replace(/St\./gi, 'Street')
+          .replace(/Dr\./gi, 'Drive');
+
+        console.log('Geocoding address:', normalizedAddress);
+        
         const response = await fetch(
-          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&limit=1`,
+          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(normalizedAddress)}&limit=1&addressdetails=1`,
           {
             headers: {
-              'User-Agent': 'RosiesRides/1.0'
+              'User-Agent': 'RosieRides/1.0'
             }
           }
         );
         const data = await response.json();
+        console.log('Geocoding result:', data);
 
         if (data && data.length > 0) {
           setCoordinates({
             lat: parseFloat(data[0].lat),
-            lng: parseFloat(data[0].lon)
+            lng: parseFloat(data[0].lon),
+            displayName: data[0].display_name
           });
         } else {
+          console.warn('No geocoding results found for:', normalizedAddress);
           setCoordinates(null);
         }
       } catch (error) {
@@ -68,8 +83,12 @@ export default function AddressConfirmationMap({ address }) {
 
   if (!coordinates) {
     return (
-      <div className="w-full h-64 rounded-2xl bg-slate-100 flex items-center justify-center border-2 border-slate-200">
-        <div className="text-slate-500">📍 Enter a complete address to see location</div>
+      <div className="w-full h-64 rounded-2xl bg-red-50 flex items-center justify-center border-2 border-red-200">
+        <div className="text-red-600 text-center px-4">
+          <div className="text-2xl mb-2">⚠️</div>
+          <div className="font-bold">Address Not Found</div>
+          <div className="text-sm mt-1">Please verify the address is correct</div>
+        </div>
       </div>
     );
   }
