@@ -100,6 +100,13 @@ export default function ManageDestinations() {
   const handleSave = async (data) => {
     console.log('handleSave called with data:', data);
     
+    // Check if user is authenticated
+    if (!user || !user.email) {
+      alert('You are not logged in. Please log in and try again.');
+      base44.auth.redirectToLogin(window.location.href);
+      return;
+    }
+    
     try {
       if (editingDestination) {
         console.log('Updating existing destination:', editingDestination.id);
