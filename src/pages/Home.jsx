@@ -46,20 +46,6 @@ export default function Home() {
   const isPremium = user?.subscription_status === 'premium';
   const isLimitReached = !isPremium && destinations.length >= 2;
 
-  // Force authentication check on iPad
-  React.useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        await base44.auth.me();
-        console.log('User authenticated successfully');
-      } catch (error) {
-        console.log('Auth check failed, redirecting to login');
-        base44.auth.redirectToLogin(window.location.href);
-      }
-    };
-    checkAuth();
-  }, []);
-
 
 
   const handleShare = async (destination) => {
