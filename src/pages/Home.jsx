@@ -31,17 +31,25 @@ export default function Home() {
     refetchOnMount: 'always',
   });
 
-  const { data: user } = useQuery({
+  const { data: user, isLoading: userLoading } = useQuery({
     queryKey: ['user'],
     queryFn: async () => {
       try {
-        return await base44.auth.me();
+        const userData = await base44.auth.me();
+        return userData;
       } catch (error) {
         console.error('Failed to fetch user:', error);
+        base44.auth.redirectToLogin(window.location.href);
         return null;
       }
     },
   });
+
+  React.useEffect(() => {
+    if (!userLoading && !user) {
+      base44.auth.redirectToLogin(window.location.href);
+    }
+  }, [user, userLoading]);
 
   const isPremium = user?.subscription_status === 'premium';
   const isLimitReached = !isPremium && destinations.length >= 2;
@@ -182,7 +190,7 @@ export default function Home() {
     window.location.href = uberUrl;
   };
 
-  if (isLoading) {
+  if (isLoading || userLoading || !user) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-teal-500 via-teal-600 to-cyan-600 flex items-center justify-center">
         <div className="text-3xl text-white font-bold animate-pulse">Loading...</div>
