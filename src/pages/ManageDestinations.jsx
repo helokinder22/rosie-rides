@@ -73,21 +73,13 @@ export default function ManageDestinations() {
   });
 
   const updateMutation = useMutation({
-    mutationFn: async ({ id, data }) => {
-      console.log('Updating destination:', id, data);
-      const result = await base44.entities.Destination.update(id, data);
-      console.log('Update result:', result);
-      return result;
-    },
-    onSuccess: async () => {
-      console.log('Destination updated successfully');
-      queryClient.removeQueries({ queryKey: ['destinations'] });
-      await queryClient.refetchQueries({ queryKey: ['destinations'] });
+    mutationFn: ({ id, data }) => base44.entities.Destination.update(id, data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['destinations'] });
       navigate(createPageUrl("Home"));
     },
     onError: (error) => {
-      console.error('Error updating destination:', error);
-      alert('Failed to update destination: ' + error.message);
+      alert('Failed to update destination. Please try again.');
     },
   });
 
