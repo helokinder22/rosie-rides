@@ -54,28 +54,12 @@ export default function ManageDestinations() {
   const createMutation = useMutation({
     mutationFn: async (data) => {
       console.log('Creating destination with data:', JSON.stringify(data));
+      console.log('User authenticated:', user?.email);
       
-      try {
-        const result = await base44.entities.Destination.create(data);
-        console.log('Create API returned:', JSON.stringify(result));
-        
-        // Wait for database write to complete
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // Verify it was saved by fetching it back
-        const verification = await base44.entities.Destination.list();
-        console.log('Verification fetch returned:', verification.length, 'destinations');
-        console.log('All destinations:', JSON.stringify(verification));
-        
-        return result;
-      } catch (error) {
-        // If authentication error, force re-login
-        if (error.message?.includes('auth') || error.status === 401 || error.message?.includes('Unauthorized')) {
-          console.log('Authentication error, forcing re-login');
-          base44.auth.redirectToLogin(window.location.href);
-        }
-        throw error;
-      }
+      const result = await base44.entities.Destination.create(data);
+      console.log('Create API returned:', JSON.stringify(result));
+      
+      return result;
     },
     onSuccess: async (result) => {
       console.log('Destination created successfully with ID:', result.id);
