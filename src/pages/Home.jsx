@@ -36,20 +36,14 @@ export default function Home() {
     queryFn: async () => {
       try {
         const userData = await base44.auth.me();
+        console.log('User data fetched:', userData);
         return userData;
       } catch (error) {
         console.error('Failed to fetch user:', error);
-        base44.auth.redirectToLogin(window.location.href);
         return null;
       }
     },
   });
-
-  React.useEffect(() => {
-    if (!userLoading && !user) {
-      base44.auth.redirectToLogin(window.location.href);
-    }
-  }, [user, userLoading]);
 
   const isPremium = user?.subscription_status === 'premium';
   const isLimitReached = !isPremium && destinations.length >= 2;
@@ -190,7 +184,7 @@ export default function Home() {
     window.location.href = uberUrl;
   };
 
-  if (isLoading || userLoading || !user) {
+  if (isLoading || userLoading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-teal-500 via-teal-600 to-cyan-600 flex items-center justify-center">
         <div className="text-3xl text-white font-bold animate-pulse">Loading...</div>
@@ -339,12 +333,15 @@ export default function Home() {
                 <Button 
                   className="w-full h-14 text-lg rounded-2xl text-gray-700 font-bold"
                   style={{ backgroundColor: '#ffc20c' }}
-                  onClick={() => {
-                    console.log('Logout button clicked');
-                    base44.auth.logout().catch(err => {
+                  onClick={async () => {
+                    console.log('Logout clicked');
+                    try {
+                      await base44.auth.logout();
+                      window.location.reload();
+                    } catch (err) {
                       console.error('Logout error:', err);
                       window.location.href = '/';
-                    });
+                    }
                   }}
                 >
                   <LogOut className="w-5 h-5 mr-2" style={{ color: '#0091a2' }} />
