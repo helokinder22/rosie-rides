@@ -61,29 +61,14 @@ export default function ManageDestinations() {
       
       return result;
     },
-    onSuccess: async (result) => {
+    onSuccess: (result) => {
       console.log('Destination created successfully with ID:', result.id);
-      
-      // Clear all React Query cache
-      queryClient.clear();
-      console.log('All cache cleared');
-      
-      // Force full page reload to home (iPad-friendly)
-      window.location.href = window.location.origin + createPageUrl("Home");
+      queryClient.invalidateQueries({ queryKey: ['destinations'] });
+      navigate(createPageUrl("Home"));
     },
     onError: (error) => {
       console.error('Error creating destination:', error);
-      console.error('Error details:', JSON.stringify(error));
-
-      // Check if iOS Safari
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-
-      if (isIOS && !isStandalone) {
-        alert('Failed to save. For best results on iPad/iPhone, please add this app to your home screen first. Go to About → Add to Homescreen for instructions.');
-      } else {
-        alert('Failed to save destination: ' + error.message);
-      }
+      alert('Failed to save destination. Please try again or contact support.');
     },
   });
 
