@@ -131,28 +131,16 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted with data:', formData);
-    const saveData = {
-      ...formData,
-      address: fullAddress
-    };
-    console.log('Calling onSave with:', saveData);
-    onSave(saveData);
-  };
-
   const handleSaveClick = async (e) => {
     e.preventDefault();
     e.stopPropagation();
     
-    console.log('Save button clicked on iPad');
+    console.log('Save button clicked');
     console.log('Form data:', formData);
-    console.log('Full address:', fullAddress);
     
     // Validate required fields
     if (!formData.name || !formData.number || !formData.street || !formData.city) {
-      console.log('Validation failed - missing required fields');
+      alert('Please fill in: Name, Street Number, Street, and City');
       return;
     }
     
@@ -160,14 +148,9 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
       ...formData,
       address: fullAddress
     };
-    console.log('Calling onSave with:', saveData);
     
-    try {
-      await onSave(saveData);
-      console.log('onSave completed successfully');
-    } catch (error) {
-      console.error('Error in onSave:', error);
-    }
+    console.log('Calling onSave with:', saveData);
+    await onSave(saveData);
   };
 
   return (
@@ -185,7 +168,7 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
       </CardHeader>
       
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-8">
+        <form onSubmit={(e) => e.preventDefault()} className="space-y-8">
           <div className="space-y-3">
             <Label className="text-2xl font-bold text-slate-700 flex items-center gap-2">
               <Sparkles className="w-6 h-6 text-purple-500" /> Ask AI for Address

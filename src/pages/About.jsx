@@ -170,7 +170,10 @@ export default function About() {
                 <Button 
                   className="w-full h-14 text-lg rounded-2xl text-gray-700 font-bold"
                   style={{ backgroundColor: '#ffc20c' }}
-                  onClick={() => base44.auth.logout()}
+                  onClick={() => {
+                    console.log('Logout clicked');
+                    base44.auth.logout().catch(() => window.location.href = '/');
+                  }}
                 >
                   <LogOut className="w-5 h-5 mr-2" style={{ color: '#0091a2' }} />
                   Sign Out
