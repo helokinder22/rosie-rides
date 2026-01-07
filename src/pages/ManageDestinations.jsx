@@ -53,17 +53,24 @@ export default function ManageDestinations() {
 
   const createMutation = useMutation({
     mutationFn: async (data) => {
+      console.log('=== SAVE ATTEMPT START ===');
       console.log('Creating destination with data:', JSON.stringify(data));
       console.log('User authenticated:', user?.email);
+      console.log('User object:', JSON.stringify(user));
       
       try {
+        console.log('Calling base44.entities.Destination.create...');
         const result = await base44.entities.Destination.create(data);
-        console.log('Create API returned:', JSON.stringify(result));
+        console.log('Create API SUCCESS:', JSON.stringify(result));
+        console.log('=== SAVE ATTEMPT SUCCESS ===');
         return result;
       } catch (error) {
+        console.error('=== SAVE ATTEMPT FAILED ===');
         console.error('Create error details:', error);
+        console.error('Error message:', error.message);
         console.error('Error response:', error.response?.data);
         console.error('Error status:', error.response?.status);
+        console.error('Full error object:', JSON.stringify(error, null, 2));
         throw error;
       }
     },
@@ -283,7 +290,13 @@ export default function ManageDestinations() {
                 <Button 
                   className="w-full h-14 text-lg rounded-2xl text-gray-700 font-bold"
                   style={{ backgroundColor: '#ffc20c' }}
-                  onClick={() => base44.auth.logout()}
+                  onClick={() => {
+                    console.log('Logout button clicked');
+                    base44.auth.logout().catch(err => {
+                      console.error('Logout error:', err);
+                      window.location.href = '/';
+                    });
+                  }}
                 >
                   <LogOut className="w-5 h-5 mr-2" style={{ color: '#0091a2' }} />
                   Sign Out
