@@ -56,10 +56,16 @@ export default function ManageDestinations() {
       console.log('Creating destination with data:', JSON.stringify(data));
       console.log('User authenticated:', user?.email);
       
-      const result = await base44.entities.Destination.create(data);
-      console.log('Create API returned:', JSON.stringify(result));
-      
-      return result;
+      try {
+        const result = await base44.entities.Destination.create(data);
+        console.log('Create API returned:', JSON.stringify(result));
+        return result;
+      } catch (error) {
+        console.error('Create error details:', error);
+        console.error('Error response:', error.response?.data);
+        console.error('Error status:', error.response?.status);
+        throw error;
+      }
     },
     onSuccess: (result) => {
       console.log('Destination created successfully with ID:', result.id);
@@ -68,7 +74,8 @@ export default function ManageDestinations() {
     },
     onError: (error) => {
       console.error('Error creating destination:', error);
-      alert('Failed to save destination. Please try again or contact support.');
+      const errorMsg = error.response?.data?.detail || error.response?.data?.message || error.message || 'Unknown error';
+      alert(`Failed to save destination: ${errorMsg}\n\nPlease check browser console for details and contact support.`);
     },
   });
 
