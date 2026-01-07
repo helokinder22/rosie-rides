@@ -93,8 +93,20 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
     
     setIsAiSearching(true);
     try {
+      console.log('AI Search starting for:', aiQuery);
       const result = await base44.integrations.Core.InvokeLLM({
-        prompt: `Find the address for: "${aiQuery}". Return ONLY the address information in this exact JSON format with no additional text: {"name": "business/place name", "number": "street number", "street": "street name", "city": "city name", "state": "state abbreviation", "zip": "zip code", "country": "country name"}. If you cannot find a specific address, return null.`,
+        prompt: `Search the internet and find the full address for: "${aiQuery}". 
+        
+Return the information in JSON format with these fields:
+- name: the business or place name
+- number: street number
+- street: street name (without the number)
+- city: city name
+- state: state/province (use 2-letter abbreviation if US/Canada)
+- zip: postal/zip code
+- country: country name
+
+Be thorough and search for the actual address. If multiple locations exist, pick the most prominent one.`,
         add_context_from_internet: true,
         response_json_schema: {
           type: "object",
@@ -106,11 +118,14 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
             state: { type: "string" },
             zip: { type: "string" },
             country: { type: "string" }
-          }
+          },
+          required: ["name", "street", "city"]
         }
       });
 
-      if (result) {
+      console.log('AI Search result:', result);
+
+      if (result && result.name) {
         setFormData({
           ...formData,
           name: result.name || formData.name,
@@ -122,10 +137,12 @@ export default function DestinationForm({ destination, onSave, onCancel, isLoadi
           country: result.country || ""
         });
         setAiQuery("");
+      } else {
+        alert("Could not find that location. Please try being more specific or enter the address manually.");
       }
     } catch (error) {
-      console.error("AI search failed", error);
-      alert("Could not find that address. Please try being more specific.");
+      console.error("AI search failed:", error);
+      alert("Search failed. Please enter the address manually.");
     } finally {
       setIsAiSearching(false);
     }
