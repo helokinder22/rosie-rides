@@ -48,6 +48,20 @@ export default function Home() {
   const isPremium = user?.subscription_status === 'premium';
   const isLimitReached = !isPremium && destinations.length >= 2;
 
+  React.useEffect(() => {
+    // Check if returning from subscription checkout
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('session_id')) {
+      // Give webhook time to process, then refresh user data
+      setTimeout(() => {
+        queryClient.invalidateQueries({ queryKey: ['user'] });
+      }, 2000);
+      
+      // Clean up URL
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+  }, []);
+
 
 
   const handleShare = async (destination) => {
