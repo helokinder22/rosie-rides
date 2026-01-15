@@ -1,6 +1,6 @@
 import React from "react";
 import { base44 } from "@/api/base44Client";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Plus, MapPin, Car, Sparkles, Settings, Crown, Lock, User, LogOut, CreditCard, ShieldAlert, History, Menu, Smartphone } from "lucide-react";
 import {
@@ -16,7 +16,8 @@ import DestinationCard from "../components/DestinationCard";
 import EmergencyButton from "../components/EmergencyButton";
 
 export default function Home() {
-  const navigate = useNavigate(); // Make sure useNavigate is imported or remove if not needed (it's not imported in Home.js usually unless I check imports)
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const { data: destinations, isLoading } = useQuery({
     queryKey: ['destinations'],
     queryFn: async () => {
