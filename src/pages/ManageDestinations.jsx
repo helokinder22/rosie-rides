@@ -49,7 +49,19 @@ export default function ManageDestinations() {
   React.useEffect(() => {
     // Scroll to top on page load
     window.scrollTo(0, 0);
-  }, []);
+    
+    // Check if returning from subscription checkout
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('session_id')) {
+      // Give webhook time to process, then refresh user data
+      setTimeout(() => {
+        queryClient.invalidateQueries({ queryKey: ['user'] });
+      }, 2000);
+      
+      // Clean up URL
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+  }, [queryClient]);
 
   const createMutation = useMutation({
     mutationFn: async (data) => {
