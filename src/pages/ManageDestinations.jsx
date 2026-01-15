@@ -56,7 +56,8 @@ export default function ManageDestinations() {
       // Give webhook time to process, then refresh user data
       setTimeout(() => {
         queryClient.invalidateQueries({ queryKey: ['user'] });
-      }, 2000);
+        queryClient.invalidateQueries({ queryKey: ['destinations'] });
+      }, 4000);
       
       // Clean up URL
       window.history.replaceState({}, '', window.location.pathname);
