@@ -26,7 +26,7 @@ Deno.serve(async (req) => {
                 },
             ],
             mode: 'subscription',
-            success_url: `${baseUrl}/ManageDestinations?session_id={CHECKOUT_SESSION_ID}`,
+            success_url: `${baseUrl}/Home?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${baseUrl}/Home`,
             customer_email: user.email,
             allow_promotion_codes: true,
