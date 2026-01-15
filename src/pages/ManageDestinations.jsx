@@ -55,14 +55,28 @@ export default function ManageDestinations() {
     // Check if returning from subscription checkout
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('session_id')) {
-      // Give webhook time to process, then refresh user data
-      setTimeout(() => {
+      console.log('Detected session_id, will refresh user data...');
+      
+      // Immediate refresh
+      queryClient.invalidateQueries({ queryKey: ['user'] });
+      queryClient.invalidateQueries({ queryKey: ['destinations'] });
+      
+      // Retry multiple times to catch webhook processing
+      const retryRefresh = () => {
         queryClient.invalidateQueries({ queryKey: ['user'] });
         queryClient.invalidateQueries({ queryKey: ['destinations'] });
-      }, 6000);
+      };
       
-      // Clean up URL
-      window.history.replaceState({}, '', window.location.pathname);
+      setTimeout(retryRefresh, 2000);
+      setTimeout(retryRefresh, 4000);
+      setTimeout(retryRefresh, 6000);
+      setTimeout(retryRefresh, 8000);
+      setTimeout(retryRefresh, 10000);
+      
+      // Clean up URL after first retry
+      setTimeout(() => {
+        window.history.replaceState({}, '', window.location.pathname);
+      }, 2000);
     }
   }, [queryClient]);
 

@@ -20,6 +20,10 @@ Deno.serve(async (req) => {
             const userEmail = session.customer_email || session.metadata?.user_email;
             const customerId = session.customer;
 
+            console.log('Checkout completed for:', userEmail, 'Customer ID:', customerId);
+            console.log('Session mode:', session.mode);
+            console.log('Session subscription:', session.subscription);
+
             if (userEmail) {
                 // Update user subscription status
                 const users = await base44.asServiceRole.entities.User.filter({ email: userEmail });
@@ -29,8 +33,12 @@ Deno.serve(async (req) => {
                         subscription_status: 'premium',
                         stripe_customer_id: customerId
                     });
-                    console.log(`Updated user ${userEmail} to premium with customer ID ${customerId}`);
+                    console.log(`✅ Successfully updated user ${userEmail} to premium with customer ID ${customerId}`);
+                } else {
+                    console.error(`❌ No user found with email ${userEmail}`);
                 }
+            } else {
+                console.error('❌ No user email found in checkout session');
             }
         }
 
