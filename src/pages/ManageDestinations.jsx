@@ -41,6 +41,8 @@ export default function ManageDestinations() {
         return null;
       }
     },
+    staleTime: 0,
+    refetchOnMount: 'always',
   });
 
   const isPremium = user?.subscription_status === 'premium';
@@ -57,7 +59,7 @@ export default function ManageDestinations() {
       setTimeout(() => {
         queryClient.invalidateQueries({ queryKey: ['user'] });
         queryClient.invalidateQueries({ queryKey: ['destinations'] });
-      }, 4000);
+      }, 6000);
       
       // Clean up URL
       window.history.replaceState({}, '', window.location.pathname);
