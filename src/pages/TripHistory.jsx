@@ -37,6 +37,13 @@ export default function TripHistory() {
     },
   });
 
+  const deleteTripMutation = useMutation({
+    mutationFn: (id) => base44.entities.Trip.delete(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['trips'] });
+    },
+  });
+
   const { data: user } = useQuery({
     queryKey: ['user'],
     queryFn: () => base44.auth.me(),
@@ -263,6 +270,7 @@ export default function TripHistory() {
                 key={trip.id} 
                 trip={trip}
                 onToggleComplete={() => toggleCompleteMutation.mutate({ id: trip.id, completed: !trip.completed })}
+                onDelete={() => deleteTripMutation.mutate(trip.id)}
               />
             ))
           )}
