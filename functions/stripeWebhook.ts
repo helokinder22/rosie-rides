@@ -20,12 +20,12 @@ Deno.serve(async (req) => {
             const userEmail = session.customer_email || session.metadata?.user_email;
             const customerId = session.customer;
 
-            console.log('Checkout completed for:', userEmail, 'Customer ID:', customerId);
+            console.log('🔔 Checkout completed for:', userEmail, 'Customer ID:', customerId);
             console.log('Session mode:', session.mode);
             console.log('Session subscription:', session.subscription);
+            console.log('Full session data:', JSON.stringify(session, null, 2));
 
             if (userEmail) {
-                // Update user subscription status
                 const users = await base44.asServiceRole.entities.User.filter({ email: userEmail });
                 
                 if (users.length > 0) {
@@ -39,6 +39,35 @@ Deno.serve(async (req) => {
                 }
             } else {
                 console.error('❌ No user email found in checkout session');
+            }
+        }
+
+        // Handle subscription creation (for promo codes and free trials)
+        if (event.type === 'customer.subscription.created') {
+            const subscription = event.data.object;
+            const customerId = subscription.customer;
+            
+            console.log('🔔 Subscription created for customer:', customerId);
+            console.log('Subscription status:', subscription.status);
+            
+            const customer = await stripe.customers.retrieve(customerId);
+            const userEmail = customer.email;
+
+            if (userEmail) {
+                const users = await base44.asServiceRole.entities.User.filter({ email: userEmail });
+                
+                if (users.length > 0) {
+                    // Activate for active, trialing, or any active subscription status
+                    if (['active', 'trialing'].includes(subscription.status)) {
+                        await base44.asServiceRole.entities.User.update(users[0].id, {
+                            subscription_status: 'premium',
+                            stripe_customer_id: customerId
+                        });
+                        console.log(`✅ Activated premium for ${userEmail} (status: ${subscription.status})`);
+                    }
+                } else {
+                    console.error(`❌ No user found with email ${userEmail}`);
+                }
             }
         }
 
