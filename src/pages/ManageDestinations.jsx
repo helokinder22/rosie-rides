@@ -215,7 +215,7 @@ export default function ManageDestinations() {
             <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
           </Button>
           
-          <div className="flex items-center gap-2 sm:gap-3">
+          <Link to={createPageUrl("Home")} className="flex items-center gap-2 sm:gap-3">
             <div className="relative">
               <img 
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/691a6204f2266bf3df80a940/6b6693db3_icon.png"
@@ -229,14 +229,14 @@ export default function ManageDestinations() {
             <h1 className="text-xl sm:text-3xl font-black" style={{ color: '#0091a2' }}>
               Rosie Rides
             </h1>
-          </div>
+          </Link>
           
           <div>
           <Dialog>
             <DialogTrigger asChild>
               <Button
-                variant="secondary"
-                className="h-16 w-16 rounded-2xl bg-white border-4 border-white/50 shadow-xl p-0 hover:bg-slate-50 transition-transform hover:scale-105"
+                variant="ghost"
+                className="h-16 w-16 p-0 transition-transform hover:scale-105"
                 style={{ color: '#0091a2' }}
               >
                 <Menu className="w-8 h-8" />

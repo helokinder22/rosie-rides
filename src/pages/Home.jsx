@@ -240,8 +240,8 @@ export default function Home() {
           <Dialog>
             <DialogTrigger asChild>
               <Button
-                variant="secondary"
-                className="h-16 w-16 rounded-2xl bg-white border-4 border-white/50 shadow-xl p-0 hover:bg-slate-50 transition-transform hover:scale-105"
+                variant="ghost"
+                className="h-16 w-16 p-0 transition-transform hover:scale-105"
                 style={{ color: '#0091a2' }}
               >
                 <Menu className="w-8 h-8" />
