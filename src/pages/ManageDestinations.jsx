@@ -48,6 +48,25 @@ export default function ManageDestinations() {
   const isPremium = user?.subscription_status === 'premium';
   const isLimitReached = !isPremium && destinations.length >= 2;
 
+  console.log('ManageDestinations - User data:', user);
+  console.log('ManageDestinations - isPremium:', isPremium);
+  console.log('ManageDestinations - subscription_status:', user?.subscription_status);
+  console.log('ManageDestinations - isLimitReached:', isLimitReached);
+
+  const handleRefreshSubscription = async () => {
+    console.log('Manual refresh clicked');
+    try {
+      const { data } = await base44.functions.invoke('checkSubscription', {});
+      console.log('Subscription check result:', data);
+      queryClient.invalidateQueries({ queryKey: ['user'] });
+      queryClient.invalidateQueries({ queryKey: ['destinations'] });
+      alert(`Subscription status: ${data.subscription_status}`);
+    } catch (error) {
+      console.error('Failed to check subscription:', error);
+      alert('Failed to check subscription');
+    }
+  };
+
   React.useEffect(() => {
     // Scroll to top on page load
     window.scrollTo(0, 0);
@@ -370,14 +389,24 @@ export default function ManageDestinations() {
         ) : (
           <>
             {isLimitReached ? (
-              <Button
-                size="lg"
-                onClick={() => navigate(createPageUrl("Subscription"))}
-                className="w-full h-16 sm:h-20 md:h-24 text-xl sm:text-2xl md:text-3xl font-bold mb-8 bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-white rounded-3xl shadow-2xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
-              >
-                <Lock className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 mr-2 sm:mr-3 md:mr-4" />
-                Unlock More Destinations
-              </Button>
+              <div className="space-y-4 mb-8">
+                <Button
+                  size="lg"
+                  onClick={() => navigate(createPageUrl("Subscription"))}
+                  className="w-full h-16 sm:h-20 md:h-24 text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-white rounded-3xl shadow-2xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
+                >
+                  <Lock className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 mr-2 sm:mr-3 md:mr-4" />
+                  Unlock More Destinations
+                </Button>
+                <Button
+                  size="lg"
+                  onClick={handleRefreshSubscription}
+                  variant="outline"
+                  className="w-full h-14 text-lg font-bold border-2 border-teal-600 text-teal-700 hover:bg-teal-50 rounded-2xl"
+                >
+                  Already Subscribed? Refresh Status
+                </Button>
+              </div>
             ) : (
               <Button
                 size="lg"
