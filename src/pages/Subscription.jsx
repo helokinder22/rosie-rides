@@ -61,8 +61,8 @@ export default function Subscription() {
         <Dialog>
           <DialogTrigger asChild>
             <Button
-              variant="secondary"
-              className="h-16 w-16 rounded-2xl bg-white border-4 border-white/50 shadow-xl p-0 hover:bg-slate-50 transition-transform hover:scale-105"
+              variant="ghost"
+              className="h-16 w-16 p-0 transition-transform hover:scale-105"
               style={{ color: '#0091a2' }}
             >
               <Menu className="w-8 h-8" />
@@ -198,7 +198,7 @@ export default function Subscription() {
         </Button>
       </Link>
 
-      <div className="text-center pt-8 pb-12">
+      <Link to={createPageUrl("Home")} className="block text-center pt-8 pb-12">
         <div className="flex items-center justify-center gap-4 mb-6">
           <div className="relative">
             <img 
@@ -214,7 +214,7 @@ export default function Subscription() {
         <h1 className="text-5xl sm:text-6xl font-black mb-2" style={{ color: '#0091a2' }}>
           Rosie Rides
         </h1>
-      </div>
+      </Link>
 
       <div className="max-w-4xl w-full mx-auto grid md:grid-cols-2 gap-8 items-center">
 
