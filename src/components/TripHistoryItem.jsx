@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, Calendar, Clock, ArrowUpRight, CheckCircle, Circle } from "lucide-react";
+import { MapPin, Calendar, Clock, ArrowUpRight, CheckCircle, Circle, Trash2 } from "lucide-react";
 import { format } from "date-fns";
+import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
-export default function TripHistoryItem({ trip, onToggleComplete }) {
+export default function TripHistoryItem({ trip, onToggleComplete, onDelete }) {
   const date = new Date(trip.trip_date || trip.created_date);
 
   return (
@@ -45,8 +57,32 @@ export default function TripHistoryItem({ trip, onToggleComplete }) {
           </div>
         </div>
         
-        <div className="ml-4 bg-slate-100 p-3 rounded-full">
-          <ArrowUpRight className="w-6 h-6 text-slate-400" />
+        <div className="flex items-center gap-2 ml-4">
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-10 w-10 rounded-full hover:bg-red-50 hover:text-red-600"
+              >
+                <Trash2 className="w-5 h-5" />
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Delete Trip?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Are you sure you want to delete this trip to {trip.destination_name}? This action cannot be undone.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction onClick={onDelete} className="bg-red-600 hover:bg-red-700">
+                  Delete
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </CardContent>
     </Card>
