@@ -55,25 +55,27 @@ export default function Home() {
     // Check if returning from subscription checkout
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('session_id')) {
-      console.log('Detected session_id, will refresh user data...');
+      console.log('Detected session_id, manually checking subscription status...');
       
-      // Immediate refresh
-      queryClient.invalidateQueries({ queryKey: ['user'] });
-      queryClient.invalidateQueries({ queryKey: ['destinations'] });
-      
-      // Retry multiple times to catch webhook processing
-      const retryRefresh = () => {
-        queryClient.invalidateQueries({ queryKey: ['user'] });
-        queryClient.invalidateQueries({ queryKey: ['destinations'] });
+      // Manually check subscription status via Stripe API
+      const checkStatus = async () => {
+        try {
+          const { data } = await base44.functions.invoke('checkSubscription', {});
+          console.log('Subscription check result:', data);
+          queryClient.invalidateQueries({ queryKey: ['user'] });
+          queryClient.invalidateQueries({ queryKey: ['destinations'] });
+        } catch (error) {
+          console.error('Failed to check subscription:', error);
+        }
       };
       
-      setTimeout(retryRefresh, 2000);
-      setTimeout(retryRefresh, 4000);
-      setTimeout(retryRefresh, 6000);
-      setTimeout(retryRefresh, 8000);
-      setTimeout(retryRefresh, 10000);
+      // Check immediately and retry multiple times
+      checkStatus();
+      setTimeout(checkStatus, 2000);
+      setTimeout(checkStatus, 4000);
+      setTimeout(checkStatus, 6000);
       
-      // Clean up URL after first retry
+      // Clean up URL
       setTimeout(() => {
         window.history.replaceState({}, '', window.location.pathname);
       }, 2000);
