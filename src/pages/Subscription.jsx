@@ -188,15 +188,7 @@ export default function Subscription() {
         </Dialog>
       </div>
 
-      <Link to={createPageUrl("Home")}>
-        <Button
-          variant="outline"
-          size="lg"
-          className="absolute top-6 left-6 h-16 w-16 border-4 border-white/50 bg-white hover:bg-slate-50 shadow-xl rounded-2xl z-10 p-0"
-        >
-          <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
-        </Button>
-      </Link>
+
 
       <Link to={createPageUrl("Home")} className="block text-center pt-8 pb-12">
         <div className="flex items-center justify-center gap-4 mb-6">

@@ -53,15 +53,8 @@ export default function ManageSubscription() {
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Header with logo and buttons */}
         <div className="flex justify-between items-center mb-12">
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => navigate(createPageUrl("Home"))}
-            className="h-16 w-16 border-4 border-white/50 bg-white hover:bg-slate-50 shadow-xl rounded-2xl p-0"
-          >
-            <Home className="w-6 h-6" style={{ color: '#0091a2' }} />
-          </Button>
-          
+          <div></div>
+
           <Link to={createPageUrl("Home")} className="flex items-center gap-2 sm:gap-3">
             <div className="relative">
               <img 
