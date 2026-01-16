@@ -37,10 +37,18 @@ export default function Subscription() {
         setIsProcessing(false);
         return;
       }
-      window.location.href = data.url;
+      if (!data.url) {
+        alert('Failed to create checkout session. Please try again.');
+        setIsProcessing(false);
+        return;
+      }
+      // Small delay to ensure state updates before redirect
+      setTimeout(() => {
+        window.location.href = data.url;
+      }, 100);
     } catch (error) {
       console.error('Checkout error:', error);
-      const errorMessage = error.response?.data?.error || 'Failed to start checkout. Please try again.';
+      const errorMessage = error.response?.data?.error || error.data?.error || 'Failed to start checkout. Please try again.';
       alert(errorMessage);
       setIsProcessing(false);
     }
