@@ -26,6 +26,9 @@ Deno.serve(async (req) => {
                 },
             ],
             mode: 'subscription',
+            subscription_data: {
+                trial_period_days: 60,
+            },
             success_url: `${baseUrl}/Home?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${baseUrl}/Home`,
             customer_email: user.email,
