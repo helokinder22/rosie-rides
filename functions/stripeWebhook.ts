@@ -12,7 +12,7 @@ Deno.serve(async (req) => {
         const signature = req.headers.get('stripe-signature');
 
         // Verify webhook signature
-        const event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
+        const event = await stripe.webhooks.constructEventAsync(body, signature, webhookSecret);
 
         // Handle successful checkout
         if (event.type === 'checkout.session.completed') {
