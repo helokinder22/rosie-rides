@@ -16,8 +16,12 @@ Deno.serve(async (req) => {
 
         const baseUrl = 'https://www.rosierides.com';
         
-        // Create Stripe Checkout Session
-        const session = await stripe.checkout.sessions.create({
+        // Calculate free trial until March 30, 2026
+        const freeUntilDate = new Date('2026-03-30T23:59:59Z');
+        const now = new Date();
+        const daysUntilCharge = Math.ceil((freeUntilDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+        
+        const sessionConfig = {
             payment_method_types: ['card'],
             line_items: [
                 {
@@ -26,9 +30,6 @@ Deno.serve(async (req) => {
                 },
             ],
             mode: 'subscription',
-            subscription_data: {
-                trial_period_days: 60,
-            },
             success_url: `${baseUrl}/Home?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${baseUrl}/Home`,
             customer_email: user.email,
@@ -37,7 +38,17 @@ Deno.serve(async (req) => {
                 user_id: user.id,
                 user_email: user.email,
             },
-        });
+        };
+
+        // Add trial period if before March 30, 2026
+        if (daysUntilCharge > 0) {
+            sessionConfig.subscription_data = {
+                trial_period_days: daysUntilCharge,
+            };
+        }
+        
+        // Create Stripe Checkout Session
+        const session = await stripe.checkout.sessions.create(sessionConfig);
 
         return Response.json({ url: session.url });
     } catch (error) {
