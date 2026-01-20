@@ -46,7 +46,8 @@ export default function ManageDestinations() {
   });
 
   const isPremium = user?.subscription_status === 'premium';
-  const isLimitReached = !isPremium && destinations.length >= 2;
+  const isFreeUntilMarch30 = new Date() < new Date('2026-03-30');
+  const isLimitReached = !isPremium && !isFreeUntilMarch30 && destinations.length >= 2;
 
   console.log('ManageDestinations - User data:', user);
   console.log('ManageDestinations - isPremium:', isPremium);
