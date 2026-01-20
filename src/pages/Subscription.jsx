@@ -180,7 +180,15 @@ export default function Subscription() {
               <Button 
                 className="w-full h-14 text-lg rounded-2xl text-gray-700 font-bold"
                 style={{ backgroundColor: '#ffc20c' }}
-                onClick={() => base44.auth.logout()}
+                onClick={async () => {
+                  try {
+                    await base44.auth.logout();
+                    window.location.reload();
+                  } catch (err) {
+                    console.error('Logout error:', err);
+                    window.location.href = '/';
+                  }
+                }}
               >
                 <LogOut className="w-5 h-5 mr-2" style={{ color: '#0091a2' }} />
                 Sign Out
