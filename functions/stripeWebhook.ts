@@ -4,15 +4,17 @@ import Stripe from 'npm:stripe@17.5.0';
 const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY"));
 
 Deno.serve(async (req) => {
-    const base44 = createClientFromRequest(req);
     const webhookSecret = Deno.env.get("STRIPE_WEBHOOK_SECRET");
 
     try {
         const body = await req.text();
         const signature = req.headers.get('stripe-signature');
 
-        // Verify webhook signature
+        // Verify webhook signature first
         const event = await stripe.webhooks.constructEventAsync(body, signature, webhookSecret);
+        
+        // Create Base44 client after signature verification
+        const base44 = createClientFromRequest(req);
 
         // Handle successful checkout
         if (event.type === 'checkout.session.completed') {
