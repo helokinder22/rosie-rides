@@ -16,8 +16,8 @@ Deno.serve(async (req) => {
 
         const baseUrl = 'https://www.rosierides.com';
         
-        // Calculate free trial until March 30, 2026
-        const freeUntilDate = new Date('2026-03-30T23:59:59Z');
+        // Calculate free trial until April 30, 2026
+        const freeUntilDate = new Date('2026-04-30T23:59:59Z');
         const now = new Date();
         const daysUntilCharge = Math.ceil((freeUntilDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
         
@@ -40,7 +40,7 @@ Deno.serve(async (req) => {
             },
         };
 
-        // Add trial period if before March 30, 2026
+        // Add trial period if before April 30, 2026
         if (daysUntilCharge > 0) {
             sessionConfig.subscription_data = {
                 trial_period_days: daysUntilCharge,
