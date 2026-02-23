@@ -207,6 +207,15 @@ export default function DestinationCard({ destination, onSelect, onShare }) {
             <p className="text-lg text-slate-600 leading-relaxed line-clamp-2">
               {destination.address}
             </p>
+
+            {destination.notes && (
+              <div className="mt-3 p-4 bg-slate-50 rounded-xl border-2 border-slate-200">
+                <p className="text-sm font-semibold text-slate-500 mb-1">Notes:</p>
+                <p className="text-base text-slate-700 leading-relaxed">
+                  {destination.notes}
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Call to action */}
