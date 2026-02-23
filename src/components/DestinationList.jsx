@@ -23,17 +23,20 @@ const categoryEmojis = {
   friends: "👥",
   grocery: "🛒",
   gym: "💪",
+  hike: "🥾",
   home: "🏠",
   hospital: "🏥",
   hotel: "🏨",
   museum: "🏛️",
   music: "🎵",
   other: "📍",
+  park: "🌳",
   petcare: "🐾",
   pharmacy: "💊",
   restaurant: "🍽️",
   salon: "💇",
-  shop: "🛍️"
+  shop: "🛍️",
+  temple: "⛪"
 };
 
 export default function DestinationList({ destinations, onEdit, onDelete, onReorder, isLoading }) {
