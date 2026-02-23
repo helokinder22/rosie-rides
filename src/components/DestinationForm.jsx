@@ -21,7 +21,19 @@ import {
   MapPin,
   Save,
   X,
-  Sparkles
+  Sparkles,
+  Coffee,
+  Dumbbell,
+  Home,
+  Hospital,
+  Building2,
+  Landmark,
+  Music,
+  Trees,
+  PawPrint,
+  ShoppingBag,
+  Church,
+  Mountain
 } from "lucide-react";
 import AddressConfirmationMap from "./AddressConfirmationMap";
 import { base44 } from "@/api/base44Client";
@@ -29,27 +41,27 @@ import { base44 } from "@/api/base44Client";
 
 
 const categories = [
-  { value: "coffeeshop", label: "Coffee Shop", icon: Utensils, emoji: "☕" },
+  { value: "coffeeshop", label: "Coffee Shop", icon: Coffee, emoji: "☕" },
   { value: "dentist", label: "Dentist", icon: Stethoscope, emoji: "🦷" },
   { value: "doctor", label: "Doctor", icon: Stethoscope, emoji: "🏥" },
   { value: "family", label: "Family/Friends", icon: Users, emoji: "👨‍👩‍👧‍👦" },
   { value: "friends", label: "Friends", icon: Users, emoji: "👥" },
   { value: "grocery", label: "Grocery Store", icon: ShoppingCart, emoji: "🛒" },
-  { value: "gym", label: "Gym", icon: MapPin, emoji: "💪" },
-  { value: "hike", label: "Hike", icon: MapPin, emoji: "🥾" },
-  { value: "home", label: "Home", icon: MapPin, emoji: "🏠" },
-  { value: "hospital", label: "Hospital", icon: Stethoscope, emoji: "🏥" },
-  { value: "hotel", label: "Hotel", icon: MapPin, emoji: "🏨" },
-  { value: "museum", label: "Museum", icon: MapPin, emoji: "🏛️" },
-  { value: "music", label: "Music Venue", icon: MapPin, emoji: "🎵" },
+  { value: "gym", label: "Gym", icon: Dumbbell, emoji: "💪" },
+  { value: "hike", label: "Hike", icon: Mountain, emoji: "🥾" },
+  { value: "home", label: "Home", icon: Home, emoji: "🏠" },
+  { value: "hospital", label: "Hospital", icon: Hospital, emoji: "🏥" },
+  { value: "hotel", label: "Hotel", icon: Building2, emoji: "🏨" },
+  { value: "museum", label: "Museum", icon: Landmark, emoji: "🏛️" },
+  { value: "music", label: "Music Venue", icon: Music, emoji: "🎵" },
   { value: "other", label: "Other", icon: MapPin, emoji: "📍" },
-  { value: "park", label: "Park", icon: MapPin, emoji: "🌳" },
-  { value: "petcare", label: "Pet Care", icon: MapPin, emoji: "🐾" },
+  { value: "park", label: "Park", icon: Trees, emoji: "🌳" },
+  { value: "petcare", label: "Pet Care", icon: PawPrint, emoji: "🐾" },
   { value: "pharmacy", label: "Pharmacy", icon: Pill, emoji: "💊" },
   { value: "restaurant", label: "Restaurant", icon: Utensils, emoji: "🍽️" },
   { value: "salon", label: "Hair Salon", icon: Scissors, emoji: "💇" },
-  { value: "shop", label: "Shop", icon: ShoppingCart, emoji: "🛍️" },
-  { value: "temple", label: "Temple/Church", icon: MapPin, emoji: "⛪" },
+  { value: "shop", label: "Shop", icon: ShoppingBag, emoji: "🛍️" },
+  { value: "temple", label: "Temple/Church", icon: Church, emoji: "⛪" },
 ];
 
 export default function DestinationForm({ destination, onSave, onCancel, isLoading }) {
