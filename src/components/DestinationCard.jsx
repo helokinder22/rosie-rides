@@ -182,13 +182,15 @@ export default function DestinationCard({ destination, onSelect, onShare }) {
 
       <div className="relative p-8">
         <div className="flex flex-col space-y-6">
-          {/* Icon and emoji */}
+          {/* Icon with category */}
           <div className="flex items-start gap-4">
-            <div className={`w-20 h-20 bg-gradient-to-br ${config.gradient} rounded-2xl flex items-center justify-center shadow-lg group-hover:rotate-6 transition-all duration-300 flex-shrink-0`}>
-              <Icon className="w-11 h-11 text-white" />
-            </div>
-            <div className="text-5xl group-hover:scale-125 transition-transform duration-300 flex-shrink-0">
-              {config.emoji}
+            <div className={`bg-gradient-to-br ${config.gradient} rounded-2xl p-4 shadow-lg group-hover:rotate-6 transition-all duration-300 flex-shrink-0`}>
+              <div className="flex flex-col items-center gap-2">
+                <Icon className="w-11 h-11 text-white" />
+                <p className="text-white text-xs font-bold uppercase tracking-wide">
+                  {config.label}
+                </p>
+              </div>
             </div>
             {destination.notes && (
               <div className="flex-1 p-3 bg-slate-50 rounded-xl border-2 border-slate-200">
