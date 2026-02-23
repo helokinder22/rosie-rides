@@ -223,7 +223,7 @@ export default function DestinationCard({ destination, onSelect, onShare }) {
               Get a Ride
             </span>
             <div className={`w-12 h-12 bg-gradient-to-br ${config.gradient} rounded-full flex items-center justify-center group-hover:translate-x-2 transition-transform duration-300 shadow-md`}>
-              <ArrowRight className="w-6 h-6 text-white" />
+              <ArrowRight className="w-6 h-6 text-white" strokeWidth={3} />
             </div>
           </div>
         </div>
