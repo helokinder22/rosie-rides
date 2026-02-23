@@ -183,13 +183,21 @@ export default function DestinationCard({ destination, onSelect, onShare }) {
       <div className="relative p-8">
         <div className="flex flex-col space-y-6">
           {/* Icon and emoji */}
-          <div className="flex items-center justify-between">
-            <div className={`w-20 h-20 bg-gradient-to-br ${config.gradient} rounded-2xl flex items-center justify-center shadow-lg group-hover:rotate-6 transition-all duration-300`}>
+          <div className="flex items-start gap-4">
+            <div className={`w-20 h-20 bg-gradient-to-br ${config.gradient} rounded-2xl flex items-center justify-center shadow-lg group-hover:rotate-6 transition-all duration-300 flex-shrink-0`}>
               <Icon className="w-11 h-11 text-white" />
             </div>
-            <div className="text-5xl group-hover:scale-125 transition-transform duration-300">
+            <div className="text-5xl group-hover:scale-125 transition-transform duration-300 flex-shrink-0">
               {config.emoji}
             </div>
+            {destination.notes && (
+              <div className="flex-1 p-3 bg-slate-50 rounded-xl border-2 border-slate-200">
+                <p className="text-xs font-semibold text-slate-500 mb-1">Notes:</p>
+                <p className="text-sm text-slate-700 leading-snug line-clamp-2">
+                  {destination.notes}
+                </p>
+              </div>
+            )}
           </div>
           
           {/* Content */}
@@ -207,15 +215,6 @@ export default function DestinationCard({ destination, onSelect, onShare }) {
             <p className="text-lg text-slate-600 leading-relaxed line-clamp-2">
               {destination.address}
             </p>
-
-            {destination.notes && (
-              <div className="mt-3 p-4 bg-slate-50 rounded-xl border-2 border-slate-200">
-                <p className="text-sm font-semibold text-slate-500 mb-1">Notes:</p>
-                <p className="text-base text-slate-700 leading-relaxed">
-                  {destination.notes}
-                </p>
-              </div>
-            )}
           </div>
 
           {/* Call to action */}
