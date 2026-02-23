@@ -36,17 +36,20 @@ const categories = [
   { value: "friends", label: "Friends", icon: Users, emoji: "👥" },
   { value: "grocery", label: "Grocery Store", icon: ShoppingCart, emoji: "🛒" },
   { value: "gym", label: "Gym", icon: MapPin, emoji: "💪" },
+  { value: "hike", label: "Hike", icon: MapPin, emoji: "🥾" },
   { value: "home", label: "Home", icon: MapPin, emoji: "🏠" },
   { value: "hospital", label: "Hospital", icon: Stethoscope, emoji: "🏥" },
   { value: "hotel", label: "Hotel", icon: MapPin, emoji: "🏨" },
   { value: "museum", label: "Museum", icon: MapPin, emoji: "🏛️" },
   { value: "music", label: "Music Venue", icon: MapPin, emoji: "🎵" },
   { value: "other", label: "Other", icon: MapPin, emoji: "📍" },
+  { value: "park", label: "Park", icon: MapPin, emoji: "🌳" },
   { value: "petcare", label: "Pet Care", icon: MapPin, emoji: "🐾" },
   { value: "pharmacy", label: "Pharmacy", icon: Pill, emoji: "💊" },
   { value: "restaurant", label: "Restaurant", icon: Utensils, emoji: "🍽️" },
   { value: "salon", label: "Hair Salon", icon: Scissors, emoji: "💇" },
   { value: "shop", label: "Shop", icon: ShoppingCart, emoji: "🛍️" },
+  { value: "temple", label: "Temple/Church", icon: MapPin, emoji: "⛪" },
 ];
 
 export default function DestinationForm({ destination, onSave, onCancel, isLoading }) {
