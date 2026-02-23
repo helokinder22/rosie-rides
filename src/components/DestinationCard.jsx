@@ -204,12 +204,6 @@ export default function DestinationCard({ destination, onSelect, onShare }) {
           
           {/* Content */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className={`px-3 py-1 bg-gradient-to-r ${config.gradient} text-white text-sm font-semibold rounded-full`}>
-                {config.label}
-              </span>
-            </div>
-            
             <h3 className="text-3xl font-black text-slate-800 leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-slate-800 group-hover:to-slate-600 transition-all duration-300">
               {destination.name}
             </h3>
