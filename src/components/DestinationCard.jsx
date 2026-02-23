@@ -10,12 +10,23 @@ import {
   MapPin,
   Home,
   ArrowRight,
-  Share2
+  Share2,
+  Coffee,
+  Dumbbell,
+  Hospital,
+  Building2,
+  Landmark,
+  Music,
+  Trees,
+  PawPrint,
+  ShoppingBag,
+  Church,
+  Mountain
 } from "lucide-react";
 
 const categoryConfig = {
   coffeeshop: { 
-    icon: Utensils, 
+    icon: Coffee, 
     gradient: "from-amber-600 to-amber-800", 
     label: "Coffee Shop",
     emoji: "☕"
@@ -51,10 +62,16 @@ const categoryConfig = {
     emoji: "🛒"
   },
   gym: { 
-    icon: MapPin, 
+    icon: Dumbbell, 
     gradient: "from-amber-400 to-amber-600", 
     label: "Gym",
     emoji: "💪"
+  },
+  hike: { 
+    icon: Mountain, 
+    gradient: "from-emerald-500 to-emerald-700", 
+    label: "Hike",
+    emoji: "🥾"
   },
   home: { 
     icon: Home, 
@@ -63,25 +80,25 @@ const categoryConfig = {
     emoji: "🏠"
   },
   hospital: { 
-    icon: Stethoscope, 
+    icon: Hospital, 
     gradient: "from-red-500 to-red-700", 
     label: "Hospital",
     emoji: "🏥"
   },
   hotel: { 
-    icon: MapPin, 
+    icon: Building2, 
     gradient: "from-sky-400 to-sky-600", 
     label: "Hotel",
     emoji: "🏨"
   },
   museum: { 
-    icon: MapPin, 
+    icon: Landmark, 
     gradient: "from-stone-400 to-stone-600", 
     label: "Museum",
     emoji: "🏛️"
   },
   music: { 
-    icon: MapPin, 
+    icon: Music, 
     gradient: "from-fuchsia-400 to-fuchsia-600", 
     label: "Music",
     emoji: "🎵"
@@ -92,8 +109,14 @@ const categoryConfig = {
     label: "Other",
     emoji: "📍"
   },
+  park: { 
+    icon: Trees, 
+    gradient: "from-green-500 to-green-700", 
+    label: "Park",
+    emoji: "🌳"
+  },
   petcare: { 
-    icon: MapPin, 
+    icon: PawPrint, 
     gradient: "from-lime-400 to-lime-600", 
     label: "Pet Care",
     emoji: "🐾"
@@ -117,10 +140,16 @@ const categoryConfig = {
     emoji: "💇"
   },
   shop: { 
-    icon: ShoppingCart, 
+    icon: ShoppingBag, 
     gradient: "from-violet-400 to-violet-600", 
     label: "Shop",
     emoji: "🛍️"
+  },
+  temple: { 
+    icon: Church, 
+    gradient: "from-amber-500 to-amber-700", 
+    label: "Temple/Church",
+    emoji: "⛪"
   },
 };
 
