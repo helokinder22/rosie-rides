@@ -384,7 +384,7 @@ export default function Home() {
           </Dialog>
         </div>
 
-        <div className="text-center mb-12 animate-fade-in">
+        <div className="text-center mb-4 animate-fade-in">
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="relative">
               <img 
