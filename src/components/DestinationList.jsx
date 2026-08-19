@@ -22,6 +22,7 @@ const categoryEmojis = {
   dentist: "🦷",
   doctor: "🏥",
   family: "👨‍👩‍👧‍👦",
+  friend: "🧑",
   friends: "👥",
   grocery: "🛒",
   gym: "💪",
