@@ -8,7 +8,6 @@ import {
   Users,
   MapPin,
   Home,
-  Share2,
   Coffee,
   Dumbbell,
   Hospital,
@@ -58,7 +57,7 @@ const categoryConfig = {
   temple: { icon: Church, color: "#F2B44E", label: "Temple/Church" },
 };
 
-export default function DestinationCard({ destination, onSelect, onShare }) {
+export default function DestinationCard({ destination, onSelect }) {
   const config = categoryConfig[destination.category] || categoryConfig.other;
   const Icon = config.icon;
 
@@ -68,26 +67,6 @@ export default function DestinationCard({ destination, onSelect, onShare }) {
       className="group relative w-full aspect-square rounded-2xl shadow-lg overflow-hidden transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/50"
       style={{ backgroundColor: config.color }}
     >
-      {/* Share */}
-      <span
-        role="button"
-        tabIndex={0}
-        onClick={(e) => {
-          e.stopPropagation();
-          onShare(destination);
-        }}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.stopPropagation();
-            onShare(destination);
-          }
-        }}
-        className="absolute top-2 right-2 z-10 p-2 bg-white/25 backdrop-blur-sm rounded-full hover:bg-white/40 transition-colors"
-        title="Share Trip Details"
-      >
-        <Share2 className="w-4 h-4 text-white" />
-      </span>
-
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-4 text-center">
         <Icon className="w-12 h-12 sm:w-14 sm:h-14 text-white drop-shadow-md" strokeWidth={1.75} />
         <span className="text-white text-sm sm:text-base font-bold uppercase tracking-wide leading-tight line-clamp-3 drop-shadow-sm">

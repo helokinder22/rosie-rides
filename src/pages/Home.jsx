@@ -85,29 +85,6 @@ export default function Home() {
 
 
 
-  const handleShare = async (destination) => {
-    const shareData = {
-      title: 'My Trip',
-      text: `I'm heading to ${destination.name} (${destination.address}) via Uber.`,
-    };
-
-    if (navigator.share) {
-      try {
-        await navigator.share(shareData);
-      } catch (err) {
-        console.log('Error sharing:', err);
-      }
-    } else {
-      // Fallback to SMS for mobile or alert
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      if (isMobile) {
-        window.open(`sms:?body=${encodeURIComponent(shareData.text)}`);
-      } else {
-        alert(`Share this message:\n\n${shareData.text}`);
-      }
-    }
-  };
-
   const openTransportApp = async (destination) => {
     // Construct full address from separate fields or use legacy address field
     const fullAddress = destination.address || 
@@ -452,10 +429,9 @@ export default function Home() {
                 style={{ animationDelay: `${index * 80}ms` }}
               >
                 <DestinationCard
-                  destination={destination}
-                  onSelect={openTransportApp}
-                  onShare={handleShare}
-                />
+                   destination={destination}
+                   onSelect={openTransportApp}
+                 />
               </div>
             ))}
           </div>
