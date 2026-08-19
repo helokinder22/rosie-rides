@@ -33,9 +33,11 @@ const categoryEmojis = {
   park: "🌳",
   petcare: "🐾",
   pharmacy: "💊",
+  poi: "⭐",
   restaurant: "🍽️",
   salon: "💇",
   shop: "🛍️",
+  station: "🚉",
   temple: "⛪"
 };
 

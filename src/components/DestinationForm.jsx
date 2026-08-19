@@ -33,7 +33,9 @@ import {
   PawPrint,
   ShoppingBag,
   Church,
-  Mountain
+  Mountain,
+  Star,
+  Train
 } from "lucide-react";
 import AddressConfirmationMap from "./AddressConfirmationMap";
 import { base44 } from "@/api/base44Client";
@@ -58,9 +60,11 @@ const categories = [
   { value: "park", label: "Park", icon: Trees, emoji: "🌳" },
   { value: "petcare", label: "Pet Care", icon: PawPrint, emoji: "🐾" },
   { value: "pharmacy", label: "Pharmacy", icon: Pill, emoji: "💊" },
+  { value: "poi", label: "Point of Interest", icon: Star, emoji: "⭐" },
   { value: "restaurant", label: "Restaurant", icon: Utensils, emoji: "🍽️" },
   { value: "salon", label: "Hair Salon", icon: Scissors, emoji: "💇" },
   { value: "shop", label: "Shop", icon: ShoppingBag, emoji: "🛍️" },
+  { value: "station", label: "Station", icon: Train, emoji: "🚉" },
   { value: "temple", label: "Temple/Church", icon: Church, emoji: "⛪" },
 ];
 

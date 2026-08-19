@@ -54,9 +54,11 @@
         "park",
         "petcare",
         "pharmacy",
+        "poi",
         "restaurant",
         "salon",
         "shop",
+        "station",
         "temple"
       ],
       "default": "other",

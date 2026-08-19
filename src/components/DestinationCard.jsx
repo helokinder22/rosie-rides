@@ -19,7 +19,9 @@ import {
   PawPrint,
   ShoppingBag,
   Church,
-  Mountain
+  Mountain,
+  Star,
+  Train
 } from "lucide-react";
 
 const categoryConfig = {
@@ -38,11 +40,13 @@ const categoryConfig = {
   music: { icon: Music, color: "#D63D85", label: "Music" },
   other: { icon: MapPin, color: "#767676", label: "Other" },
   park: { icon: Trees, color: "#61A850", label: "Park" },
+  poi: { icon: Star, color: "#F2B44E", label: "Point of Interest" },
   petcare: { icon: PawPrint, color: "#9BBF30", label: "Pet Care" },
   pharmacy: { icon: Pill, color: "#B83030", label: "Pharmacy" },
   restaurant: { icon: Utensils, color: "#D96934", label: "Restaurant" },
   salon: { icon: Scissors, color: "#D63D85", label: "Salon" },
   shop: { icon: ShoppingBag, color: "#2364AA", label: "Shop" },
+  station: { icon: Train, color: "#2364AA", label: "Station" },
   temple: { icon: Church, color: "#F2B44E", label: "Temple/Church" },
 };
 
