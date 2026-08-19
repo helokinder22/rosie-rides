@@ -49,7 +49,8 @@ export default function Home() {
   });
 
   const isPremium = user?.subscription_status === 'premium';
-  const isLimitReached = !isPremium && destinations.length >= 2;
+  const isFreeUntilNov30 = new Date() < new Date('2026-11-30');
+  const isLimitReached = !isPremium && !isFreeUntilNov30 && destinations.length >= 2;
 
   React.useEffect(() => {
     // Check if returning from subscription checkout
