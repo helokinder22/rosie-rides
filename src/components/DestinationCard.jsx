@@ -51,7 +51,7 @@ const categoryConfig = {
   pharmacy: { icon: Pill, color: "#B83030", label: "Pharmacy" },
   restaurant: { icon: Utensils, color: "#D96934", label: "Restaurant" },
   salon: { icon: Scissors, color: "#38BDF8", label: "Salon" },
-  school: { icon: GraduationCap, color: "#4A6FA5", label: "School" },
+  school: { icon: GraduationCap, color: "#3CB371", label: "School" },
   shop: { icon: ShoppingBag, color: "#2364AA", label: "Shop" },
   station: { icon: Train, color: "#2364AA", label: "Station" },
   train_station: { icon: Train, color: "#2364AA", label: "Train Station" },
