@@ -417,10 +417,10 @@ export default function Home() {
               <Link to={createPageUrl("ManageDestinations")}>
                 <Button
                   size="lg"
-                  className="h-20 px-10 text-2xl text-gray-700 shadow-xl font-bold rounded-3xl border-4 border-white/50"
+                  className="h-14 px-8 text-lg text-gray-700 shadow-xl font-bold rounded-3xl border-4 border-white/50"
                   style={{ backgroundColor: '#ffc20c' }}
                 >
-                  <Plus className="w-7 h-7 mr-3" />
+                  <Plus className="w-5 h-5 mr-2" />
                   Add Destination
                 </Button>
               </Link>
@@ -463,12 +463,12 @@ export default function Home() {
         {destinations.length > 0 && (
           <div className="flex justify-center mt-12 animate-bounce-slow">
             <Link to={createPageUrl("ManageDestinations")}>
-              <Button 
+              <Button
                 size="lg"
-                className="h-16 sm:h-20 md:h-24 px-6 sm:px-10 md:px-14 text-xl sm:text-2xl md:text-3xl font-bold text-gray-700 shadow-2xl rounded-3xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
+                className="h-12 sm:h-14 md:h-16 px-5 sm:px-8 md:px-10 text-base sm:text-lg md:text-xl font-bold text-gray-700 shadow-2xl rounded-3xl border-4 border-white/30 transform hover:scale-105 transition-all duration-300"
                 style={{ backgroundColor: '#ffc20c' }}
               >
-                <Plus className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 mr-2 sm:mr-3 md:mr-4" />
+                <Plus className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 mr-2 sm:mr-3 md:mr-3" />
                 Add/Edit Destination
               </Button>
             </Link>
