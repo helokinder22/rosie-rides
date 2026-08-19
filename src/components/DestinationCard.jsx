@@ -40,7 +40,7 @@ const categoryConfig = {
   home: { icon: Home, color: "#4596A3", label: "Home" },
   hospital: { icon: Hospital, color: "#84B4C4", label: "Hospital" },
   hotel: { icon: Building2, color: "#84B4C4", label: "Hotel" },
-  museum: { icon: Landmark, color: "#767676", label: "Museum" },
+  museum: { icon: Landmark, color: "#7635B0", label: "Museum" },
   music: { icon: Music, color: "#D63D85", label: "Music" },
   other: { icon: MapPin, color: "#767676", label: "Other" },
   park: { icon: Trees, color: "#61A850", label: "Park" },
