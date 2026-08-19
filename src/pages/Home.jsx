@@ -384,7 +384,7 @@ export default function Home() {
           </Dialog>
         </div>
 
-        <div className="text-center mb-4 animate-fade-in">
+        <div className="text-center mb-0 animate-fade-in">
           <div className="flex items-center justify-center gap-4 mb-6">
             <div className="relative">
               <img 
@@ -413,7 +413,7 @@ export default function Home() {
           </div>
 
           {destinations.length === 0 && (
-            <div className="mt-8 flex justify-center">
+            <div className="mt-2 flex justify-center">
               <Link to={createPageUrl("ManageDestinations")}>
                 <Button
                   size="lg"
