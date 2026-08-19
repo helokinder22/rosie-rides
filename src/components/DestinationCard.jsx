@@ -23,7 +23,8 @@ import {
   Star,
   Train,
   Plane,
-  Bus
+  Bus,
+  GraduationCap
 } from "lucide-react";
 
 const categoryConfig = {
@@ -49,6 +50,7 @@ const categoryConfig = {
   pharmacy: { icon: Pill, color: "#B83030", label: "Pharmacy" },
   restaurant: { icon: Utensils, color: "#D96934", label: "Restaurant" },
   salon: { icon: Scissors, color: "#D63D85", label: "Salon" },
+  school: { icon: GraduationCap, color: "#4A6FA5", label: "School" },
   shop: { icon: ShoppingBag, color: "#2364AA", label: "Shop" },
   station: { icon: Train, color: "#2364AA", label: "Station" },
   train_station: { icon: Train, color: "#2364AA", label: "Train Station" },

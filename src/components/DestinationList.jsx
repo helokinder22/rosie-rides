@@ -38,6 +38,7 @@ const categoryEmojis = {
   poi: "⭐",
   restaurant: "🍽️",
   salon: "💇",
+  school: "🎓",
   shop: "🛍️",
   station: "🚉",
   train_station: "🚆",

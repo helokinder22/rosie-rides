@@ -37,7 +37,8 @@ import {
   Star,
   Train,
   Plane,
-  Bus
+  Bus,
+  GraduationCap
 } from "lucide-react";
 import AddressConfirmationMap from "./AddressConfirmationMap";
 import { base44 } from "@/api/base44Client";
@@ -67,6 +68,7 @@ const categories = [
   { value: "poi", label: "Point of Interest", icon: Star, emoji: "⭐" },
   { value: "restaurant", label: "Restaurant", icon: Utensils, emoji: "🍽️" },
   { value: "salon", label: "Hair Salon", icon: Scissors, emoji: "💇" },
+  { value: "school", label: "School", icon: GraduationCap, emoji: "🎓" },
   { value: "shop", label: "Shop", icon: ShoppingBag, emoji: "🛍️" },
   { value: "station", label: "Station", icon: Train, emoji: "🚉" },
   { value: "train_station", label: "Train Station", icon: Train, emoji: "🚆" },
