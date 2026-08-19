@@ -21,10 +21,14 @@ import {
   Church,
   Mountain,
   Star,
-  Train
+  Train,
+  Plane,
+  Bus
 } from "lucide-react";
 
 const categoryConfig = {
+  airport: { icon: Plane, color: "#1B4965", label: "Airport" },
+  bus_station: { icon: Bus, color: "#2E8B57", label: "Bus Station" },
   coffeeshop: { icon: Coffee, color: "#967959", label: "Coffee Shop" },
   dentist: { icon: Stethoscope, color: "#85318F", label: "Dentist" },
   doctor: { icon: Stethoscope, color: "#4596A3", label: "Doctor" },
@@ -47,6 +51,7 @@ const categoryConfig = {
   salon: { icon: Scissors, color: "#D63D85", label: "Salon" },
   shop: { icon: ShoppingBag, color: "#2364AA", label: "Shop" },
   station: { icon: Train, color: "#2364AA", label: "Station" },
+  train_station: { icon: Train, color: "#2364AA", label: "Train Station" },
   temple: { icon: Church, color: "#F2B44E", label: "Temple/Church" },
 };
 

@@ -16,6 +16,8 @@ import {
 } from "@/components/ui/alert-dialog";
 
 const categoryEmojis = {
+  airport: "✈️",
+  bus_station: "🚌",
   coffeeshop: "☕",
   dentist: "🦷",
   doctor: "🏥",
@@ -38,6 +40,7 @@ const categoryEmojis = {
   salon: "💇",
   shop: "🛍️",
   station: "🚉",
+  train_station: "🚆",
   temple: "⛪"
 };
 

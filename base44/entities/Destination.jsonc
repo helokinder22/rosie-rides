@@ -37,6 +37,8 @@
     "category": {
       "type": "string",
       "enum": [
+        "airport",
+        "bus_station",
         "coffeeshop",
         "dentist",
         "doctor",
@@ -59,7 +61,8 @@
         "salon",
         "shop",
         "station",
-        "temple"
+        "temple",
+        "train_station"
       ],
       "default": "other",
       "description": "Category/type of destination"

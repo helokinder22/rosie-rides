@@ -35,7 +35,9 @@ import {
   Church,
   Mountain,
   Star,
-  Train
+  Train,
+  Plane,
+  Bus
 } from "lucide-react";
 import AddressConfirmationMap from "./AddressConfirmationMap";
 import { base44 } from "@/api/base44Client";
@@ -43,6 +45,8 @@ import { base44 } from "@/api/base44Client";
 
 
 const categories = [
+  { value: "airport", label: "Airport", icon: Plane, emoji: "✈️" },
+  { value: "bus_station", label: "Bus Station", icon: Bus, emoji: "🚌" },
   { value: "coffeeshop", label: "Coffee Shop", icon: Coffee, emoji: "☕" },
   { value: "dentist", label: "Dentist", icon: Stethoscope, emoji: "🦷" },
   { value: "doctor", label: "Doctor", icon: Stethoscope, emoji: "🏥" },
@@ -65,6 +69,7 @@ const categories = [
   { value: "salon", label: "Hair Salon", icon: Scissors, emoji: "💇" },
   { value: "shop", label: "Shop", icon: ShoppingBag, emoji: "🛍️" },
   { value: "station", label: "Station", icon: Train, emoji: "🚉" },
+  { value: "train_station", label: "Train Station", icon: Train, emoji: "🚆" },
   { value: "temple", label: "Temple/Church", icon: Church, emoji: "⛪" },
 ];
 
