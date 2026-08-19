@@ -1,0 +1,46 @@
+{
+  "name": "EmergencyContact",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the emergency contact"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address of the emergency contact"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number (for display only until SMS enabled)"
+    },
+    "relationship": {
+      "type": "string",
+      "description": "Relationship to user (e.g., spouse, child, friend)"
+    },
+    "notify_on_ride": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to notify this contact when user takes a ride"
+    }
+  },
+  "required": [
+    "name",
+    "email"
+  ],
+  "rls": {
+    "create": {
+      "created_by": "{{user.email}}"
+    },
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

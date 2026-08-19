@@ -443,12 +443,12 @@ export default function Home() {
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-8 max-w-xl mx-auto">
             {destinations.map((destination, index) => (
               <div
                 key={destination.id}
                 className="animate-slide-up"
-                style={{ animationDelay: `${index * 100}ms` }}
+                style={{ animationDelay: `${index * 80}ms` }}
               >
                 <DestinationCard
                   destination={destination}

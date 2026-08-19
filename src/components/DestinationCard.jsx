@@ -1,15 +1,13 @@
 import React from "react";
-import { Card } from "@/components/ui/card";
-import { 
-  Stethoscope, 
-  ShoppingCart, 
-  Scissors, 
-  Pill, 
-  Utensils, 
-  Users, 
+import {
+  Stethoscope,
+  ShoppingCart,
+  Scissors,
+  Pill,
+  Utensils,
+  Users,
   MapPin,
   Home,
-  ArrowRight,
   Share2,
   Coffee,
   Dumbbell,
@@ -25,132 +23,27 @@ import {
 } from "lucide-react";
 
 const categoryConfig = {
-  coffeeshop: { 
-    icon: Coffee, 
-    gradient: "from-amber-600 to-amber-800", 
-    label: "Coffee Shop",
-    emoji: "☕"
-  },
-  dentist: { 
-    icon: Stethoscope, 
-    gradient: "from-cyan-400 to-cyan-600", 
-    label: "Dentist",
-    emoji: "🦷"
-  },
-  doctor: { 
-    icon: Stethoscope, 
-    gradient: "from-blue-400 to-blue-600", 
-    label: "Doctor",
-    emoji: "🏥"
-  },
-  family: { 
-    icon: Users, 
-    gradient: "from-purple-400 to-purple-600", 
-    label: "Family",
-    emoji: "👨‍👩‍👧‍👦"
-  },
-  friends: { 
-    icon: Users, 
-    gradient: "from-teal-400 to-teal-600", 
-    label: "Friends",
-    emoji: "👥"
-  },
-  grocery: { 
-    icon: ShoppingCart, 
-    gradient: "from-green-400 to-green-600", 
-    label: "Grocery",
-    emoji: "🛒"
-  },
-  gym: { 
-    icon: Dumbbell, 
-    gradient: "from-amber-400 to-amber-600", 
-    label: "Gym",
-    emoji: "💪"
-  },
-  hike: { 
-    icon: Mountain, 
-    gradient: "from-emerald-500 to-emerald-700", 
-    label: "Hike",
-    emoji: "🥾"
-  },
-  home: { 
-    icon: Home, 
-    gradient: "from-indigo-400 to-indigo-600", 
-    label: "Home",
-    emoji: "🏠"
-  },
-  hospital: { 
-    icon: Hospital, 
-    gradient: "from-red-500 to-red-700", 
-    label: "Hospital",
-    emoji: "🏥"
-  },
-  hotel: { 
-    icon: Building2, 
-    gradient: "from-sky-400 to-sky-600", 
-    label: "Hotel",
-    emoji: "🏨"
-  },
-  museum: { 
-    icon: Landmark, 
-    gradient: "from-stone-400 to-stone-600", 
-    label: "Museum",
-    emoji: "🏛️"
-  },
-  music: { 
-    icon: Music, 
-    gradient: "from-fuchsia-400 to-fuchsia-600", 
-    label: "Music",
-    emoji: "🎵"
-  },
-  other: { 
-    icon: MapPin, 
-    gradient: "from-slate-400 to-slate-600", 
-    label: "Other",
-    emoji: "📍"
-  },
-  park: { 
-    icon: Trees, 
-    gradient: "from-green-500 to-green-700", 
-    label: "Park",
-    emoji: "🌳"
-  },
-  petcare: { 
-    icon: PawPrint, 
-    gradient: "from-lime-400 to-lime-600", 
-    label: "Pet Care",
-    emoji: "🐾"
-  },
-  pharmacy: { 
-    icon: Pill, 
-    gradient: "from-red-400 to-red-600", 
-    label: "Pharmacy",
-    emoji: "💊"
-  },
-  restaurant: { 
-    icon: Utensils, 
-    gradient: "from-orange-400 to-orange-600", 
-    label: "Restaurant",
-    emoji: "🍽️"
-  },
-  salon: { 
-    icon: Scissors, 
-    gradient: "from-pink-400 to-pink-600", 
-    label: "Salon",
-    emoji: "💇"
-  },
-  shop: { 
-    icon: ShoppingBag, 
-    gradient: "from-violet-400 to-violet-600", 
-    label: "Shop",
-    emoji: "🛍️"
-  },
-  temple: { 
-    icon: Church, 
-    gradient: "from-amber-500 to-amber-700", 
-    label: "Temple/Church",
-    emoji: "⛪"
-  },
+  coffeeshop: { icon: Coffee, color: "#967959", label: "Coffee Shop" },
+  dentist: { icon: Stethoscope, color: "#85318F", label: "Dentist" },
+  doctor: { icon: Stethoscope, color: "#4596A3", label: "Doctor" },
+  family: { icon: Users, color: "#7580F2", label: "Family" },
+  friends: { icon: Users, color: "#4596A3", label: "Friends" },
+  grocery: { icon: ShoppingCart, color: "#D96934", label: "Grocery" },
+  gym: { icon: Dumbbell, color: "#D63D85", label: "Gym" },
+  hike: { icon: Mountain, color: "#61A850", label: "Hike" },
+  home: { icon: Home, color: "#4596A3", label: "Home" },
+  hospital: { icon: Hospital, color: "#84B4C4", label: "Hospital" },
+  hotel: { icon: Building2, color: "#84B4C4", label: "Hotel" },
+  museum: { icon: Landmark, color: "#767676", label: "Museum" },
+  music: { icon: Music, color: "#D63D85", label: "Music" },
+  other: { icon: MapPin, color: "#767676", label: "Other" },
+  park: { icon: Trees, color: "#61A850", label: "Park" },
+  petcare: { icon: PawPrint, color: "#9BBF30", label: "Pet Care" },
+  pharmacy: { icon: Pill, color: "#B83030", label: "Pharmacy" },
+  restaurant: { icon: Utensils, color: "#D96934", label: "Restaurant" },
+  salon: { icon: Scissors, color: "#D63D85", label: "Salon" },
+  shop: { icon: ShoppingBag, color: "#2364AA", label: "Shop" },
+  temple: { icon: Church, color: "#F2B44E", label: "Temple/Church" },
 };
 
 export default function DestinationCard({ destination, onSelect, onShare }) {
@@ -158,72 +51,37 @@ export default function DestinationCard({ destination, onSelect, onShare }) {
   const Icon = config.icon;
 
   return (
-    <Card
+    <button
       onClick={() => onSelect(destination)}
-      className="group cursor-pointer border-0 transition-all duration-300 hover:scale-105 bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl overflow-hidden relative"
+      className="group relative w-full aspect-square rounded-2xl shadow-lg overflow-hidden transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/50"
+      style={{ backgroundColor: config.color }}
     >
-      {/* Decorative gradient bar */}
-      <div className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${config.gradient}`}></div>
-      
-      {/* Hover effect overlay */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${config.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-      
-      {/* Share Button */}
-      <button
+      {/* Share */}
+      <span
+        role="button"
+        tabIndex={0}
         onClick={(e) => {
           e.stopPropagation();
           onShare(destination);
         }}
-        className="absolute top-4 right-4 z-10 p-3 bg-white/80 backdrop-blur-sm rounded-full shadow-lg hover:bg-white hover:scale-110 transition-all duration-200 text-slate-600 hover:text-blue-600"
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.stopPropagation();
+            onShare(destination);
+          }
+        }}
+        className="absolute top-2 right-2 z-10 p-2 bg-white/25 backdrop-blur-sm rounded-full hover:bg-white/40 transition-colors"
         title="Share Trip Details"
       >
-        <Share2 className="w-5 h-5" />
-      </button>
+        <Share2 className="w-4 h-4 text-white" />
+      </span>
 
-      <div className="relative p-8">
-        <div className="flex flex-col space-y-6">
-          {/* Icon with category */}
-          <div className="flex items-start gap-4">
-            <div className={`bg-gradient-to-br ${config.gradient} rounded-2xl p-4 shadow-lg group-hover:rotate-6 transition-all duration-300 flex-shrink-0`}>
-              <div className="flex flex-col items-center gap-2">
-                <Icon className="w-11 h-11 text-white" />
-                <p className="text-white text-xs font-bold uppercase tracking-wide">
-                  {config.label}
-                </p>
-              </div>
-            </div>
-            {destination.notes && (
-              <div className="flex-1 p-3 bg-slate-50 rounded-xl border-2 border-slate-200">
-                <p className="text-xs font-semibold text-slate-500 mb-1">Notes:</p>
-                <p className="text-sm text-slate-700 leading-snug line-clamp-2">
-                  {destination.notes}
-                </p>
-              </div>
-            )}
-          </div>
-          
-          {/* Content */}
-          <div className="space-y-3">
-            <h3 className="text-3xl font-black text-slate-800 leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-slate-800 group-hover:to-slate-600 transition-all duration-300">
-              {destination.name}
-            </h3>
-            
-            <p className="text-lg text-slate-600 leading-relaxed line-clamp-2">
-              {destination.address}
-            </p>
-          </div>
-
-          {/* Call to action */}
-          <div className={`flex items-center justify-between pt-4 border-t-2 border-slate-100 group-hover:border-transparent transition-colors duration-300`}>
-            <span className="text-xl font-bold text-slate-700 group-hover:text-slate-900">
-              Get a Ride
-            </span>
-            <div className={`w-12 h-12 bg-gradient-to-br ${config.gradient} rounded-full flex items-center justify-center group-hover:translate-x-2 transition-transform duration-300 shadow-md`}>
-              <ArrowRight className="w-6 h-6 text-white" strokeWidth={3} />
-            </div>
-          </div>
-        </div>
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-4 text-center">
+        <Icon className="w-12 h-12 sm:w-14 sm:h-14 text-white drop-shadow-md" strokeWidth={1.75} />
+        <span className="text-white text-sm sm:text-base font-bold uppercase tracking-wide leading-tight line-clamp-3 drop-shadow-sm">
+          {destination.name}
+        </span>
       </div>
-    </Card>
+    </button>
   );
 }

@@ -1,0 +1,46 @@
+{
+  "name": "Trip",
+  "type": "object",
+  "properties": {
+    "destination_name": {
+      "type": "string",
+      "description": "Name of the destination"
+    },
+    "destination_address": {
+      "type": "string",
+      "description": "Address of the destination"
+    },
+    "trip_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the trip was requested"
+    },
+    "category": {
+      "type": "string",
+      "description": "Category of the destination"
+    },
+    "completed": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the trip was completed"
+    }
+  },
+  "required": [
+    "destination_name",
+    "trip_date"
+  ],
+  "rls": {
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    },
+    "write": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}

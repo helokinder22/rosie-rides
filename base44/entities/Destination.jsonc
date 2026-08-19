@@ -1,0 +1,89 @@
+{
+  "name": "Destination",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the destination (e.g., 'Dr. Smith', 'Whole Foods')"
+    },
+    "address": {
+      "type": "string",
+      "description": "Full address of the destination (legacy field)"
+    },
+    "street": {
+      "type": "string",
+      "description": "Street name"
+    },
+    "number": {
+      "type": "string",
+      "description": "Street number"
+    },
+    "city": {
+      "type": "string",
+      "description": "City"
+    },
+    "state": {
+      "type": "string",
+      "description": "State"
+    },
+    "zip": {
+      "type": "string",
+      "description": "ZIP code"
+    },
+    "country": {
+      "type": "string",
+      "description": "Country"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "coffeeshop",
+        "dentist",
+        "doctor",
+        "family",
+        "friends",
+        "grocery",
+        "gym",
+        "hike",
+        "home",
+        "hospital",
+        "hotel",
+        "museum",
+        "music",
+        "other",
+        "park",
+        "petcare",
+        "pharmacy",
+        "restaurant",
+        "salon",
+        "shop",
+        "temple"
+      ],
+      "default": "other",
+      "description": "Category/type of destination"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional notes about the destination"
+    },
+    "sort_order": {
+      "type": "number",
+      "description": "Order of the destination in the list"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": true,
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "update": {
+      "created_by": "{{user.email}}"
+    },
+    "delete": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}
