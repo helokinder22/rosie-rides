@@ -196,8 +196,8 @@ export default function Home() {
           const { lat, lon } = data[0];
           console.log('Successfully geocoded to:', lat, lon);
 
-          // Use coordinates-based deep link (most reliable)
-          const uberUrl = `uber://?action=setPickup&pickup=my_location&dropoff[latitude]=${lat}&dropoff[longitude]=${lon}&dropoff[nickname]=${encodedName}`;
+          // Use coordinates-based universal link (opens app directly, no browser prompt)
+          const uberUrl = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[latitude]=${lat}&dropoff[longitude]=${lon}&dropoff[nickname]=${encodedName}`;
           console.log('Opening Uber with coordinates URL:', uberUrl);
           window.location.href = uberUrl;
           return;
@@ -211,9 +211,9 @@ export default function Home() {
       console.error("Geocoding error:", error);
     }
 
-    // Fallback: Use address-based deep link
+    // Fallback: Use address-based universal link
     console.warn('Geocoding failed, using address fallback');
-    const uberUrl = `uber://?action=setPickup&pickup=my_location&dropoff[formatted_address]=${encodedAddress}&dropoff[nickname]=${encodedName}`;
+    const uberUrl = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${encodedAddress}&dropoff[nickname]=${encodedName}`;
     console.log('Opening Uber with address URL:', uberUrl);
     window.location.href = uberUrl;
   };
