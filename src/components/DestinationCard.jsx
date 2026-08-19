@@ -35,7 +35,7 @@ const categoryConfig = {
   doctor: { icon: Stethoscope, color: "#4596A3", label: "Doctor" },
   family: { icon: Users, color: "#7580F2", label: "Family" },
   friend: { icon: Users, color: "#EAB308", label: "Friend" },
-  friends: { icon: Users, color: "#4596A3", label: "Friends" },
+  friends: { icon: Users, color: "#EAB308", label: "Friends" },
   grocery: { icon: ShoppingCart, color: "#D96934", label: "Grocery" },
   gym: { icon: Dumbbell, color: "#D63D85", label: "Gym" },
   hike: { icon: Mountain, color: "#61A850", label: "Hike" },
