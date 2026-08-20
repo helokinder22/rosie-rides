@@ -52,6 +52,9 @@ export default function Disclaimer() {
               <p className="text-xl text-slate-700 leading-relaxed font-medium mt-4">
                 Users are encouraged to review each service provider's terms of service and policies for complete information regarding their services.
               </p>
+              <p className="text-xl text-slate-700 leading-relaxed font-medium mt-4">
+                Rosie Rides is currently an experimental project and is offered "as is" without warranties of any kind. The creator reserves the right to modify, suspend, or discontinue the app at any time and without prior notice.
+              </p>
             </div>
           </div>
 
